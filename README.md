@@ -14,7 +14,7 @@ Micah Tien:
 
 Zachary Wellborn:
 
-Jenna Tran: Fun Coordinator (jk)
+Jenna Tran (Fun Coordinator): (jk)
 
 Maggie Cole:
 

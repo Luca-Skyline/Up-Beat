@@ -6,15 +6,15 @@
 
 ## Members
 
-**Luca DalCanto (Mr. Skyline):**
+**Luca DalCanto (Mr. Skyline):** He owns Skyline
 
-**Micah Tien (Bracket Supplier):**
+**Micah Tien (Bracket Supplier):** Expert as adding useless brackets
 
-**Zachary Wellborn (Python Professional):**
+**Zachary Wellborn (Python Professional):** He can't code in Java
 
-**Jenna Tran (Fun Coordinator):**
+**Jenna Tran (Fun Coordinator):** I created this (please laugh)
 
-**Maggie Cole (Intern):**
+**Maggie Cole (Intern):** She does the stuff everyone else doesn't want to
 
 ## Password Game
 Our program uses a loop to ask for password input indefinitely until the player enters a password which matches all criteria. To assess which criteria need be displayed for any given password entry, we have a function which contains a sequence of “if” checks: one for each rule. If a rule is met, nothing happens and the code proceeds with the next rule check. If, however, a rule is not met, the function returns the number of that rule so the main loop can display it (and all the previous rules) and ask for new input.

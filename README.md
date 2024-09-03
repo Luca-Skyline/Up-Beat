@@ -8,7 +8,7 @@
 
 **Luca DalCanto (Team Lead):**
 
-**Micah Tien (Idk):**
+**Micah Tien (Bracket Supplier):**
 
 **Zachary Wellborn (Python Professional):**
 

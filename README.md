@@ -10,13 +10,13 @@ https://codehs.com/sandbox/id/java-main-TBfN8x?collaborate=-O5KM8sxcanbL7vcloM0
 
 **Luca DalCanto (Team Lead):**
 
-**Micah Tien:**
+**Micah Tien (Idk):**
 
-**Zachary Wellborn:**
+**Zachary Wellborn (Python Professional):**
 
 **Jenna Tran (Fun Coordinator):**
 
-**Maggie Cole:**
+**Maggie Cole (Intern):**
 
 ## Logic Flow Diagram
 

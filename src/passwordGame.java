@@ -1,5 +1,5 @@
 // Password Game | RIBIT | 8/29/24 | Advanced Computer Science 4B
-
+// Jenna Tran, Luca DalCanto, Micah Tien, Zack Wellborn
 import java.util.Scanner;
 
 public class PasswordGame {

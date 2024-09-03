@@ -1,4 +1,4 @@
-# RIBIT-REPO
+# RIBIT
 
 **RIBIT:** RISE International Baccalaureate Information Technology
 

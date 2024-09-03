@@ -6,10 +6,6 @@
 
 https://codehs.com/sandbox/id/java-main-TBfN8x?collaborate=-O5KM8sxcanbL7vcloM0
 
-## Password Game
-
-
-
 ## Members
 
 **Luca DalCanto (Team Lead):**

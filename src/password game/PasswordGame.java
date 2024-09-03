@@ -1,6 +1,7 @@
 // Password Game | RIBIT | 8/29/24 | Advanced Computer Science 4B
-// Jenna Tran, Luca DalCanto, Micah Tien, Zack Wellborn
+
 import java.util.Scanner;
+//cheat password ;) : alphabeteyelidsenvelopeexd5nxf7@Djimmy
 
 public class PasswordGame {
     
@@ -20,6 +21,13 @@ public class PasswordGame {
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
+        
+        clearScreen();
+        System.out.println("This game will help you make a better password.");
+        System.out.println("(This is just a game, please do not enter any real passwords.)");
+        System.out.println("You will be asked to enter a 'password'.");
+        System.out.println("Then, the game will ask you what is already good (✔️) and what you need to add/change (❎ ).");
+        System.out.println("If you meet all criteria, you will win the game!");
         
         while(true){
             
@@ -104,13 +112,11 @@ public class PasswordGame {
             return 10;
         }
         
-        
-        System.out.println("Congratulations! Your identity won't get stolen!");
         return 0;
     }
-    //cheat password ;) :: alphabeteyelidsenvelopeexd5nxf7@Djimmy
+    
     public static void clearScreen() {  
         System.out.print("\033[H\033[2J");  
-        System.out.flush(); 
+        System.out.flush();  
     }
 }  

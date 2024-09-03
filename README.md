@@ -8,7 +8,7 @@
 
 **Luca DalCanto (Mr. Skyline):** He owns Skyline
 
-**Micah Tien (Bracket Supplier):** Expert as adding useless brackets
+**Micah Tien (Bracket Supplier):** Expert at adding useless brackets
 
 **Zachary Wellborn (Python Professional):** He can't code in Java
 

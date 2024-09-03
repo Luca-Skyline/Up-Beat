@@ -22,9 +22,7 @@ https://codehs.com/sandbox/id/java-main-TBfN8x?collaborate=-O5KM8sxcanbL7vcloM0
 
 ### Logic Flow Diagram
 
-![Demonstration](https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true)
-
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true" width="200" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true" width="400" />
 
 ### Demonstration
 

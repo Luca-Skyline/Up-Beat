@@ -18,3 +18,10 @@ https://codehs.com/sandbox/id/java-main-TBfN8x?collaborate=-O5KM8sxcanbL7vcloM0
 
 **Maggie Cole:**
 
+## Logic Flow Diagram
+
+## Demonstration
+
+![Demonstration](https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/demonstration.png?raw=true)
+
+

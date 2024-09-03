@@ -24,7 +24,7 @@ https://codehs.com/sandbox/id/java-main-TBfN8x?collaborate=-O5KM8sxcanbL7vcloM0
 
 ![Demonstration](https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true)
 
-<img src="[https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true]" width="100" height="100"/>
+<img src="[https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true]" width="300" height="300"/>
 
 ### Demonstration
 

@@ -6,7 +6,7 @@
 
 ## Members
 
-**Luca DalCanto (Team Lead):**
+**Luca DalCanto (Mr. Skyline):**
 
 **Micah Tien (Bracket Supplier):**
 

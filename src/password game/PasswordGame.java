@@ -82,6 +82,7 @@ public class PasswordGame {
         if (!password.contains("D")) {
             return 4;
         }
+        password = password.toLowerCase();
         //Rule 5: Password must contain "alphabet" (funny)
         if (!password.contains("alphabet") && !password.contains("Alphabet")) {
             return 5;

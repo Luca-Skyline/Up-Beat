@@ -84,17 +84,17 @@ public class PasswordGame {
         }
         password = password.toLowerCase();
         //Rule 5: Password must contain "alphabet" (funny)
-        if (!password.contains("alphabet") && !password.contains("Alphabet")) {
+        if (!password.contains("alphabet")) {
             return 5;
         }
         
         //Rule 6: What is light during the day but heavy at night (eyelids)
-        if (!password.contains("eyelids") && !password.contains("Eyelids")) {
+        if (!password.contains("eyelids")) {
             return 6;
         }
         
         //Rule 7: What starts and ends with "E" but only has one letter in it? (envelope or eye)
-        if (!password.contains("envelope") && !password.contains("Envelope")) {
+        if (!password.contains("envelope")) {
             return 7;
         }
         
@@ -109,7 +109,7 @@ public class PasswordGame {
         }
         
         //Rule 10: Must contain the name of Max Design Pro's little brother?
-        if (!password.contains("jimmy") && !password.contains("Jimmy")) {
+        if (!password.contains("jimmy")) {
             return 10;
         }
         

@@ -6,7 +6,7 @@
 
 **Luca DalCanto (Team Lead | Mr. Skyline):** He owns Skyline (and incorporates chess into everything).
 
-**Micah Tien (Logician | Bracket Supplier):** ~~ChatGPT~~ Pro MPT Engineer 
+**Micah Tien (Logician | Bracket Supplier):** ~~ChatGPT~~ Pro MPT Engineer. 
 
 **Zachary Wellborn (Task Recipient | Python Professional):** He can't code in Java, but is a master at giving Micah something to do.
 

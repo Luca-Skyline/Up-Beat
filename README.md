@@ -14,6 +14,17 @@
 
 **Maggie Cole (Intern | Intern):** She does the stuff everyone else doesn't want to (class diagrams).
 
+## Large Group Project Ideas
+### Procedural Music Generator
+- User input and randomness come together
+- Fundemental music theory awareness
+- Outputs as MIDI information or something like that.
+
+### Natural Simulations
+Possible ideas include:
+- Procedural evolution process to achieve a goal such as traveling to a desired destination
+- 
+
 ## Password Game
 Our program uses a loop to ask for password input indefinitely until the player enters a password that matches all criteria. To assess which criteria need to be displayed for any given password entry, we have a function that contains a sequence of “if” checks: one for each rule. If a rule is met, nothing happens and the code proceeds with the next rule check. If, however, a rule is not met, the function returns the number of that rule so the main loop can display it (and all the previous rules) and ask for new input.
 

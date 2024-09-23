@@ -23,7 +23,7 @@
 ### Natural Simulations
 Possible ideas include:
 - Procedural evolution process to achieve a goal such as traveling to a desired destination
-- 
+- OR virus evolution that's prompted by the user (by having the user play the virus, it could teach lessons about public health!)
 
 ## Password Game
 Our program uses a loop to ask for password input indefinitely until the player enters a password that matches all criteria. To assess which criteria need to be displayed for any given password entry, we have a function that contains a sequence of “if” checks: one for each rule. If a rule is met, nothing happens and the code proceeds with the next rule check. If, however, a rule is not met, the function returns the number of that rule so the main loop can display it (and all the previous rules) and ask for new input.

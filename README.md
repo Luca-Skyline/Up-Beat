@@ -20,6 +20,10 @@
 - Fundemental music theory awareness
 - Outputs as MIDI information or something like that.
 
+Class Diagram
+
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/8907296fd15f2a07ed9c587c5eab877192164a3d/images/music_class_diagram_og.drawio" width="400" />
+
 ## Password Game
 Our program uses a loop to ask for password input indefinitely until the player enters a password that matches all criteria. To assess which criteria need to be displayed for any given password entry, we have a function that contains a sequence of “if” checks: one for each rule. If a rule is met, nothing happens and the code proceeds with the next rule check. If, however, a rule is not met, the function returns the number of that rule so the main loop can display it (and all the previous rules) and ask for new input.
 

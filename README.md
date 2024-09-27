@@ -22,7 +22,7 @@
 
 Class Diagram
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/aadfad55ae61d8e3d081eaf614260c33744eda91/images/class.png" width="500" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/171ae696fc6ac75d796f711ddb87216150e3f519/images/class.png" width="500" />
 
 Link to CodeHS file: https://codehs.com/sandbox/id/new-sandbox-program-zfq1Qm
 

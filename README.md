@@ -14,7 +14,7 @@
 
 **Maggie Cole (Intern | Intern):** She does the stuff everyone else doesn't want to (class diagrams).
 
-## Large Group Project Ideas
+## Procedural Music Generator
 ### Procedural Music Generator
 - User input and randomness come together
 - Fundemental music theory awareness

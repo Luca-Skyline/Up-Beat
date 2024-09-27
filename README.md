@@ -26,7 +26,7 @@ Class Diagram
 
 Link to CodeHS file: https://codehs.com/sandbox/id/new-sandbox-program-zfq1Qm
 
-## ~~Password Game~~
+## Password Game
 Our program uses a loop to ask for password input indefinitely until the player enters a password that matches all criteria. To assess which criteria need to be displayed for any given password entry, we have a function that contains a sequence of “if” checks: one for each rule. If a rule is met, nothing happens and the code proceeds with the next rule check. If, however, a rule is not met, the function returns the number of that rule so the main loop can display it (and all the previous rules) and ask for new input.
 
 Link to codeHS file: https://codehs.com/sandbox/id/java-main-TBfN8x?collaborate=-O5KM8sxcanbL7vcloM0

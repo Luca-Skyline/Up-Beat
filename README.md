@@ -15,12 +15,11 @@
 **Maggie Cole (Intern | Intern):** She does the stuff everyone else doesn't want to (class diagrams).
 
 ## Procedural Music Generator
-### Procedural Music Generator
 - User input and randomness come together
 - Fundemental music theory awareness
 - Outputs as MIDI information or something like that.
 
-Class Diagram
+Class Diagram - Luca DalCanto
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/171ae696fc6ac75d796f711ddb87216150e3f519/images/class.png" width="500" />
 

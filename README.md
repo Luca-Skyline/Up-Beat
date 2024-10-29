@@ -21,7 +21,7 @@
 
 Class Diagram - Luca DalCanto
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/171ae696fc6ac75d796f711ddb87216150e3f519/images/class.png" width="500" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/49aa40e8ed149a643bcb9aaca875b2188ba064f9/images/InheritanceMusic.png" width="500" />
 
 Link to CodeHS file: https://codehs.com/sandbox/id/new-sandbox-program-zfq1Qm?filepath=Chord.java&collaborate=-O7ozjqHktADjsoU7bUd
 

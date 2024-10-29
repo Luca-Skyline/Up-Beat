@@ -4,20 +4,20 @@
 
 ## Members
 
-**Luca DalCanto (Team Lead | Mr. Skyline):** He owns Skyline (and incorporates chess into everything).
+**Luca DalCanto (Music Theorist and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track (the "brains" of the program). Takes parameters from Zack (representing user input) and gives parameters to Micah (representing music).
 
-**Micah Tien (Logician | Bracket Supplier):** ~~ChatGPT~~ Pro MPT Engineer. 
+**Micah Tien (MIDI, Audio Engineer):** In charge of turning the information into MIDI and rendering it as audio to play back to the user. Takes parameters from Luca.
 
-**Zachary Wellborn (Task Recipient | Python Professional):** He can't code in Java, but is a master at giving Micah something to do.
+**Zachary Wellborn (User Interfacing and Graphics Implementation):** In charge of implementing graphics for user interaction. Collects information from the user and sends it to Luca.
 
-**Jenna Tran (Syntax Expert | Fun Coordinator):** Adds smiley faces to all of the print outputs.
+**Jenna Tran (Generalist, Data Transfer, and Procedural Systems):** In charge of ensuring proper logistics of information during both "choke points" and ensuring proper cooperation among systems. Helps where needed, in particular the infrastructure for procedural music generation. 
 
-**Maggie Cole (Intern | Intern):** She does the stuff everyone else doesn't want to (class diagrams).
+**Maggie Cole (Graphics Creation, Testing, and GitHub Management):** In charge of producing graphics and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness.
 
 ## Procedural Music Generator
 - User input and randomness come together
 - Fundemental music theory awareness
-- Outputs as MIDI information or something like that.
+- Outputs as MIDI information and audio
 
 Class Diagram - Luca DalCanto
 

@@ -32,7 +32,7 @@ Link to codeHS file: https://codehs.com/sandbox/id/java-main-TBfN8x?collaborate=
 
 ### Logic Flow Diagram
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true" width="400" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true" width="600" />
 
 ### Demonstration
 

@@ -4,7 +4,7 @@
 
 ## Members
 
-**Luca DalCanto (Music Theorist and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track (the "brains" of the program). Takes parameters from Zack (representing user input) and gives parameters to Micah (representing music).
+**Luca DalCanto (Team Lead, Music Theorist, and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track (the "brains" of the program). Takes parameters from Zack (representing user input) and gives parameters to Micah (representing musical information).
 
 **Micah Tien (MIDI, Audio Engineer):** In charge of turning the information into MIDI and rendering it as audio to play back to the user. Takes parameters from Luca.
 
@@ -12,7 +12,7 @@
 
 **Jenna Tran (Graphics Creation, Data Transfer, and Procedural Systems):** In charge of ensuring proper logistics of information during both "choke points" and ensuring proper cooperation among systems. Artist for visuals. Helps where needed, in particular the infrastructure for procedural music generation. 
 
-**Maggie Cole (Graphics Creation, Testing, and GitHub Management):** In charge of producing graphics and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness.
+**Maggie Cole (Graphics Creation, Testing, and GitHub Management):** Helps with producing graphics/design and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness.
 
 ## Procedural Music Generator
 - User input and randomness come together

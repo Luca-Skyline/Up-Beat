@@ -20,7 +20,7 @@
 
 **Maggie Cole (Graphics Creation, Testing, and GitHub Management):** Helps with producing graphics/design and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness.
 
-## Procedural Music Generator
+## Procedural Music Generator (BeatBoxx)
 - User input and randomness come together
 - Fundemental music theory awareness
 - Outputs as MIDI information and audio

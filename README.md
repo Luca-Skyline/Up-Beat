@@ -2,6 +2,8 @@
 
 **RIBIT:** RISE International Baccalaureate Information Technology
 
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/902f41e96bde4ad65c13a53d2ec4cae9aa646542/images/micah.gif" width="1000" />
+
 ## Members
 
 **Luca DalCanto (Team Lead, Music Theorist, and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track (the "brains" of the program). Takes parameters from Zack (representing user input) and gives parameters to Micah (representing musical information).

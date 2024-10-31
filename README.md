@@ -2,7 +2,7 @@
 
 **RIBIT:** RISE International Baccalaureate Information Technology
 
-Happy Halloween! 🤓
+🍬 Happy Halloween! 🤓
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/902f41e96bde4ad65c13a53d2ec4cae9aa646542/images/micah.gif" width="500" />
 

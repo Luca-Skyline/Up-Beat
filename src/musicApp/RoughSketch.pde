@@ -56,7 +56,9 @@ void draw() {
    text("100 bpm", 100, 180);
    text("120 bpm", 175, 180);
    text("140 bpm", 250, 180);
-   
+   //will include other options as we develop 
+   //we'll then take all the requirements and generate a song along these guidelines
+   //then output that to the user
    
    
   }

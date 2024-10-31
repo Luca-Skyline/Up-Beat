@@ -7,7 +7,7 @@ boolean option2;
 
 void setup() {
   size(700,500);
-  textSize(30); 
+  textSize(25); 
   mainMenu = true;
   option1 = false; 
   option2 = false;
@@ -20,7 +20,7 @@ void draw() {
   rect(10,10,680,480,20);
   if (mainMenu == true) {
   fill(0); 
-  text("Welcome to our procedural music generator!", 80, 150); 
+  text("Welcome to Beatboxx, our procedural music generator!", 80, 150); 
   //text("
   fill(140,200,220);
   

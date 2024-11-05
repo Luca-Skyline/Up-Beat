@@ -4,7 +4,9 @@ boolean mainMenu;
 //the genre(?) or type of song (symphony etc.)
 boolean option1;
 boolean option2;
-
+//     TO DO : slider for chaos level and tempo, buttons for key and 
+//             time signature and type of song (classical/pop for now) ;p
+//          
 void setup() {
   size(700,500);
   textSize(25); 

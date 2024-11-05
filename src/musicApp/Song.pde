@@ -1,5 +1,7 @@
 abstract class Song {
-  private double songLength; //int? 
+  protected int measures;
+  protected String name;
+  protected float duration;
  
   
   

@@ -1,5 +1,5 @@
 abstract class Song {
- abstract songLength; //int? 
+  private double songLength; //int? 
  
   
   

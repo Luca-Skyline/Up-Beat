@@ -1,0 +1,5 @@
+class Note {
+  String smileyFace;
+  
+  
+}

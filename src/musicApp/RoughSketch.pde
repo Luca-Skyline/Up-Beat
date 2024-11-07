@@ -4,6 +4,8 @@ boolean mainMenu;
 //the genre(?) or type of song (symphony etc.)
 boolean option1;
 boolean option2;
+Button[] buttons = new Button[2];
+//Buttons[0]
 //     TO DO : slider for chaos level and tempo, buttons for key and 
 //             time signature and type of song (classical/pop for now) ;p
 //          

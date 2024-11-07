@@ -13,8 +13,8 @@ Button[] buttons = new Button[2];
 void setup() {
   size(700,500);
   textSize(25); 
-  buttons[0] = new Button(350, 100, 100, 60, "test,!11!");
-  buttons[1] = new Button(350, 200, 100, 60, "test #2!11!!");
+  buttons[0] = new Button(350, 100, 100, 60, "test");
+  buttons[1] = new Button(350, 200, 100, 60, "test #2");
   mainMenu = true;
   option1 = false; 
   option2 = false;
@@ -22,7 +22,7 @@ void setup() {
 
 
 void draw() {
-  background(#D1DEDE);
+  background(#1D201F);
   fill(#EAD2AC); 
   rect(10,10,680,480,20);
   if (mainMenu == true) {

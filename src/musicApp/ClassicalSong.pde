@@ -1,0 +1,3 @@
+class ClassicalSong extends Song {
+  
+}

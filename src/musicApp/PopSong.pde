@@ -1,0 +1,3 @@
+class PopSong extends Song {
+
+}

@@ -19,7 +19,6 @@ class Button {
   }
 
   void display() {
-    on = true;
     if (on) {
       fill(c2);
     } else {

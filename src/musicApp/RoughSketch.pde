@@ -1,17 +1,20 @@
 //import statements for MIDI, scanners, etc. here
+
 boolean mainMenu;
 //could be much more options - options would be 
 //the genre(?) or type of song (symphony etc.)
 boolean option1;
 boolean option2;
 Button[] buttons = new Button[2];
-//Buttons[0]
+
 //     TO DO : slider for chaos level and tempo, buttons for key and 
 //             time signature and type of song (classical/pop for now) ;p
 //          
 void setup() {
   size(700,500);
   textSize(25); 
+  buttons[0] = new Button(100, 100, 100, 60, "test,!11!");
+  buttons[1] = new Button(100, 200, 100, 60, "test #2!11!!");
   mainMenu = true;
   option1 = false; 
   option2 = false;
@@ -19,8 +22,8 @@ void setup() {
 
 
 void draw() {
-  background(200,180,180);
-  fill(220,120,140); 
+  background(#D1DEDE);
+  fill(#EAD2AC); 
   rect(10,10,680,480,20);
   if (mainMenu == true) {
   fill(0); 
@@ -60,6 +63,11 @@ void draw() {
    text("100 bpm", 100, 180);
    text("120 bpm", 175, 180);
    text("140 bpm", 250, 180);
+   for (int i=0; i<buttons.length; i++) {
+     buttons[i].display();
+     buttons[i].hover(mouseX, mouseY);
+     
+   }
    //will NOT include other options as we develop 
    //we'll then take all the requirements and generate a song along these guidelines
    //then output that to the user

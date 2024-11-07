@@ -1,17 +1,18 @@
 class Button {
   //m,
-  int x, y, w, h;
+  int x, y, w, h, phase;
   String text;
   color c1, c2;
   boolean on; // whether or not the mouse is over it
 
   // Constructador
-  Button(int x, int y, int w, int h, String text) {
+  Button(int x, int y, int w, int h, String text,  int phase) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.text = text;
+    this.phase = phase;
     c1 = color(#DF928E);
     c2 = color(#C58882);
     on = false;

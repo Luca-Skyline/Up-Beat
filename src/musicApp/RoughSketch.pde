@@ -5,7 +5,7 @@ boolean mainMenu;
 //the genre(?) or type of song (symphony etc.)
 boolean option1;
 boolean option2;
-Button[] buttons = new Button[2];
+Button[] buttons = new Button[4];
 
 //     TO DO : slider for chaos level and tempo, buttons for key and 
 //             time signature and type of song (classical/pop for now) ;p
@@ -13,8 +13,10 @@ Button[] buttons = new Button[2];
 void setup() {
   size(700,500);
   textSize(25); 
-  buttons[0] = new Button(350, 100, 100, 60, "test");
-  buttons[1] = new Button(350, 200, 100, 60, "test #2");
+  buttons[0] = new Button(350, 100, 100, 60, "test", 2);
+  buttons[1] = new Button(350, 200, 100, 60, "test #2", 2);
+  buttons[2] = new Button(100, 200, 200, 50, "Pop Song", 1);
+  buttons[3] = new Button(350, 200, 200, 50, "Classical Song", 1);
   mainMenu = true;
   option1 = false; 
   option2 = false;
@@ -29,24 +31,24 @@ void draw() {
   fill(0); 
   text("Welcome to Beatboxx, our procedural music generator!", 80, 150); 
   //text("
-  fill(140,200,220);
+  //fill(140,200,220);
   
-  // option 1
-   if (mouseX>100 && mouseX <300 && mouseY>200 && mouseY<250) {
-     fill(120, 180, 200);
-   } 
-     rect(100, 200, 200, 50, 20); 
-     fill(140,200,220);
+  //// option 1
+  // if (mouseX>100 && mouseX <300 && mouseY>200 && mouseY<250) {
+  //   fill(120, 180, 200);
+  // } 
+  //   rect(100, 200, 200, 50, 20); 
+  //   fill(140,200,220);
      
-     //option 2
-   if (mouseX>400 && mouseX <600 && mouseY>200 && mouseY<250) {
-    fill(120, 180, 200);
-  }
+  //   //option 2
+  // if (mouseX>400 && mouseX <600 && mouseY>200 && mouseY<250) {
+  //  fill(120, 180, 200);
+  //}
 
-  rect(400, 200, 200, 50, 20); 
-  fill(0);
-  text("song type 1",110,225);
-  text("song type 2", 410, 225);
+  //rect(400, 200, 200, 50, 20); 
+  //fill(0);
+  //text("song type 1",110,225);
+  //text("song type 2", 410, 225);
   }
   if (mainMenu == false) {
    fill(0);

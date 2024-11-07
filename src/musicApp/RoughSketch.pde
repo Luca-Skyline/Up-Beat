@@ -13,8 +13,8 @@ Button[] buttons = new Button[2];
 void setup() {
   size(700,500);
   textSize(25); 
-  buttons[0] = new Button(100, 100, 100, 60, "test,!11!");
-  buttons[1] = new Button(100, 200, 100, 60, "test #2!11!!");
+  buttons[0] = new Button(350, 100, 100, 60, "test,!11!");
+  buttons[1] = new Button(350, 200, 100, 60, "test #2!11!!");
   mainMenu = true;
   option1 = false; 
   option2 = false;

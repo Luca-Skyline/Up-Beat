@@ -40,6 +40,7 @@ class Button {
 
 //TODO/IDEAS for zack ;;
 // --- trying to figure out how to encode a value to each button (i.e. tempo of 120); 
+// ---- slider class next! also include display for the slider value (will be in main); 
 // - customizable color pallete
 // - settings tab for color pallette, screen size, textSize, 
 // https://coolors.co/ef798a-f7a9a8-ba96b0-9c8cb4-7d82b8-7672a8-6f6197-613f75-a381a3-e5c3d1

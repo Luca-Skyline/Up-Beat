@@ -3,8 +3,8 @@
 String globalPhase;
 //could be much more options - options would be 
 //the genre(?) or type of song (symphony etc.)
-boolean option1;
-boolean option2;
+boolean pop; // pop
+boolean classical; // classical
 Button[] buttons = new Button[4];
 
 //     TO DO : slider for chaos level and tempo, buttons for key and 
@@ -18,13 +18,14 @@ void setup() {
   buttons[1] = new Button(350, 200, 100, 60, "test #2", "q1");
   buttons[2] = new Button(100, 200, 200, 50, "Pop Song", "mainMenu");
   buttons[3] = new Button(350, 200, 200, 50, "Classical Song", "mainMenu");
-  option1 = false; 
-  option2 = false;
+  pop = false;  
+  classical = false;
+  stroke(#1D201F);
 }
 
 
 void draw() {
-  background(#1D201F);
+  background(#E5C3D1);
   fill(#EAD2AC); 
   rect(10,10,680,480,20);
   if (globalPhase == "mainMenu") {
@@ -67,10 +68,10 @@ void draw() {
 void mousePressed() {
  if (mouseX>400 && mouseX <600 && mouseY>200 && mouseY<250) {
     globalPhase = "q1";
-    option2 = true;
+    classical = true; // classical
   }
   if (mouseX>100 && mouseX <300 && mouseY>200 && mouseY<250) {
-    option1 = true;
+    pop = true; // pop
     globalPhase = "q1";
    } 
   

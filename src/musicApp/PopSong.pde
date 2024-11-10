@@ -1,5 +1,9 @@
 class PopSong extends Song {
-  Fragment[] fragments; //combinations of verses, choruses, etc.
+  PercussionTrack percussion;
   
+  @Override
+  void generate(){
+  
+  }
   
 }

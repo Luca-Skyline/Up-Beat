@@ -7,6 +7,9 @@ boolean pop; // pop
 boolean classical; // classical
 Button[] buttons = new Button[4];
 
+Song[] mySongs;
+
+
 //     TO DO : slider for chaos level and tempo, buttons for key and 
 //             time signature and type of song (classical/pop for now) ;p
 //          
@@ -21,6 +24,9 @@ void setup() {
   pop = false;  
   classical = false;
   stroke(#1D201F);
+  mySongs = new Song[2];
+  mySongs[0] = new ClassicalSong();
+  mySongs[1] = new PopSong();
 }
 
 

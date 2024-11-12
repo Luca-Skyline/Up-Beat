@@ -23,17 +23,17 @@ Class Diagram - Luca DalCanto
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/49aa40e8ed149a643bcb9aaca875b2188ba064f9/images/InheritanceMusic.png" width="500" />
 
-## Password Game
-Our program uses a loop to ask for password input indefinitely until the player enters a password that matches all criteria. To assess which criteria need to be displayed for any given password entry, we have a function that contains a sequence of “if” checks: one for each rule. If a rule is met, nothing happens and the code proceeds with the next rule check. If, however, a rule is not met, the function returns the number of that rule so the main loop can display it (and all the previous rules) and ask for new input.
+### User Interaction (Zach, Maggie, Jenna)
 
-Link to codeHS file: https://codehs.com/sandbox/id/java-main-TBfN8x?collaborate=-O5KM8sxcanbL7vcloM0
+### Procedural Generation (Luca, Jenna)
 
-### Logic Flow Diagram
+### Sound Rendering (Micah, Jenna)
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/IMG_0042.jpeg?raw=true" width="600" />
+Welcome to my devlog
+#### Devlog
+One problem I encountered was a NullPointerException. This comes from the MIDIBus libary, the one I'm using to render sound, being made for a previous version of processing.
+To solve this error, the .jar file inside of the library needs to be replaced with a more current one found [here](https://github.com/micycle1/themidibus/releases/tag/p4).
 
-### Demonstration
-
-![Demonstration](https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/demonstration.png?raw=true)
-
-
+#### To do list
+- ~~test~~
+  - test

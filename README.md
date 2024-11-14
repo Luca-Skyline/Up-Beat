@@ -35,5 +35,7 @@ One problem I encountered was a NullPointerException. This comes from the MIDIBu
 To solve this error, the .jar file inside of the library needs to be replaced with a more current one found [here](https://github.com/micycle1/themidibus/releases/tag/p4).
 
 #### To do list
-- ~~test~~
-  - test
+- ~~Instantiate a MIDIBus object~~
+  - ~~Fix NullPointerException~~
+- Create a sequencer
+- Create a sequence

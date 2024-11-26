@@ -16,7 +16,7 @@ class ChordWeighting{
     int chordIndex = indexDict.get(currentChord);
     // do randomization with weights[chordIndex]
     
-    return "C";
+    return "I";
   }
   
 }

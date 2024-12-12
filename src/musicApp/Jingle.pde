@@ -5,7 +5,6 @@ class Jingle extends Song{
     // adjust based on parameters
     measures = 4;
     keySignature = "C";
-    int numberOfSharps = circleOfFifths.get(keySignature);
   }
   
   @Override

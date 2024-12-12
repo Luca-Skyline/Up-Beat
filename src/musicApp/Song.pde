@@ -4,17 +4,25 @@ abstract class Song {
   protected float duration;
   protected int sharps;
   protected Note[] allNotes; //final combination of all notes
-  protected final IntDict circleOfFifths;
-  protected ArrayList<String> scale;
+  protected IntDict scale;
   
-  protected Song(){
+  protected Song(String keySignature){
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
-    circleOfFifths = new IntDict(12);
-    for(int i = 0; i < 12; i++){
-      circleOfFifths.add(keys[i], i);
+    String[] orderOfNotes = {"A", "B", "C", "D", "E", "F", "G"};
+    String[] orderOfSharps = {"F", "C", "G", "D", "A", "E", "B", "F", "C", "G", "D"};
+    
+    
+    int numberOfSharps = 0;
+    while(numberOfSharps<12){
+      if(keys[numberOfSharps] == keySignature){break;}
     }
     
+    scale = new IntDict(7);
+        
     //establish scale
+    for(int i = 0; i < numberOfSharps; i++){
+      
+    }
     
   }
   

@@ -32,6 +32,8 @@ Class Diagram - Luca DalCanto
 
 GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 
+*colors not finalized*
+
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUIMockup.png?raw=true" width="600" />
 
 ### Procedural Generation (Luca, Jenna)

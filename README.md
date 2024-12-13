@@ -14,7 +14,10 @@
 
 **Maggie Cole (Graphics Creation, Testing, and GitHub Management):** Helps with producing graphics/design and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness.
 
-## Procedural Music Generator (BeatBoxx)
+## Procedural Music Generator (UpBeat)
+
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/UpBeatLogo.png?raw=true" width="500" />
+
 - User input and randomness come together
 - Fundemental music theory awareness
 - Outputs as MIDI information and audio

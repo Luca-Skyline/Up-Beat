@@ -16,7 +16,7 @@
 
 ## Procedural Music Generator (UpBeat)
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/UpBeatLogoLarge.png?raw=true" width="500" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/UpBeatLogoLarge.png?raw=true" width="300" />
 
 - User input and randomness come together
 - Fundemental music theory awareness

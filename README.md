@@ -32,7 +32,7 @@ Class Diagram - Luca DalCanto
 
 GUI Mockup - Jenna Tran
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUIMockup.png?raw=true" width="500" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUIMockup.png?raw=true" width="600" />
 
 ### Procedural Generation (Luca, Jenna)
 

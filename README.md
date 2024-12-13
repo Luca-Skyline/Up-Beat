@@ -18,7 +18,7 @@
 
 Logo - Jenna Tran
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/UpBeatLogoLarge.png?raw=true" width="400" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/UpBeatIcon.png?raw=true" width="400" />
 
 - User input and randomness come together
 - Fundemental music theory awareness

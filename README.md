@@ -30,6 +30,10 @@ Class Diagram - Luca DalCanto
 
 ### User Interaction (Zach, Maggie, Jenna)
 
+GUI Mockup - Jenna Tran
+
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUIMockup.png?raw=true" width="500" />
+
 ### Procedural Generation (Luca, Jenna)
 
 ### Sound Rendering (Micah, Jenna)

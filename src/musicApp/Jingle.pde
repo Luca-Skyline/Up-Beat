@@ -1,3 +1,5 @@
+// Luca DalCanto
+
 class Jingle extends Song{
   Chord[] chords;
   

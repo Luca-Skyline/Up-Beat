@@ -1,3 +1,5 @@
+// Luca DalCanto
+
 class Chord{
   private NumberNote[] myNotes;
   private float start;

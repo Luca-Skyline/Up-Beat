@@ -8,6 +8,7 @@ boolean classical; // classical
 Button[] buttons = new Button[4];
 PImage logo;
 
+
 Song[] mySongs;
 
 
@@ -16,6 +17,7 @@ Song[] mySongs;
 //          
 void setup() {
   logo = loadImage("UpBeatLogo.png");
+  logo.resize(200,200);
   size(700,500);
   textSize(25); 
   globalPhase = "mainMenu";
@@ -41,9 +43,10 @@ void draw() {
   if (globalPhase == "mainMenu") {
   fill(0); 
   text("Welcome to Beatboxx, our procedural music generator!", 80, 150); 
+  image(logo, 250,250);
   }
   
-  //rendering buttons
+  //rendering buttons -z
     for (int i=0; i<buttons.length; i++) {
      if (globalPhase == buttons[i].localPhase) {
        buttons[i].display();
@@ -51,7 +54,8 @@ void draw() {
      }
    }
   
-  //1st question
+  //1st question -z
+  //make this a case switch statement
   if (globalPhase == "q1") {
    fill(0);
    textSize(30);

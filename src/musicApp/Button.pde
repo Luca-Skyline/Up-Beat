@@ -46,3 +46,5 @@ class Button {
 // - settings tab for color pallette, screen size, textSize, 
 // https://coolors.co/ef798a-f7a9a8-ba96b0-9c8cb4-7d82b8-7672a8-6f6197-613f75-a381a3-e5c3d1
 // - more phases for options, 
+//SECONDARY things
+//

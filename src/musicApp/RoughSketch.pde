@@ -24,9 +24,11 @@ void setup() {
   pop = false;  
   classical = false;
   stroke(#1D201F);
-  mySongs = new Song[2];
-  mySongs[0] = new ClassicalSong();
-  mySongs[1] = new PopSong();
+  //mySongs = new Song[2];
+  //mySongs[0] = new ClassicalSong();
+  //mySongs[1] = new PopSong();
+  
+  lucaTest();
 }
 
 
@@ -71,6 +73,13 @@ void draw() {
    
   }
 }
+
+//this is Luca's way to test his stuff in the console for rn so he can have an entry point.
+void lucaTest(){
+  Jingle j = new Jingle("A#", 4);
+  j.printScale();
+}
+
 void mousePressed() {
  if (mouseX>400 && mouseX <600 && mouseY>200 && mouseY<250) {
     globalPhase = "q1";

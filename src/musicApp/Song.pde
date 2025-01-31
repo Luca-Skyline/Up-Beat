@@ -9,6 +9,7 @@ abstract class Song {
   protected int sharps;
   protected NumberNote[] allNotes; //final combination of all notes
   protected String[] scale;
+  private Table probabilitySettings;
   
   protected Song(String keySignature){
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
@@ -29,7 +30,6 @@ abstract class Song {
       scale[i] = orderOfNotes[(i+index)%7];
     }
     
-        
     //add sharps
     for(int i = 0; i < sharps; i++){
       String modifyKey = orderOfSharps[i];
@@ -40,6 +40,9 @@ abstract class Song {
         }
       }
     }
+    
+    //set up probability table
+    probabilitySettings = loadTable(); 
   }
   
   void randomChord(Chord nextChord){

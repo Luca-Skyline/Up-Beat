@@ -43,11 +43,16 @@ abstract class Song {
     
     //set up probability table
     probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsClassical.csv"); 
-    System.out.println(probabilitySettings);
   }
   
-  void randomChord(Chord nextChord){
-    
+  void randomChord(String nextChord){
+    for(int i = 0; i < probabilitySettings.getRowCount(); i++){
+      TableRow row = probabilitySettings.getRow(i);
+      if(row.getString(0).equals(nextChord)){
+        //look at these rows
+        break;
+      }
+    }
   }
   
   void printScale(){

@@ -6,6 +6,7 @@ String globalPhase;
 boolean pop; // pop
 boolean classical; // classical
 Button[] buttons = new Button[4];
+PImage logo;
 
 Song[] mySongs;
 
@@ -14,6 +15,7 @@ Song[] mySongs;
 //             time signature and type of song (classical/pop for now) ;p
 //          
 void setup() {
+  logo = loadImage("UpBeatLogo.png");
   size(700,500);
   textSize(25); 
   globalPhase = "mainMenu";

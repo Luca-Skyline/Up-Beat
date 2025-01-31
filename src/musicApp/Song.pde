@@ -40,8 +40,9 @@ abstract class Song {
         }
       }
     }
-    
-    
+  }
+  
+  void randomChord(Chord nextChord){
     
   }
   

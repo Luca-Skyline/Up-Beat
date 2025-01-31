@@ -42,7 +42,7 @@ abstract class Song {
     }
     
     //set up probability table
-    probabilitySettings = loadTable(); 
+    //probabilitySettings = loadTable(); 
   }
   
   void randomChord(Chord nextChord){

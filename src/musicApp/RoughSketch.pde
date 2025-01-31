@@ -7,6 +7,7 @@ boolean pop; // pop
 boolean classical; // classical
 Button[] buttons = new Button[4];
 PImage logo;
+PFont pixel;
 
 
 Song[] mySongs;
@@ -16,9 +17,12 @@ Song[] mySongs;
 //             time signature and type of song (classical/pop for now) ;p
 //          
 void setup() {
+  size(700,500);
   logo = loadImage("UpBeatLogo.png");
   logo.resize(200,200);
-  size(700,500);
+  pixel = createFont("pixel.ttf",30);
+  textFont(pixel);
+  textAlign(CENTER);
   textSize(25); 
   globalPhase = "mainMenu";
   buttons[0] = new Button(350, 100, 100, 60, "test", "q1");
@@ -42,7 +46,7 @@ void draw() {
   rect(10,10,680,480,20);
   if (globalPhase == "mainMenu") {
   fill(0); 
-  text("Welcome to Beatboxx, our procedural music generator!", 80, 150); 
+  text("Welcome to Beatboxx, our procedural music generator!", 350, 150); 
   image(logo, 250,250);
   }
   

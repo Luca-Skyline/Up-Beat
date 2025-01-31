@@ -17,12 +17,13 @@ Song[] mySongs;
 //             time signature and type of song (classical/pop for now) ;p
 //          
 void setup() {
-  size(700,500);
+  size(1200,800);
   logo = loadImage("UpBeatLogo.png");
-  logo.resize(200,200);
+  logo.resize(350,350);
   pixel = createFont("pixel.ttf",30);
   textFont(pixel);
   textAlign(CENTER);
+  imageMode(CENTER);
   textSize(25); 
   globalPhase = "mainMenu";
   buttons[0] = new Button(350, 100, 100, 60, "test", "q1");
@@ -43,11 +44,13 @@ void setup() {
 void draw() {
   background(#E5C3D1);
   fill(#EAD2AC); 
-  rect(10,10,680,480,20);
+  rect(10,10,1180,780,20);
   if (globalPhase == "mainMenu") {
   fill(0); 
-  text("Welcome to Beatboxx, our procedural music generator!", 350, 150); 
-  image(logo, 250,250);
+  textSize(80);
+  text("Welcome to", 300, 150); 
+  textSize(30);
+  image(logo, 300,450);
   }
   
   //rendering buttons -z

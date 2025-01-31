@@ -29,7 +29,7 @@ class Button {
     fill(0);
    // textAlign(CENTER);
     //textSize();
-    text(text, x+30, y+35);
+    text(text, x+w/2, y+(h/2));
     
   }
 

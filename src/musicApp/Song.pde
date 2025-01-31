@@ -42,7 +42,8 @@ abstract class Song {
     }
     
     //set up probability table
-    //probabilitySettings = loadTable(); 
+    probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsClassical.csv"); 
+    System.out.println(probabilitySettings);
   }
   
   void randomChord(Chord nextChord){

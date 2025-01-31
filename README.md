@@ -30,6 +30,10 @@ Class Diagram - Luca DalCanto
 
 ### User Interaction (Zach, Maggie, Jenna)
 
+Start Screen - Jenna Tran
+
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/StartScreen.png?raw=true" width="400" />
+
 GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 
 *very ugly but the idea is there*

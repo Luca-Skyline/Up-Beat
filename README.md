@@ -16,6 +16,8 @@
 
 ## Procedural Music Generator (UpBeat)
 
+Reference/Inspo: https://muted.io/app/
+
 Logo - Jenna Tran
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/UpBeatLogo.png?raw=true" width="400" />

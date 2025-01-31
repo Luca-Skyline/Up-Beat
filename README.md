@@ -36,7 +36,13 @@ GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUIMockup.png?raw=true" width="600" />
 
+#### To-Do List of maybes
+- make look different based on mood of song
+
 ### Procedural Generation (Luca, Jenna)
+
+- metronome?
+- percussion?
 
 ### Sound Rendering (Micah, Jenna)
 

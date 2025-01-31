@@ -28,8 +28,8 @@ void setup() {
   globalPhase = "mainMenu";
   buttons[0] = new Button(350, 100, 100, 60, "test", "q1");
   buttons[1] = new Button(350, 200, 100, 60, "test #2", "q1");
-  buttons[2] = new Button(100, 200, 200, 50, "Pop Song", "mainMenu");
-  buttons[3] = new Button(350, 200, 200, 50, "Classical Song", "mainMenu");
+  buttons[2] = new Button(750, 200, 200, 50, "Pop Song", "mainMenu");
+  buttons[3] = new Button(750, 400, 200, 50, "Classical Song", "mainMenu");
   pop = false;  
   classical = false;
   stroke(#1D201F);
@@ -42,9 +42,9 @@ void setup() {
 
 
 void draw() {
-  background(#E5C3D1);
-  fill(#EAD2AC); 
-  rect(10,10,1180,780,20);
+  background(10);
+  fill(255,0,0); 
+  rect(700,10,480,780,20);
   if (globalPhase == "mainMenu") {
   fill(0); 
   textSize(80);

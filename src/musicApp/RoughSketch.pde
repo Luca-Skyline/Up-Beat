@@ -27,9 +27,9 @@ void setup() {
   textSize(25); 
   globalPhase = "mainMenu";
   //this list of buttons and later sliders and stuff is going to be SUPER long uhm ;-;
-  buttons[0] = new Button(750, 200, 250, 70, "Generate New Song", "mainMenu", "q1", "newSong");
-  buttons[1] = new Button(750, 350, 250, 70, "Load Old Song", "mainMenu", "old", "oldSong");
-  buttons[2] = new Button(750, 500, 250, 70, "Settings", "mainMenu", "settings", "TEMP");
+  buttons[0] = new Button(850, 150, 300, 100, "Generate New Song", "mainMenu", "q1", "newSong");
+  buttons[1] = new Button(850, 300, 300, 100, "Load Old Song", "mainMenu", "old", "oldSong");
+  buttons[2] = new Button(850, 450, 300, 100, "Settings", "mainMenu", "settings", "TEMP");
   
   buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "q1", "q2", "classical");
   buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "q1", "q2", "pop");
@@ -53,19 +53,21 @@ void draw() {
   //gradients are complicated, apparently T-T
   //this makes fading transitions???? but like it doesnt completely disappear 
   //for some reason
-  for (int i = 0; i <= width; i++) {
-      float inter = map(i, 0, width, 0, 1);
-      color c = lerpColor(color(0), color(160), inter);
+  background(10);
+  strokeWeight(1);
+  for (int i = 0; i <= height; i++) {
+      float inter = map(i, 0, height, 0, 1);
+      color c = lerpColor(0, #46bbd5, inter);
       stroke(c);
-      line(i, 0, i, height);
+      line(0, i, width, i);
     }
-  strokeWeight(0);
-  fill(255,0,0); 
-  quad(700,0,width,0,width,height,500,height);
-  fill(155,0,0);
-  quad(950,0,width,0,width,height,750,height);
+  noStroke();
+  fill(#ee850e); 
+  quad(800,0,width,0,width,height,600,height);
+  fill(#2c7281);
+  quad(1050,0,width,0,width,height,850,height);
   fill(255);
-  quad(500,height,520,height,720,0,700,0);
+  quad(600,height,620,height,820,0,800,0);
   //case switch statement would be ideal for "phases" or screens
   if (globalPhase == "mainMenu") {
   textSize(80);

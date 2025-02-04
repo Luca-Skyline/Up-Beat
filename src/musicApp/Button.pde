@@ -16,8 +16,8 @@ class Button {
     this.localPhase = localPhase;
     this.nextPhase = nextPhase;
     this.info = info;
-    c1 = color(#DF928E);
-    c2 = color(#C58882);
+    c1 = color(#ee850e);
+    c2 = color(#c96f08);
     on = false;
   }
 
@@ -27,9 +27,9 @@ class Button {
     } else {
       fill(c1);
     }
-    rect(x,y,w,h,8);
+    rect(x,y,w,h,16);
     fill(255);
-    rect(x+5, y+5, w-10, h-10, 8);
+    rect(x+10, y+10, w-20, h-20, 8);
     fill(0);
     //textAlign(CENTER);
     //textSize();
@@ -37,7 +37,7 @@ class Button {
   }
 
   void hover(int mx, int my) {
-    on = (mx > x && mx < x+w && my > y && my < y+60);
+    on = (mx > x && mx < x+w && my > y && my < y+h);
   }
   String inside() {
     if (mouseX>x && mouseX<(x+w) && mouseY>y && mouseY<(y+h)) {

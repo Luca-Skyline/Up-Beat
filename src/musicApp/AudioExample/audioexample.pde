@@ -12,8 +12,17 @@ void setup() {
   
   myBus = new MidiBus();
   myBus.registerParent(this);
-  myBus.addInput(1);
-  myBus.addOutput(2);
+  
+  String OS = platformNames[platform];
+  if (OS.equals("windows")) {
+    myBus.addInput(0);
+    myBus.addOutput(3);
+  } else if (OS.equals("macos")) {
+    myBus.addInput(1);
+    myBus.addOutput(2);
+  } else {
+    println("eww linux");
+  }
   
   debugMode = false;
 }

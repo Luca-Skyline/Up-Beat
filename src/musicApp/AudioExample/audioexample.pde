@@ -1,3 +1,5 @@
+//File created entirely by Micah Tien.
+
 import themidibus.*;
 MidiBus myBus;
 boolean debugMode;
@@ -6,7 +8,7 @@ void setup() {
   size(400, 400);
   background(0); //will be gray until startup, turns black once on
   
-  //MidiBus.list();
+  //MidiBus.list(); //for debugging only!
   
   myBus = new MidiBus();
   myBus.registerParent(this);
@@ -17,7 +19,7 @@ void setup() {
 }
 
 void draw() {
-  background(150);
+  //could show something fun but idc
 }
 void mousePressed() {
   int channel = 0;

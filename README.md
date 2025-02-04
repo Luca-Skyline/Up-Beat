@@ -6,7 +6,7 @@
 
 **Luca DalCanto (Team Lead, Music Theorist, and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track (the "brains" of the program). Takes parameters from Zack (representing user input) and gives parameters to Micah (representing musical information).
 
-**Micah Tien (MIDI, Audio Engineer):** In charge of turning the information into MIDI and rendering it as audio to play back to the user. Takes parameters from Luca.
+**Micah Tien (MIDI, Audio Engineer):** In charge of turning the information into MIDI and sequencing it into audio to play back to the user. Takes parameters from Luca.
 
 **Zachary Wellborn (User Interfacing and Graphics Implementation):** In charge of implementing graphics for user interaction. Collects information from the user and sends it to Luca.
 
@@ -53,12 +53,22 @@ GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 ### Sound Rendering (Micah, Jenna)
 
 Welcome to my devlog
-#### Devlog
-One problem I encountered was a NullPointerException. This comes from the MIDIBus libary, the one I'm using to render sound, being made for a previous version of processing.
-To solve this error, the .jar file inside of the library needs to be replaced with a more current one found [here](https://github.com/micycle1/themidibus/releases/tag/p4).
+#### Use of AudioExample.pde
+Clicking anywhere on the window will play a simple C3 Chord (C3, E3, G3, C4). It will play as long as the mouse is held.
 
-#### To do list
-- ~~Instantiate a MIDIBus object~~
-  - ~~Fix NullPointerException~~
-- Create a sequencer
-- Create a sequence
+#### MacOS specifics
+MidiBus has definitely passed its glory days (if it ever had any) and it is pretty finnicky for any use outside of Windows OS. But, it is possible!
+The program will not run on MacOS unless the IAC Driver Bus is set up properly. The easiest way to do this is as follows:
+
+1. Open the application **Audio MIDI Setup**
+2. At the topbar, navigate to **Window** >> **Show MIDI Studio**
+3. Double click on **IAC Driver**
+4. Click the checkbox **Device is online** so that it's ticked
+5. In the Ports section, if there are no ports listed, click the **+** button to the bottom left. It should say *IAC Driver Bus 1* under *Ports*.
+
+Now the program will run, but it won't synthesize sound. MacOS doesn't have any built-in sound synthesizers, but substitutes require practically no setup. The best option from my testing is simply an empty GarageBand project, but other programs (e.g. SimpleSynth) are totally viable. To use GarageBand:
+
+1. Open the application **GarageBand**
+2. Double click on **Empty Project**
+3. Select the **MIDI** track
+4. Optionally, you could press *Command + K* to see a keyboard of the MIDI notes being sequenced.

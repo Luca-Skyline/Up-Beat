@@ -17,7 +17,7 @@ Song[] mySongs;
 //             time signature and type of song (classical/pop for now) ;p
 //          
 void setup() {
-  size(1200,800);
+  size(1200,700);
   logo = loadImage("UpBeatLogo.png");
   logo.resize(350,350);
   pixel = createFont("pixel.ttf",30);
@@ -28,8 +28,8 @@ void setup() {
   globalPhase = "mainMenu";
   buttons[0] = new Button(350, 100, 100, 60, "test", "q1");
   buttons[1] = new Button(350, 200, 100, 60, "test #2", "q1");
-  buttons[2] = new Button(750, 200, 200, 50, "Pop Song", "mainMenu");
-  buttons[3] = new Button(750, 400, 200, 50, "Classical Song", "mainMenu");
+  buttons[2] = new Button(750, 200, 220, 50, "Pop Song", "mainMenu");
+  buttons[3] = new Button(750, 400, 220, 50, "Classical Song", "mainMenu");
   pop = false;  
   classical = false;
   stroke(#1D201F);
@@ -43,14 +43,16 @@ void setup() {
 
 void draw() {
   background(10);
+  strokeWeight(0);
   fill(255,0,0); 
-  rect(700,10,480,780,20);
+  rect(700,10,480,680,20);
   if (globalPhase == "mainMenu") {
-  fill(0); 
+  fill(255); 
   textSize(80);
   text("Welcome to", 300, 150); 
   textSize(30);
-  image(logo, 300,450);
+  image(logo, 300,400);
+  quad(500,height,520,height,720,0,700,0);
   }
   
   //rendering buttons -z
@@ -92,13 +94,13 @@ void lucaTest(){
   Jingle j = new Jingle("A#", 4);
   j.printScale();
 }
-
+//instead make 
 void mousePressed() {
- if (mouseX>400 && mouseX <600 && mouseY>200 && mouseY<250) {
+ if (mouseX>400 && mouseX <600 && mouseY>200 && mouseY<250 && globalPhase == "mainMenu") {
     globalPhase = "q1";
     classical = true; // classical
   }
-  if (mouseX>100 && mouseX <300 && mouseY>200 && mouseY<250) {
+  if (mouseX>100 && mouseX <300 && mouseY>200 && mouseY<250 && globalPhase == "mainMenu") {
     pop = true; // pop
     globalPhase = "q1";
    } 

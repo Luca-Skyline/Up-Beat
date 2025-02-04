@@ -25,11 +25,13 @@ class Button {
     } else {
       fill(c1);
     }
-    rect(x, y, w, h, 8);
+    rect(x,y,w,h,8);
+    fill(255);
+    rect(x+5, y+5, w-10, h-10, 8);
     fill(0);
    // textAlign(CENTER);
     //textSize();
-    text(text, x+w/2, y+(h/2));
+    text(text, x+w/2, y+(h/2)+5);
     
   }
 

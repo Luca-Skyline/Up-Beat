@@ -4,15 +4,20 @@ import themidibus.*;
 MidiBus myBus;
 boolean debugMode;
 
+//kidna unnecessary
+boolean[] keysPressed;
+String keyString;
+
+//very unnecessary
+float[] widths;
+int[] blackKeys;
+
 void setup() {
-  size(400, 400);
-  background(0); //will be gray until startup, turns black once on
-  
-  //MidiBus.list(); //for debugging only!
-  
+  size(1000, 300);
+  background(0);
+
   myBus = new MidiBus();
   myBus.registerParent(this);
-  
   String OS = platformNames[platform];
   if (OS.equals("windows")) {
     myBus.addInput(0);
@@ -23,39 +28,54 @@ void setup() {
   } else {
     println("eww linux");
   }
-  
+
   debugMode = false;
+
+  keyString = "awsedftgyhujkolp;";
+  keysPressed = new boolean[keyString.length()];
+  
+  widths = new float[17];
+  float[] twidths = {50.0, 110, 140.0, 200, 230.0, 320.0, 380, 410.0, 470, 500.0, 560, 590.0, 680.0, 740, 770.0, 830, 860.0};
+  widths = twidths;
+  
+  blackKeys = new int[17];
+  int[] tblackKeys = {0,1,0,1,0,0,1,0,1,0,1,0,0,1,0,1,0};
+  blackKeys = tblackKeys;
 }
 
 void draw() {
-  //could show something fun but idc
-}
-void mousePressed() {
-  int channel = 0;
-  int pitch = 60;
-  int velocity = 127;
-
-  //simple C3 C chord
-  myBus.sendNoteOn(channel, pitch, velocity); // Send a Midi noteOn
-  myBus.sendNoteOn(channel+1, pitch+4, velocity);
-  myBus.sendNoteOn(channel+2, pitch+7, velocity);
-  myBus.sendNoteOn(channel+2, pitch+12, velocity);
-}
-void mouseReleased() {
-  int channel = 0;
-  int pitch = 60;
-  int velocity = 127;
-  
-  myBus.sendNoteOff(channel, pitch, velocity); // Send a Midi nodeOff
-  myBus.sendNoteOff(channel+1, pitch+4, velocity);
-  myBus.sendNoteOff(channel+2, pitch+7, velocity);
-  myBus.sendNoteOff(channel+2, pitch+12, velocity);
-  //delay(2000);
+  background(127);
+  for (int i=0; i<keysPressed.length; i++) {
+    if(blackKeys[i] == 0) {    //white key
+      fill(keysPressed[i] ? 200 : 255);
+    } else {                   //black key
+      fill(keysPressed[i] ? 80 : 0);
+    }
+    rect(widths[i], (height/2)-60, 80, blackKeys[i]==0 ? 120 : 80);
+  }
+  textSize(32);
+  fill(0);
+  text("A", 80, (height/2)+40);
 }
 
-void delay(int time) {
-  int current = millis();
-  while (millis () < current+time) Thread.yield();
+//keyboard goes awsedftgyhujkolp;
+
+void keyPressed() {
+  for (int i=0; i<keysPressed.length; i++) {
+    if (key == keyString.charAt(i)) {
+      keysPressed[i] = true;
+      myBus.sendNoteOn(i!=9 ? i : 18, 60+i, 127);
+    }
+  }
+}
+
+void keyReleased() {
+  for (int i=0; i<keysPressed.length; i++) {
+    if (key == keyString.charAt(i)) {
+      keysPressed[i] = false;
+      myBus.sendNoteOff(i!=9 ? i : 18, 60+i, 127);
+    }
+  }
 }
 
 void noteOn(int channel, int pitch, int velocity) {

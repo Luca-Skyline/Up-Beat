@@ -46,7 +46,7 @@ void draw() {
   for (int i = 0; i <= width; i++) {
       float inter = map(i, 0, width, 0, 1);
       color c = lerpColor(color(0), color(160), inter);
-      stroke(c);a
+      stroke(c);
       line(i, 0, i, height);
     }
   strokeWeight(0);

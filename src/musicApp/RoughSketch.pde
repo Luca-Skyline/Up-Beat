@@ -51,6 +51,8 @@ void setup() {
 
 void draw() {
   //gradients are complicated, apparently T-T
+  //this makes fading transitions???? but like it doesnt completely disappear 
+  //for some reason
   for (int i = 0; i <= width; i++) {
       float inter = map(i, 0, width, 0, 1);
       color c = lerpColor(color(0), color(160), inter);

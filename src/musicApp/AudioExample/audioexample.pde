@@ -41,6 +41,11 @@ void setup() {
   blackKeys = new int[17];
   int[] tblackKeys = {0,1,0,1,0,0,1,0,1,0,1,0,0,1,0,1,0};
   blackKeys = tblackKeys;
+  
+  for (int i=0; i<keysPressed.length; i++) {
+    keysPressed[i] = false;
+    myBus.sendNoteOff(i!=9 ? i : 18, 60+i, 127);
+  } //for safety!
 }
 
 void draw() {

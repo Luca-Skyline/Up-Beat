@@ -37,7 +37,7 @@ class Button {
   }
 
   void hover(int mx, int my) {
-    on = (mx > x && mx < x+w && my > y && my < y+60);
+    on = (mx > x && mx < x+w && my > y && my < y+h);
   }
   String inside() {
     if (mouseX>x && mouseX<(x+w) && mouseY>y && mouseY<(y+h)) {

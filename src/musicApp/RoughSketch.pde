@@ -53,12 +53,13 @@ void draw() {
   //gradients are complicated, apparently T-T
   //this makes fading transitions???? but like it doesnt completely disappear 
   //for some reason
-  //background(10);
-  for (int i = 0; i <= width; i++) {
-      float inter = map(i, 0, width, 0, 1);
-      color c = lerpColor(color(0), color(#46bbd5), inter);
+  background(10);
+  strokeWeight(1);
+  for (int i = 0; i <= height; i++) {
+      float inter = map(i, 0, height, 0, 1);
+      color c = lerpColor(0, #46bbd5, inter);
       stroke(c);
-      line(i, 0, i, height);
+      line(0, i, width, i);
     }
   strokeWeight(0);
   fill(#ee850e); 

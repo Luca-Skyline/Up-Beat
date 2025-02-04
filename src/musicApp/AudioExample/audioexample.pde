@@ -17,10 +17,9 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(150);
 }
-
-void mouseReleased() {
+void mousePressed() {
   int channel = 0;
   int pitch = 60;
   int velocity = 127;
@@ -30,7 +29,11 @@ void mouseReleased() {
   myBus.sendNoteOn(channel+1, pitch+4, velocity);
   myBus.sendNoteOn(channel+2, pitch+7, velocity);
   myBus.sendNoteOn(channel+2, pitch+12, velocity);
-  delay(200);
+}
+void mouseReleased() {
+  int channel = 0;
+  int pitch = 60;
+  int velocity = 127;
   
   myBus.sendNoteOff(channel, pitch, velocity); // Send a Midi nodeOff
   myBus.sendNoteOff(channel+1, pitch+4, velocity);

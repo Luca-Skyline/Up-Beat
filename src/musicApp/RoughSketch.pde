@@ -5,7 +5,7 @@ String globalPhase;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[8];
+Button[] buttons = new Button[6];
 PImage logo;
 PFont pixel;
 
@@ -31,12 +31,12 @@ void setup() {
   buttons[1] = new Button(750, 350, 250, 70, "Load Old Song", "mainMenu", "old", "oldSong");
   buttons[2] = new Button(750, 500, 250, 70, "Settings", "mainMenu", "settings", "TEMP");
   
-  buttons[3] = new Button(250, 350, 250, 70, "Classical Song", "q1", "q2", "classical");
+  buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "q1", "q2", "classical");
   buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "q1", "q2", "pop");
-  buttons[5] = new Button(750, 350, 250, 70, "Mr. Skyline", "q1", "q2", "skyline");
+  buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "q1", "q2", "skyline");
   
-  buttons[6] = new Button(350, 100, 100, 60, "test", "q2", "q3", "tempo");
-  buttons[7] = new Button(350, 200, 100, 60, "test #2", "q2", "q3", "tempo");
+  //buttons[6] = new Button(350, 100, 100, 60, "test", "q2", "q3", "tempo");
+  //buttons[7] = new Button(350, 200, 100, 60, "test #2", "q2", "q3", "tempo");
 
   pop = false;  
   classical = false;
@@ -82,21 +82,24 @@ void draw() {
   
   //1st question -z
   //make this a case switch statement
+  if (globalPhase == "q1") {
+    text("What genre of song would you like your song to be?", width/2, 200);
+  }
   if (globalPhase == "q2") {
    fill(255);
    textSize(30);
    text("Choose your settings for the song you want to make", 425, 50); 
-   textSize(12);
-   text("How long would you like your song to be?", 125, 100);
-   text("10 measures", 50, 120);
-   text("20 measures", 150, 120);
-   text("30 measures", 250, 120);
-   text("40 measures", 350, 120);
-   text("what tempo would you like your song to be?", 25, 160);
-   text("80 bpm", 25, 180);
-   text("100 bpm", 100, 180);
-   text("120 bpm", 175, 180);
-   text("140 bpm", 250, 180);
+   textSize(18);
+   text("How long would you like your song to be?", width/2, 80);
+   text("10 measures", 100, 120);
+   text("20 measures", 300, 120);
+   text("30 measures", 500, 120);
+   text("40 measures", 700, 120);
+   text("what tempo would you like your song to be?", width/2, 180);
+   text("80 bpm", 100, 250);
+   text("100 bpm", 300, 250);
+   text("120 bpm", 500, 250);
+   text("140 bpm", 700, 250);
  
    //will NOT include other options as we develop 
    //we'll then take all the requirements and generate a song along these guidelines

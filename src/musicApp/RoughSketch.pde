@@ -42,18 +42,26 @@ void setup() {
 
 
 void draw() {
-  background(10);
+  //gradients are complicated, apparently T-T
+  for (int i = 0; i <= width; i++) {
+      float inter = map(i, 0, width, 0, 1);
+      color c = lerpColor(color(0), color(160), inter);
+      stroke(c);a
+      line(i, 0, i, height);
+    }
   strokeWeight(0);
   fill(255,0,0); 
-  rect(700,10,480,680,20);
+  quad(700,0,width,0,width,height,500,height);
+  fill(155,0,0);
+  quad(950,0,width,0,width,height,750,height);
   fill(255);
   quad(500,height,520,height,720,0,700,0);
+  //case switch statement would be ideal for "phases" or screens
   if (globalPhase == "mainMenu") {
   textSize(80);
   text("Welcome to", 300, 150); 
   textSize(30);
   image(logo, 300,400);
-
   }
   
   //rendering buttons -z
@@ -67,15 +75,15 @@ void draw() {
   //1st question -z
   //make this a case switch statement
   if (globalPhase == "q1") {
-   fill(0);
+   fill(255);
    textSize(30);
-   text("Choose your settings for the song you want to make", 25, 50); 
+   text("Choose your settings for the song you want to make", 425, 50); 
    textSize(12);
-   text("How long would you like your song to be?", 25, 100);
-   text("10 measures", 25, 120);
-   text("20 measures", 100, 120);
-   text("30 measures", 175, 120);
-   text("40 measures", 250, 120);
+   text("How long would you like your song to be?", 125, 100);
+   text("10 measures", 50, 120);
+   text("20 measures", 150, 120);
+   text("30 measures", 250, 120);
+   text("40 measures", 350, 120);
    text("what tempo would you like your song to be?", 25, 160);
    text("80 bpm", 25, 180);
    text("100 bpm", 100, 180);
@@ -95,7 +103,8 @@ void lucaTest(){
   Jingle j = new Jingle("A#", 4);
   j.printScale();
 }
-//*****instead make a mousepressed function inside of button class!!***** 
+
+//makes it so clicking buttons does stuff!! :)
 void mousePressed() {
  for (int i=0; i<buttons.length; i++) {
      if (globalPhase == buttons[i].localPhase) {

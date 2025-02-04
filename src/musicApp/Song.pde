@@ -1,6 +1,7 @@
 // Luca DalCanto
 
 import java.util.Arrays;
+import java.util.Random;
 
 abstract class Song {
   protected int measures;
@@ -42,18 +43,47 @@ abstract class Song {
     }
     
     //set up probability table
-    probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsClassical.csv"); 
+    probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsClassical.csv");
+    
   }
   
-  void randomChord(String nextChord){
-    for(int i = 0; i < probabilitySettings.getRowCount(); i++){
-      TableRow row = probabilitySettings.getRow(i);
-      if(row.getString(0).equals(nextChord)){
-        //look at these rows
-        break;
-      }
+  //String randomChord(String nextChord){
+  //  for(int i = 0; i < probabilitySettings.getRowCount(); i++){
+  //    TableRow row = probabilitySettings.getRow(i);
+  //    if(row.getString(0).equals(nextChord)){
+  //      while(!row.getString(1).equals("")){
+          
+  //      }
+  //      break;
+  //    }
+  //    //not found
+  //    System.out.println("I backed myself into an inescapable corner. Talk to Luca.");
+  //    return "I";
+  //  }
+  //}
+  
+  int weightedRandomChoice(float[] weights) {
+    float total = 0;
+    for (float weight : weights) {
+        total += weight;
     }
+    if (total <= 0) {
+        throw new IllegalArgumentException("Sum of weights must be positive.");
+    }
+    
+    float threshold = new Random().nextFloat() * total;
+    float cumulative = 0;
+    
+    for (int i = 0; i < weights.length; i++) {
+        cumulative += weights[i];
+        if (threshold <= cumulative) {
+            return i;
+        }
+    }
+    
+    return weights.length - 1;
   }
+
   
   void printScale(){
     System.out.println("Number of Sharps: " + sharps);

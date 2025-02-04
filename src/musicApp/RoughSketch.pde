@@ -5,7 +5,7 @@ String globalPhase;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[4];
+Button[] buttons = new Button[8];
 PImage logo;
 PFont pixel;
 
@@ -26,10 +26,18 @@ void setup() {
   imageMode(CENTER);
   textSize(25); 
   globalPhase = "mainMenu";
-  buttons[0] = new Button(350, 100, 100, 60, "test", "q1", "q2");
-  buttons[1] = new Button(350, 200, 100, 60, "test #2", "q1", "q2");
-  buttons[2] = new Button(750, 200, 220, 50, "Pop Song", "mainMenu", "q1");
-  buttons[3] = new Button(750, 400, 220, 50, "Classical Song", "mainMenu", "q1");
+  //this list of buttons and later sliders and stuff is going to be SUPER long uhm ;-;
+  buttons[0] = new Button(750, 200, 250, 70, "Generate New Song", "mainMenu", "q1", "newSong");
+  buttons[1] = new Button(750, 350, 250, 70, "Load Old Song", "mainMenu", "old", "oldSong");
+  buttons[2] = new Button(750, 500, 250, 70, "Settings", "mainMenu", "settings", "TEMP");
+  
+  buttons[3] = new Button(250, 350, 250, 70, "Classical Song", "q1", "q2", "classical");
+  buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "q1", "q2", "pop");
+  buttons[5] = new Button(750, 350, 250, 70, "Mr. Skyline", "q1", "q2", "skyline");
+  
+  buttons[6] = new Button(350, 100, 100, 60, "test", "q2", "q3", "tempo");
+  buttons[7] = new Button(350, 200, 100, 60, "test #2", "q2", "q3", "tempo");
+
   pop = false;  
   classical = false;
   stroke(#1D201F);
@@ -74,7 +82,7 @@ void draw() {
   
   //1st question -z
   //make this a case switch statement
-  if (globalPhase == "q1") {
+  if (globalPhase == "q2") {
    fill(255);
    textSize(30);
    text("Choose your settings for the song you want to make", 425, 50); 

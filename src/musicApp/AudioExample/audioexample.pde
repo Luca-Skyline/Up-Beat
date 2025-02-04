@@ -61,6 +61,13 @@ void draw() {
   textSize(32);
   fill(0);
   text("A", 80, (height/2)+40);
+  
+  if (!keyPressed) {
+    for (int i=0; i<keysPressed.length; i++) {
+      keysPressed[i] = false;
+      myBus.sendNoteOff(i!=9 ? i : 18, 60+i, 127);
+    } //for safety!
+  }
 }
 
 //keyboard goes awsedftgyhujkolp;

@@ -26,10 +26,10 @@ void setup() {
   imageMode(CENTER);
   textSize(25); 
   globalPhase = "mainMenu";
-  buttons[0] = new Button(350, 100, 100, 60, "test", "q1");
-  buttons[1] = new Button(350, 200, 100, 60, "test #2", "q1");
-  buttons[2] = new Button(750, 200, 220, 50, "Pop Song", "mainMenu");
-  buttons[3] = new Button(750, 400, 220, 50, "Classical Song", "mainMenu");
+  buttons[0] = new Button(350, 100, 100, 60, "test", "q1", "q2");
+  buttons[1] = new Button(350, 200, 100, 60, "test #2", "q1", "q2");
+  buttons[2] = new Button(750, 200, 220, 50, "Pop Song", "mainMenu", "q1");
+  buttons[3] = new Button(750, 400, 220, 50, "Classical Song", "mainMenu", "q1");
   pop = false;  
   classical = false;
   stroke(#1D201F);
@@ -46,13 +46,14 @@ void draw() {
   strokeWeight(0);
   fill(255,0,0); 
   rect(700,10,480,680,20);
+  fill(255);
+  quad(500,height,520,height,720,0,700,0);
   if (globalPhase == "mainMenu") {
-  fill(255); 
   textSize(80);
   text("Welcome to", 300, 150); 
   textSize(30);
   image(logo, 300,400);
-  quad(500,height,520,height,720,0,700,0);
+
   }
   
   //rendering buttons -z
@@ -102,6 +103,4 @@ void mousePressed() {
      }
    }
   
-}
-
 }

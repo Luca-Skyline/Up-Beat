@@ -10,7 +10,7 @@
 
 **Zachary Wellborn (User Interfacing and Graphics Implementation):** In charge of implementing graphics for user interaction. Collects information from the user and sends it to Luca.
 
-**Jenna Tran (Graphics Creation, Data Transfer, and Procedural Systems):** In charge of ensuring proper logistics of information during both "choke points" and ensuring proper cooperation among systems. Artist for visuals. Helps where needed, in particular the infrastructure for procedural music generation. 
+**Jenna Tran (Front-End Team Lead, Graphics Designer, Data Transfer):** In charge of ensuring proper logistics of information during both "choke points" and ensuring proper cooperation among systems. Artist for visuals. Helps where needed, in particular the infrastructure for procedural music generation. 
 
 **Maggie Cole (Graphics Creation, Testing, and GitHub Management):** Helps with producing graphics/design and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness.
 

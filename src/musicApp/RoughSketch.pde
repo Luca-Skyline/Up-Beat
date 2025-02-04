@@ -94,15 +94,14 @@ void lucaTest(){
   Jingle j = new Jingle("A#", 4);
   j.printScale();
 }
-//instead make 
+//*****instead make a mousepressed function inside of button class!!***** 
 void mousePressed() {
- if (mouseX>400 && mouseX <600 && mouseY>200 && mouseY<250 && globalPhase == "mainMenu") {
-    globalPhase = "q1";
-    classical = true; // classical
-  }
-  if (mouseX>100 && mouseX <300 && mouseY>200 && mouseY<250 && globalPhase == "mainMenu") {
-    pop = true; // pop
-    globalPhase = "q1";
-   } 
+ for (int i=0; i<buttons.length; i++) {
+     if (globalPhase == buttons[i].localPhase) {
+       globalPhase = buttons[i].inside();
+     }
+   }
   
+}
+
 }

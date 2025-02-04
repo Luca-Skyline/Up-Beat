@@ -61,7 +61,7 @@ void draw() {
       stroke(c);
       line(0, i, width, i);
     }
-  strokeWeight(0);
+  noStroke();
   fill(#ee850e); 
   quad(800,0,width,0,width,height,600,height);
   fill(#2c7281);

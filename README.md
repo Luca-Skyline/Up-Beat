@@ -6,7 +6,7 @@
 
 ### Backend
 
-**Luca DalCanto (Team Lead, Music Theorist, and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track (the "brains" of the program). Takes parameters from Zack (representing user input) and gives parameters to Micah (representing musical information). Luca is in charge of communicating with other team members to ensure proper data handling between these two choke points.
+**Luca DalCanto (Team Lead, Music Theorist, and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track. Takes parameters from Zack and gives data to Micah representing musical information. Luca is in charge of communicating with other team members to ensure proper data handling between these two choke points.
 
 **Micah Tien (MIDI, Audio Engineer):** In charge of turning the information into MIDI and sequencing it into audio to play back to the user. Takes parameters from Luca. 
 

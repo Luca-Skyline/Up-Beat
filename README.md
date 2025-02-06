@@ -44,7 +44,7 @@ GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 
 Diffrent Poposed Color Variation
 
-Orginal Sketch 
+Orginal Paper Sketch 
 
 #### To-Do List of maybes
 - make look different based on mood of song

@@ -4,13 +4,17 @@
 
 ## Members
 
-**Luca DalCanto (Team Lead, Music Theorist, and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track (the "brains" of the program). Takes parameters from Zack (representing user input) and gives parameters to Micah (representing musical information).
+### Backend
 
-**Micah Tien (MIDI, Audio Engineer):** In charge of turning the information into MIDI and sequencing it into audio to play back to the user. Takes parameters from Luca.
+**Luca DalCanto (Team Lead, Music Theorist, and Procedural Systems):** In charge of figuring out how to weigh the random elements of creating the music track (the "brains" of the program). Takes parameters from Zack (representing user input) and gives parameters to Micah (representing musical information). Luca is in charge of communicating with other team members to ensure proper data handling between these two choke points.
+
+**Micah Tien (MIDI, Audio Engineer):** In charge of turning the information into MIDI and sequencing it into audio to play back to the user. Takes parameters from Luca. 
+
+### Frontend
+
+**Jenna Tran (Front-End Team Lead, Graphics Designer, Data Transfer):** Artist for visuals and visionary front-end designer. Understands the big picture and how front-end and back-end tie together.
 
 **Zachary Wellborn (User Interfacing and Graphics Implementation):** In charge of implementing graphics for user interaction. Collects information from the user and sends it to Luca.
-
-**Jenna Tran (Front-End Team Lead, Graphics Designer, Data Transfer):** In charge of ensuring proper logistics of information during both "choke points" and ensuring proper cooperation among systems. Artist for visuals. Helps where needed, in particular the infrastructure for procedural music generation. 
 
 **Maggie Cole (Graphics Creation, Testing, and GitHub Management):** Helps with producing graphics/design and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness. 
 

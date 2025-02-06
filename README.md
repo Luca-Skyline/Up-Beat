@@ -12,7 +12,7 @@
 
 **Jenna Tran (Front-End Team Lead, Graphics Designer, Data Transfer):** In charge of ensuring proper logistics of information during both "choke points" and ensuring proper cooperation among systems. Artist for visuals. Helps where needed, in particular the infrastructure for procedural music generation. 
 
-**Maggie Cole (Graphics Creation, Testing, and GitHub Management):** Helps with producing graphics/design and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness.
+**Maggie Cole (Graphics Creation, Testing, and GitHub Management):** Helps with producing graphics/design and testing the output of the procedural music generator. Works with Luca and Jenna to make improvements in the software's musical awareness. 
 
 ## Procedural Music Generator (UpBeat)
 
@@ -41,6 +41,10 @@ GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 *very ugly but the idea is there*
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUIMockup.png?raw=true" width="600" />
+
+Diffrent Poposed Color Variation
+
+Orginal Sketch 
 
 #### To-Do List of maybes
 - make look different based on mood of song

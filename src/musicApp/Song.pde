@@ -47,22 +47,24 @@ abstract class Song {
     
   }
   
-  //String randomChord(String nextChord){
-  //  for(int i = 0; i < probabilitySettings.getRowCount(); i++){
-  //    TableRow row = probabilitySettings.getRow(i);
-  //    if(row.getString(0).equals(nextChord)){
-  //      while(!row.getString(1).equals("")){
-          
-  //      }
-  //      break;
-  //    }
-  //    //not found
-  //    System.out.println("I backed myself into an inescapable corner. Talk to Luca.");
-  //    return "I";
-  //  }
-  //}
+  String randomChord(String nextChord){
+    for(int i = 0; i < probabilitySettings.getRowCount(); i++){
+      TableRow row = probabilitySettings.getRow(i);
+      if(row.getString(0).equals(nextChord)){
+        ArrayList<Float> weights = new ArrayList<Float>();
+        for(int j = i; !row.getString(1).equals(""); j++){
+          weights.add((float) row.getInt(2));
+          //stuff
+        }
+        return "";
+      }
+    }
+    //not found
+    System.out.println("I backed myself into an inescapable corner. Talk to Luca.");
+    return "I";
+  }
   
-  int weightedRandomChoice(float[] weights) {
+  private int weightedRandomChoice(float[] weights) {
     float total = 0;
     for (float weight : weights) {
         total += weight;

@@ -43,7 +43,13 @@ abstract class Song {
     }
     
     //set up probability table
-    probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsClassical.csv");
+    try{
+      probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsClassical.csv");
+    }
+    catch(Error e){
+      System.out.println("Probablity File Not Found! Talk to Luca.");
+    }
+    
     
   }
   

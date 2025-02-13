@@ -47,7 +47,7 @@ Start Screen - Jenna Tran
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_1.png?raw=true" width="400" />
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_4.png?raw=true" width="400" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_5.png?raw=true" width="400" />
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_2.png?raw=true" width="400" />
 

@@ -6,7 +6,7 @@ boolean firstMousePress = false;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[6];
+Button[] buttons = new Button[9];
 Scrollbar[] myScrolls = new Scrollbar[1];
 PImage logo;
 PFont pixel;
@@ -29,15 +29,21 @@ void setup() {
   textSize(25); 
   globalPhase = "mainMenu";
   //this list of buttons and later sliders and stuff is going to be SUPER long uhm ;-;
+  //what i plan on doing is putting all of the buttons and sliders and wheels and widgets into a giant text file then just reading from it :p
   buttons[0] = new Button(850, 150, 300, 100, "Generate New Song", "mainMenu", "q1", "newSong");
   buttons[1] = new Button(850, 300, 300, 100, "Load Old Song", "mainMenu", "old", "oldSong");
   buttons[2] = new Button(850, 450, 300, 100, "Settings", "mainMenu", "settings", "TEMP");
   
+  //this makes it go from q1 to q3 an im going insane laksdjflkasdjflkasdjf
   buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "q1", "q2", "classical");
   buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "q1", "q2", "pop");
   buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "q1", "q2", "skyline");
   
-  myScrolls[0] = new Scrollbar(width/2, height/2, 400, 100, "q2");
+  buttons[6] = new Button(200, 350, 250, 70, "1:00", "q2", "q3", "1:00");
+  buttons[7] = new Button(500, 350, 250, 70, "1:30", "q2", "q3", "1:30");
+  buttons[8] = new Button(800, 350, 250, 70, "2:00", "q2", "q3", "2:00");
+  
+  myScrolls[0] = new Scrollbar(width/2, height/2, 400, 100, "q3");
 
   pop = false;  
   classical = false;
@@ -69,9 +75,10 @@ void draw() {
   quad(1050,0,width,0,width,height,850,height);
   fill(255);
   quad(600,height,620,height,820,0,800,0);
+  text(globalPhase, 50, 50);
   //case switch statement would be ideal for "phases" or screens
   if (globalPhase == "mainMenu") {
-   textSize(80);
+  textSize(80);
   fill(150);
   text("Welcome to", 300, 156);
   fill(255);
@@ -103,7 +110,7 @@ void draw() {
   }
   if (globalPhase == "q2") {
    fill(255);
-   textSize(30);
+   //textSize(30);
    text("How long would you like your song to be?", width/2, 80);
   }
   if (globalPhase == "q3") {

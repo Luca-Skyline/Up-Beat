@@ -34,6 +34,7 @@ class Button {
     //textAlign(CENTER);
     //textSize();
     text(text, x+w/2, y+(h/2)+5);
+    fill(255);
   }
 
   void hover(int mx, int my) {

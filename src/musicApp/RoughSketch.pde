@@ -70,7 +70,10 @@ void draw() {
   quad(600,height,620,height,820,0,800,0);
   //case switch statement would be ideal for "phases" or screens
   if (globalPhase == "mainMenu") {
-  textSize(80);
+   textSize(80);
+  fill(150);
+  text("Welcome to", 300, 156);
+  fill(255);
   text("Welcome to", 300, 150); 
   textSize(30);
   image(logo, 300,400);
@@ -87,29 +90,19 @@ void draw() {
   //1st question -z
   //make this a case switch statement
   if (globalPhase == "q1") {
+    fill(255);
     text("What genre of song would you like your song to be?", width/2, 200);
   }
   if (globalPhase == "q2") {
    fill(255);
    textSize(30);
-   text("Choose your settings for the song you want to make", 425, 50); 
-   textSize(18);
    text("How long would you like your song to be?", width/2, 80);
-   text("10 measures", 100, 120);
-   text("20 measures", 300, 120);
-   text("30 measures", 500, 120);
-   text("40 measures", 700, 120);
-   text("what tempo would you like your song to be?", width/2, 180);
-   text("80 bpm", 100, 250);
-   text("100 bpm", 300, 250);
-   text("120 bpm", 500, 250);
-   text("140 bpm", 700, 250);
+  }
+  if (globalPhase == "q3") {
+    textSize(30);
+    text("what tempo would you like your song to be?", width/2, 180);
  
-   //will NOT include other options as we develop 
-   //we'll then take all the requirements and generate a song along these guidelines
-   //then output that to the user
-   
-   
+    
   }
 }
 

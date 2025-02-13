@@ -24,7 +24,7 @@ Reference/Inspo: https://muted.io/app/
 
 Logo - Jenna Tran
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/UpBeatLogo.png?raw=true" width="400" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/BlueUpBeat.png?raw=true" width="400" />
 
 - User input and randomness come together
 - Fundemental music theory awareness

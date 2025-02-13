@@ -2,6 +2,13 @@
 
 **RIBIT:** RISE International Baccalaureate Information Technology
 
+## Instructions for Running Group Project (UpBeat)
+
+- Download and unzip repository
+- Navigate to RIBIT-REPO/src/musicApp
+- Open RoughSketch.pde in Processing
+- Run Code
+
 ## Members
 
 ### Backend

@@ -2,6 +2,13 @@
 
 **RIBIT:** RISE International Baccalaureate Information Technology
 
+## Instructions for Running Group Project (UpBeat)
+
+- Download and unzip repository
+- Navigate to RIBIT-REPO/src/musicApp
+- Open RoughSketch.pde in Processing
+- Run Code
+
 ## Members
 
 ### Backend
@@ -38,7 +45,13 @@ Class Diagram - Luca DalCanto
 
 Start Screen - Jenna Tran
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/StartScreen.png?raw=true" width="400" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_1.png?raw=true" width="400" />
+
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_5.png?raw=true" width="400" />
+
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_2.png?raw=true" width="400" />
+
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_3.png?raw=true" width="400" />
 
 GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 

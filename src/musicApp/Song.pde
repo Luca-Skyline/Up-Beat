@@ -58,10 +58,14 @@ abstract class Song {
       TableRow row = probabilitySettings.getRow(i);
       if(row.getString(0).equals(nextChord)){
         ArrayList<Float> weights = new ArrayList<Float>();
-        for(int j = i; !row.getString(1).equals(""); j++){
+        for(int j = i; j < probabilitySettings.getRowCount(); j++){
           weights.add((float) row.getInt(2));
           //stuff
+          
+          //if row is empty
+          //break out of the for loop
         }
+        //int randomIndex = weightedRandomChoice(weights.toArray(new Float[]));
         return "";
       }
     }

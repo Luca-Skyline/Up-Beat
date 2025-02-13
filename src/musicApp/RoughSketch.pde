@@ -38,7 +38,7 @@ void setup() {
   buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "q1", "q2", "classical");
   buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "q1", "q2", "pop");
   buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "q1", "q2", "skyline");
-  
+  //deleting these next 3 buttons makes it work but why
   buttons[6] = new Button(200, 350, 250, 70, "1:00", "q2", "q3", "1:00");
   buttons[7] = new Button(500, 350, 250, 70, "1:30", "q2", "q3", "1:30");
   buttons[8] = new Button(800, 350, 250, 70, "2:00", "q2", "q3", "2:00");
@@ -134,7 +134,7 @@ void mousePressed() {
  for (int i=0; i<buttons.length; i++) {
      if (globalPhase == buttons[i].localPhase) {
        globalPhase = buttons[i].inside();
+       break;
      }
    }
-  
 }

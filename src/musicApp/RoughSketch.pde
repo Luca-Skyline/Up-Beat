@@ -1,11 +1,13 @@
 //import statements for MIDI, scanners, etc. here
 
 String globalPhase;
+boolean firstMousePress = false;
 //could be much more options - options would be 
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
 Button[] buttons = new Button[6];
+Scrollbar[] myScrolls = new Scrollbar[1];
 PImage logo;
 PFont pixel;
 
@@ -35,8 +37,7 @@ void setup() {
   buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "q1", "q2", "pop");
   buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "q1", "q2", "skyline");
   
-  //buttons[6] = new Button(350, 100, 100, 60, "test", "q2", "q3", "tempo");
-  //buttons[7] = new Button(350, 200, 100, 60, "test #2", "q2", "q3", "tempo");
+  myScrolls[0] = new Scrollbar(width/2, height/2, 400, 100, "q2");
 
   pop = false;  
   classical = false;
@@ -86,6 +87,13 @@ void draw() {
        buttons[i].hover(mouseX, mouseY);
      }
    }
+  //rendering scrollbars smiley face -z
+  for (int i=0; i<myScrolls.length; i++) {
+     if (globalPhase == myScrolls[i].phase) {
+       myScrolls[i].display();
+       myScrolls[i].update();
+     }
+   }
   
   //1st question -z
   //make this a case switch statement
@@ -101,8 +109,10 @@ void draw() {
   if (globalPhase == "q3") {
     textSize(30);
     text("what tempo would you like your song to be?", width/2, 180);
- 
-    
+  }
+  if (globalPhase == "old" || globalPhase == "settings") {
+   textSize(50);
+   text("work in progress c:", width/2, height/2);
   }
 }
 

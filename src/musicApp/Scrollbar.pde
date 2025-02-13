@@ -6,8 +6,10 @@ class Scrollbar {
   boolean over;           // is the mouse over the slider?
   boolean locked;
   float ratio;
+  String phase;
 
-  Scrollbar (float xp, float yp, int sw, int sh) {
+  Scrollbar (float xp, float yp, int sw, int sh, String phase) {
+    this.phase = phase;
     swidth = sw;
     sheight = sh;
     int widthtoheight = sw - sh;
@@ -18,5 +20,56 @@ class Scrollbar {
     newspos = spos;
     sposMin = xpos;
     sposMax = xpos + swidth - sheight;
+  }
+  
+  void update() {
+    if (hover()) {
+      over = true;
+    } else {
+      over = false;
+    }
+    if (firstMousePress && over) {
+      locked = true;
+    }
+    if (!mousePressed) {
+      locked = false;
+    }
+    if (locked) {
+      newspos = constrain(mouseX-sheight/2, sposMin, sposMax);
+    }
+    if (abs(newspos - spos) > 1) {
+      spos = spos + (newspos-spos);
+    }
+  }
+
+  float constrain(float val, float minv, float maxv) {
+    return min(max(val, minv), maxv);
+  }
+
+  boolean hover() {
+    if (mouseX > xpos && mouseX < xpos+swidth &&
+      mouseY > ypos && mouseY < ypos+sheight) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void display() {
+    noStroke();
+    fill(204);
+    rect(xpos, ypos, swidth, sheight);
+    if (over || locked) {
+      fill(0, 0, 0);
+    } else {
+      fill(102, 102, 102);
+    }
+    rect(spos, ypos, sheight, sheight);
+  }
+
+  float getPos() {
+    // Convert spos to be values between
+    // 0 and the total width of the scrollbar
+    return spos * ratio;
   }
 }

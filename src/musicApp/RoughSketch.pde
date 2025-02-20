@@ -58,15 +58,13 @@ void setup() {
 
 void draw() {
   //gradients are complicated, apparently T-T
-  //this makes fading transitions???? but like it doesnt completely disappear 
-  //for some reason
   background(10);
   strokeWeight(4); //tinker w/this
   //smooth(); i think this does something ill test :P
   for (int i = 0; i <= height; i++) {
-      float inter = map(i, 0, height, 0, 1);
+      float inter = map(i, 0, height, (-0.2), 1);
       float inter2 = map(i, 0, height, 0, width);
-      color c = lerpColor(#46bbd5, #df5594, inter); //can tinker w/ this for some fun stff! 
+      color c = lerpColor(#df5594, #46bbd5, inter); //can tinker w/ this for some fun stff! #46bbd5
       stroke(c);
       line(width-(2*inter2), height, width, (height-(2*i))); //swapping height for 0 is very funny (and interesting) line(inter2-i, 0, width, i);
     }  

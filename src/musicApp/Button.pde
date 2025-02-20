@@ -16,10 +16,10 @@ class Button {
     this.localPhase = localPhase;
     this.nextPhase = nextPhase;
     this.info = info;
-    c1 = color(#ee850e);
-    c2 = color(#c96f08);
+    c1 = color(#df5594); //might be better as lighter pink #f7b4e1 instead
+    c2 = color(#c4417d);
     on = false;
-  }
+  }         
 
   void display() {
     if (on) {
@@ -38,8 +38,8 @@ class Button {
   }
 
   void hover(int mx, int my) {
-    on = (mx > x && mx < x+w && my > y && my < y+h);
-  }
+    on = (mx > x && mx < x+w && my > y && my < y+h); //there is currently CONSIDERABLE lag on the color 
+  }                                                  //changing when hovered over and i dont know why ;~;
   String inside() {
     if (mouseX>x && mouseX<(x+w) && mouseY>y && mouseY<(y+h)) {
        return nextPhase;

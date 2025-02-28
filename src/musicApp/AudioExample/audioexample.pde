@@ -76,7 +76,7 @@ void keyPressed() {
   for (int i=0; i<keysPressed.length; i++) {
     if (key == keyString.charAt(i)) {
       keysPressed[i] = true;
-      myBus.sendNoteOn(i!=9 ? i : 18, 60+i, 127);
+      myBus.sendNoteOn(i!=9 ? i : 18, 60+i, 127); //channel, pitch, velocity
     }
   }
 }
@@ -87,41 +87,5 @@ void keyReleased() {
       keysPressed[i] = false;
       myBus.sendNoteOff(i!=9 ? i : 18, 60+i, 127);
     }
-  }
-}
-
-void noteOn(int channel, int pitch, int velocity) {
-  // Receive a noteOn
-  if (debugMode) {
-    println();
-    println("Note On:");
-    println("--------");
-    println("Channel:"+channel);
-    println("Pitch:"+pitch);
-    println("Velocity:"+velocity);
-  }
-}
-
-void noteOff(int channel, int pitch, int velocity) {
-  // Receive a noteOff
-  if (debugMode) {
-    println();
-    println("Note Off:");
-    println("--------");
-    println("Channel:"+channel);
-    println("Pitch:"+pitch);
-    println("Velocity:"+velocity);
-  }
-}
-
-void controllerChange(int channel, int number, int value) {
-  // Receive a controllerChange
-  if (debugMode) {
-    println();
-    println("Controller Change:");
-    println("--------");
-    println("Channel:"+channel);
-    println("Number:"+number);
-    println("Value:"+value);
   }
 }

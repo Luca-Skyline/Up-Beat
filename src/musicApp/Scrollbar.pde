@@ -28,7 +28,7 @@ class Scrollbar {
     } else {
       over = false;
     }
-    if (firstMousePress && over) {
+    if (mousePressed && over) {
       locked = true;
     }
     if (!mousePressed) {

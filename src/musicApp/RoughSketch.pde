@@ -101,11 +101,11 @@ void draw() {
   //rendering scrollbars smiley face -z
   for (int i=0; i<myScrolls.length; i++) {
      if (globalPhase == myScrolls[i].phase) {
-       myScrolls[i].display();
        myScrolls[i].update();
+       myScrolls[i].display();
      }
    }
-  
+  fill(255);
   //1st question -z
   //make this a case switch statement
   if (globalPhase == "q1") {
@@ -120,6 +120,7 @@ void draw() {
   if (globalPhase == "q3") {
     textSize(30);
     text("what tempo would you like your song to be?", width/2, 180);
+    System.out.println(myScrolls[0].locked);
   }
   if (globalPhase == "old" || globalPhase == "settings") {
    textSize(50);

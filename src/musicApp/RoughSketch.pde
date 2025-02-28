@@ -10,6 +10,8 @@ Button[] buttons = new Button[9];
 Scrollbar[] myScrolls = new Scrollbar[1];
 PImage logo;
 PFont pixel;
+import themidibus.*;
+MidiBus basicBus;
 
 
 Song[] mySongs;
@@ -51,6 +53,21 @@ void setup() {
   //mySongs = new Song[2];
   //mySongs[0] = new ClassicalSong();
   //mySongs[1] = new PopSong();
+  
+  basicBus = new MidiBus();
+  basicBus.registerParent(this);
+  String OS = platformNames[platform];
+  if (OS.equals("windows")) {
+    basicBus.addInput(0);
+    basicBus.addOutput(3);
+  } else if (OS.equals("macos")) {
+    basicBus.addInput(1);
+    basicBus.addOutput(2);
+    println("MacOS doesn't have a built-in synthesizer available for Processing.");
+    println("To hear sound as this is running, you should open GarageBand, SimpleSynth, or another MIDI synthesizer.");
+  } else {
+    println("eww linux");
+  }
   
   lucaTest();
 }

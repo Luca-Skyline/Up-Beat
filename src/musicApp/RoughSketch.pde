@@ -45,7 +45,7 @@ void setup() {
   buttons[7] = new Button(500, 350, 250, 70, "1:30", "q2", "q3", "1:30");
   buttons[8] = new Button(800, 350, 250, 70, "2:00", "q2", "q3", "2:00");
   
-  myScrolls[0] = new Scrollbar(width/2, height/2, 400, 100, "q3");
+  myScrolls[0] = new Scrollbar(width/2-200, height/2+100, 400, 50, "q3", "bpm", 60, 200);
 
   pop = false;  
   classical = false;
@@ -120,12 +120,13 @@ void draw() {
   if (globalPhase == "q3") {
     textSize(30);
     text("what tempo would you like your song to be?", width/2, 180);
-    System.out.println(myScrolls[0].locked);
   }
   if (globalPhase == "old" || globalPhase == "settings") {
    textSize(50);
    text("work in progress c:", width/2, height/2);
   }
+  //fill(100, 70);               tint over the whole screen lol
+  //rect(0,0,width,height);
 }
 
 //this is Luca's way to test his stuff in the console for rn so he can have an entry point.

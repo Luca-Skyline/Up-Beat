@@ -10,7 +10,7 @@ abstract class Song {
   protected int sharps;
   protected NumberNote[] allNotes; //final combination of all notes
   protected String[] scale;
-  private Table probabilitySettings;
+  protected Table probabilitySettings;
   
   protected Song(String keySignature){
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
@@ -52,49 +52,7 @@ abstract class Song {
     
     
   }
-  
-  String randomChord(String nextChord){
-    for(int i = 0; i < probabilitySettings.getRowCount(); i++){
-      TableRow row = probabilitySettings.getRow(i);
-      if(row.getString(0).equals(nextChord)){
-        ArrayList<Float> weights = new ArrayList<Float>();
-        for(int j = i; j < probabilitySettings.getRowCount(); j++){
-          weights.add((float) row.getInt(2));
-          //stuff
-          
-          //if row is empty
-          //break out of the for loop
-        }
-        //int randomIndex = weightedRandomChoice(weights.toArray(new Float[]));
-        return "";
-      }
-    }
-    //not found
-    System.out.println("I backed myself into an inescapable corner. Talk to Luca.");
-    return "I";
-  }
-  
-  private int weightedRandomChoice(float[] weights) {
-    float total = 0;
-    for (float weight : weights) {
-        total += weight;
-    }
-    if (total <= 0) {
-        throw new IllegalArgumentException("Sum of weights must be positive.");
-    }
-    
-    float threshold = new Random().nextFloat() * total;
-    float cumulative = 0;
-    
-    for (int i = 0; i < weights.length; i++) {
-        cumulative += weights[i];
-        if (threshold <= cumulative) {
-            return i;
-        }
-    }
-    
-    return weights.length - 1;
-  }
+ 
 
   
   void printScale(){
@@ -104,7 +62,7 @@ abstract class Song {
     }
   }
   
-  abstract void generate();
+  abstract public void generate();
   void play(){
     // send allNotes data to Micah
   }

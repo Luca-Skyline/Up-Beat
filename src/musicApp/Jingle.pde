@@ -1,20 +1,16 @@
 // Luca DalCanto
 
 class Jingle extends Song{
-  Chord[] chords;
-  int measures;
+  private Fragment mySingleFragment;
   
-  Jingle(String keySig, int measures){
+  //precondition: measures > 1
+  public Jingle(String keySig, int measures){
     super(keySig);
-    // adjust based on parameters
-    this.measures = measures;
+    mySingleFragment = new Fragment(measures, 2, scale, probabilitySettings);
   }
   
   @Override
-  void generate(){
-    chords = new Chord[(2*measures) - 1];
-    chords[(2*measures) - 2] = new Chord(scale[0], "", 4, 200, measures, 4); //last chord in root position
-    
-    
+  public void generate(){
+    mySingleFragment.generateChords();  
   }
 }

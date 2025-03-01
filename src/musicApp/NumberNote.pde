@@ -5,13 +5,16 @@ class NumberNote{
   private float duration;
   private String instrument;
   
-  NumberNote(String value, float velocity, float start, float duration){
+  public NumberNote(String value, float velocity, float start, float duration){
     this.velocity = velocity;
     this.value = value;
     this.start = start;
     this.duration = duration;
   }
   
-  // getters!
+  public MIDINote convertToMIDINote(){
+    //Micah you can convert this to a midi note
+    return null;
+  }
   
 }

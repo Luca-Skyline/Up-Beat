@@ -4,23 +4,70 @@ class Chord{
   private NumberNote[] myNotes;
   private float start;
   private float duration;
+  private String symbol;
   
-  Chord(String root, String quality, int octave, int velocity, float start, float duration){
+  public Chord(String symbol, String[] majorScale, int octave, int velocity, float startMeasure, float startBeat, float duration){
     
-    switch(quality){
-      case "":
-        myNotes = new NumberNote[3];
-      // more cases
+    this.symbol = symbol;
+    myNotes = new NumberNote[4];
+    
+    switch(symbol){
+      
+      case "I":
+        myNotes[0] = new NumberNote(majorScale[0] + 2, velocity, start, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[0] + octave, velocity, start, duration); // root
+        myNotes[2] = new NumberNote(majorScale[2] + octave, velocity, start, duration); // third
+        myNotes[3] = new NumberNote(majorScale[4] + octave, velocity, start, duration); // fifth
+        break;
+      case "ii":
+        myNotes[0] = new NumberNote(majorScale[1] + 2, velocity, start, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[1] + octave, velocity, start, duration); // root
+        myNotes[2] = new NumberNote(majorScale[3] + octave, velocity, start, duration); // third
+        myNotes[3] = new NumberNote(majorScale[5] + octave, velocity, start, duration); // fifth
+        break;
+      case "iii":
+        myNotes[0] = new NumberNote(majorScale[2] + 2, velocity, start, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[6] + octave, velocity, start, duration); // fifth
+        myNotes[2] = new NumberNote(majorScale[2] + octave, velocity, start, duration); // root
+        myNotes[3] = new NumberNote(majorScale[4] + octave, velocity, start, duration); // third
+
+        break;
+      case "IV":
+        myNotes[0] = new NumberNote(majorScale[3] + 2, velocity, start, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[0] + octave, velocity, start, duration); // fifth
+        myNotes[2] = new NumberNote(majorScale[3] + octave, velocity, start, duration); // root
+        myNotes[3] = new NumberNote(majorScale[5] + octave, velocity, start, duration); // third
+        break;
+      case "V":
+        myNotes[0] = new NumberNote(majorScale[4] + 2, velocity, start, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[6] + octave, velocity, start, duration); // third
+        myNotes[2] = new NumberNote(majorScale[1] + octave, velocity, start, duration); // fifth
+        myNotes[3] = new NumberNote(majorScale[4] + octave, velocity, start, duration); // root
+        break;
+      case "vi":
+        myNotes[0] = new NumberNote(majorScale[5] + 2, velocity, start, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[0] + octave, velocity, start, duration); // third
+        myNotes[2] = new NumberNote(majorScale[2] + octave, velocity, start, duration); // fifth
+        myNotes[3] = new NumberNote(majorScale[5] + octave, velocity, start, duration); // root
+        break;
+      case "vii*":
+        myNotes[0] = new NumberNote(majorScale[6] + 2, velocity, start, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[6] + octave, velocity, start, duration); // root
+        myNotes[2] = new NumberNote(majorScale[1] + octave, velocity, start, duration); // third
+        myNotes[3] = new NumberNote(majorScale[3] + octave, velocity, start, duration); // fifth
+        break;
       default:
+        System.out.println("I'm not smart enough to handle the " + symbol + " chord yet :(");
         myNotes = new NumberNote[1];
     
-    }
-    
-    myNotes[0] = new NumberNote(root + octave, velocity, start, duration); // root note
-  
+    }  
   }
   
-  NumberNote[] getNotes(){
+  public String getSymbol(){
+    return symbol;
+  }
+  
+  public NumberNote[] getNotes(){
     return myNotes;
   }
 

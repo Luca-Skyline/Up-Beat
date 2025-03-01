@@ -131,8 +131,8 @@ void draw() {
 
 //this is Luca's way to test his stuff in the console for rn so he can have an entry point.
 void lucaTest(){
-  Jingle j = new Jingle("A#", 4);
-  j.printScale();
+  Jingle j = new Jingle("C", 4);
+  j.generate();
 }
 
 //makes it so clicking buttons does stuff!! :)

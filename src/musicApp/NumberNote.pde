@@ -1,15 +1,19 @@
 class NumberNote{
   private float velocity;
-  private String value;
+  private String pitch;
   private float start;
   private float duration;
   private String instrument;
   
-  public NumberNote(String value, float velocity, float start, float duration){
+  public NumberNote(String value, int octave, float velocity, float start, float duration){
     this.velocity = velocity;
-    this.value = value;
+    pitch = value;
     this.start = start;
     this.duration = duration;
+  }
+  
+  public String getPitch(){
+    return pitch;
   }
   
   public MIDINote convertToMIDINote(){

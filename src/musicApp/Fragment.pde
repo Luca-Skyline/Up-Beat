@@ -2,11 +2,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 class Fragment{
-  int measures;
-  Chord[] chords; //must be n * measures
-  NumberNote[] melody;
+  private int measures;
+  private Chord[] chords; //must be n * measures
+  private NumberNote[] melody;
   private Table probabilitySettings;
-  protected String[] scale;
+  private String[] scale;
+  private float melodyComplexity = 1.5; //should between 1 and 2 for 2 chords per measure in 4/4 time
   
   public Fragment(int measures, int chordsPerMeasure, String[] scale, Table table){
     this.measures = measures;
@@ -27,7 +28,18 @@ class Fragment{
   }
   
   void generateMelody(){
-  
+    //start with rhythm of melody
+    melody = new NumberNote[(4*measures)-3];
+    float[] weights = {melodyComplexity - 1.0, 2.0 - melodyComplexity};
+    for(int i = (4 * measures) - 1; i >= 0 ; i--){
+      if (i % 2 == 0 || weightedRandomChoice(weights) == 1){ //strong beat: yes melody note, weak beat: maybe melody note
+        String[] noteOptions = new String[3];
+        for(int j = 0; j < 3; j++){
+          noteOptions[j] = chords[i/2].getNote(j+1);
+        }
+        //continue working here
+      }
+    }
   }
   
   private String randomChord(String nextChord){ //make private later
@@ -56,7 +68,7 @@ class Fragment{
       }
     }
     //not found
-    System.out.println("I'm a stupid program and backed myself into an inescapable corner. Talk to Luca. Next Chord: " + nextChord);
+    System.out.println("I'm a very stupid program and backed myself into an inescapable corner. Talk to Luca. Next Chord: " + nextChord);
     return "I";
   }
   

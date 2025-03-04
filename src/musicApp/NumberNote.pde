@@ -1,14 +1,16 @@
 class NumberNote{
   private float velocity;
   private String pitch;
-  private float start;
+  private float startMeasure;
+  private float startBeat;
   private float duration;
   private String instrument;
   
-  public NumberNote(String value, int octave, float velocity, float start, float duration){
+  public NumberNote(String value, int octave, float velocity, float startMeasure, float startBeat, float duration){
     this.velocity = velocity;
     pitch = value;
-    this.start = start;
+    this.startMeasure = startMeasure;
+    this.startBeat = startBeat;
     this.duration = duration;
   }
   

@@ -1,3 +1,15 @@
+// NOTE TO FRONTEND NERDS: (LOOKING AT YOU ZACK AND JENNA)
+// IN ORDER TO TEST OUR PROGRAM,
+// CREATE A NEW INSTANTIATION OF THE "Jingle" CLASS
+// THE JINGLE CLASS TAKES IN A KEY SIGNATURE AND A NUMBER OF MEASURES RIGHT NOW, LIKE SO:
+// Jingle j new Jingle("C", 4);
+// LET'S JUST DO FOUR MEASURES FOR RIGHT NOW
+// IN ORDER TO CREATE THE SONG, CALL THE "generate" FUNCTION:
+// j.generate();
+// THEN IN ORDER TO PLAY THE SONG, CALL THE "play()" FUNCTION:
+// j.play();
+
+
 //import statements for MIDI, scanners, etc. here
 
 String globalPhase;
@@ -75,8 +87,6 @@ void setup() {
   //mySongs[1] = new PopSong();
   
   instantiateMidiBus();
-  
-  lucaTest();
 }
 
 
@@ -171,12 +181,6 @@ void draw() {
   //fill(100, 70);               tint over the whole screen lol
   //rect(0,0,width,height);
   }
-}
-
-//this is Luca's way to test his stuff in the console for rn so he can have an entry point.
-void lucaTest(){
-  Jingle j = new Jingle("C", 4);
-  j.generate();
 }
 
 //makes it so clicking buttons does stuff!! :)

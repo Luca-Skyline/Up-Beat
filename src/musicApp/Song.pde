@@ -11,6 +11,7 @@ abstract class Song {
   protected NumberNote[] allNotes; //final combination of all notes
   protected String[] scale;
   protected Table probabilitySettings;
+  protected Fragment[] myFragments;
   
   protected Song(String keySignature){
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
@@ -49,11 +50,7 @@ abstract class Song {
     catch(Error e){
       System.out.println("Probablity File Not Found! Talk to Luca.");
     }
-    
-    
   }
- 
-
   
   void printScale(){
     System.out.println("Number of Sharps: " + sharps);
@@ -63,10 +60,17 @@ abstract class Song {
   }
   
   abstract public void generate();
-  void play(){
-    // send allNotes data to Micah
+  public void play(){
+    ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();
+    for(Fragment f : myFragments){
+      NumberNote[] fragmentList = f.getNotes();
+      for(NumberNote n : fragmentList){
+        finalList.add(n);
+      }
+    }
+    NumberNote[] finalArray = new NumberNote[finalList.size()];
+    finalArray = finalList.toArray(finalArray);
+    
+    
   }
- 
-  
-  
 }

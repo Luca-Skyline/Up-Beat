@@ -14,47 +14,47 @@ class Chord{
     switch(symbol){
       
       case "I":
-        myNotes[0] = new NumberNote(majorScale[0], 2, velocity, start, duration); // bass (root)
-        myNotes[1] = new NumberNote(majorScale[0], octave, velocity, start, duration); // root
-        myNotes[2] = new NumberNote(majorScale[2], octave, velocity, start, duration); // third
-        myNotes[3] = new NumberNote(majorScale[4], octave, velocity, start, duration); // fifth
+        myNotes[0] = new NumberNote(majorScale[0], 2, velocity, startMeasure, startBeat, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[0], octave, velocity, startMeasure, startBeat, duration); // root
+        myNotes[2] = new NumberNote(majorScale[2], octave, velocity, startMeasure, startBeat, duration); // third
+        myNotes[3] = new NumberNote(majorScale[4], octave, velocity, startMeasure, startBeat, duration); // fifth
         break;
       case "ii":
-        myNotes[0] = new NumberNote(majorScale[1], 2, velocity, start, duration); // bass (root)
-        myNotes[1] = new NumberNote(majorScale[1], octave, velocity, start, duration); // root
-        myNotes[2] = new NumberNote(majorScale[3], octave, velocity, start, duration); // third
-        myNotes[3] = new NumberNote(majorScale[5], octave, velocity, start, duration); // fifth
+        myNotes[0] = new NumberNote(majorScale[1], 2, velocity, startMeasure, startBeat, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[1], octave, velocity, startMeasure, startBeat, duration); // root
+        myNotes[2] = new NumberNote(majorScale[3], octave, velocity, startMeasure, startBeat, duration); // third
+        myNotes[3] = new NumberNote(majorScale[5], octave, velocity, startMeasure, startBeat, duration); // fifth
         break;
       case "iii":
-        myNotes[0] = new NumberNote(majorScale[2], 2, velocity, start, duration); // bass (root)
-        myNotes[1] = new NumberNote(majorScale[6], octave, velocity, start, duration); // fifth
-        myNotes[2] = new NumberNote(majorScale[2], octave, velocity, start, duration); // root
-        myNotes[3] = new NumberNote(majorScale[4], octave, velocity, start, duration); // third
+        myNotes[0] = new NumberNote(majorScale[2], 2, velocity, startMeasure, startBeat, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[6], octave, velocity, startMeasure, startBeat, duration); // fifth
+        myNotes[2] = new NumberNote(majorScale[2], octave, velocity, startMeasure, startBeat, duration); // root
+        myNotes[3] = new NumberNote(majorScale[4], octave, velocity, startMeasure, startBeat, duration); // third
 
         break;
       case "IV":
-        myNotes[0] = new NumberNote(majorScale[3], 2, velocity, start, duration); // bass (root)
-        myNotes[1] = new NumberNote(majorScale[0], octave, velocity, start, duration); // fifth
-        myNotes[2] = new NumberNote(majorScale[3], octave, velocity, start, duration); // root
-        myNotes[3] = new NumberNote(majorScale[5], octave, velocity, start, duration); // third
+        myNotes[0] = new NumberNote(majorScale[3], 2, velocity, startMeasure, startBeat, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[0], octave, velocity, startMeasure, startBeat, duration); // fifth
+        myNotes[2] = new NumberNote(majorScale[3], octave, velocity, startMeasure, startBeat, duration); // root
+        myNotes[3] = new NumberNote(majorScale[5], octave, velocity, startMeasure, startBeat, duration); // third
         break;
       case "V":
-        myNotes[0] = new NumberNote(majorScale[4], 2, velocity, start, duration); // bass (root)
-        myNotes[1] = new NumberNote(majorScale[6], octave, velocity, start, duration); // third
-        myNotes[2] = new NumberNote(majorScale[1], octave, velocity, start, duration); // fifth
-        myNotes[3] = new NumberNote(majorScale[4], octave, velocity, start, duration); // root
+        myNotes[0] = new NumberNote(majorScale[4], 2, velocity, startMeasure, startBeat, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[6], octave, velocity, startMeasure, startBeat, duration); // third
+        myNotes[2] = new NumberNote(majorScale[1], octave, velocity, startMeasure, startBeat, duration); // fifth
+        myNotes[3] = new NumberNote(majorScale[4], octave, velocity, startMeasure, startBeat, duration); // root
         break;
       case "vi":
-        myNotes[0] = new NumberNote(majorScale[5], 2, velocity, start, duration); // bass (root)
-        myNotes[1] = new NumberNote(majorScale[0], octave, velocity, start, duration); // third
-        myNotes[2] = new NumberNote(majorScale[2], octave, velocity, start, duration); // fifth
-        myNotes[3] = new NumberNote(majorScale[5], octave, velocity, start, duration); // root
+        myNotes[0] = new NumberNote(majorScale[5], 2, velocity, startMeasure, startBeat, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[0], octave, velocity, startMeasure, startBeat, duration); // third
+        myNotes[2] = new NumberNote(majorScale[2], octave, velocity, startMeasure, startBeat, duration); // fifth
+        myNotes[3] = new NumberNote(majorScale[5], octave, velocity, startMeasure, startBeat, duration); // root
         break;
       case "vii*":
-        myNotes[0] = new NumberNote(majorScale[6], 2, velocity, start, duration); // bass (root)
-        myNotes[1] = new NumberNote(majorScale[6], octave, velocity, start, duration); // root
-        myNotes[2] = new NumberNote(majorScale[1], octave, velocity, start, duration); // third
-        myNotes[3] = new NumberNote(majorScale[3], octave, velocity, start, duration); // fifth
+        myNotes[0] = new NumberNote(majorScale[6], 2, velocity, startMeasure, startBeat, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[6], octave, velocity, startMeasure, startBeat, duration); // root
+        myNotes[2] = new NumberNote(majorScale[1], octave, velocity, startMeasure, startBeat, duration); // third
+        myNotes[3] = new NumberNote(majorScale[3], octave, velocity, startMeasure, startBeat, duration); // fifth
         break;
       default:
         System.out.println("I'm not smart enough to handle the " + symbol + " chord yet :(");
@@ -67,8 +67,8 @@ class Chord{
     return symbol;
   }
   
-  public String getNote(int index){
-    return myNotes[index].getPitch();
+  public NumberNote getNote(int index){
+    return myNotes[index];
   }
   
   public NumberNote[] getNotes(){

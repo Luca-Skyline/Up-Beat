@@ -31,13 +31,41 @@ class Fragment{
     //start with rhythm of melody
     melody = new NumberNote[(4*measures)-3];
     float[] weights = {melodyComplexity - 1.0, 2.0 - melodyComplexity};
-    for(int i = (4 * measures) - 1; i >= 0 ; i--){
-      if (i % 2 == 0 || weightedRandomChoice(weights) == 1){ //strong beat: yes melody note, weak beat: maybe melody note
-        String[] noteOptions = new String[3];
-        for(int j = 0; j < 3; j++){
-          noteOptions[j] = chords[i/2].getNote(j+1);
+    int randomIndex = int(random(1, 4)); // random number 1, 2, or 3
+    NumberNote chordNote = chords[(2*measures)-2].getNote(randomIndex);
+    melody[(4*measures) - 4] = new NumberNote(chordNote.getPitch(), 5, 1, measures, 1, 4);
+    for(int i = (4 * measures) - 5; i >= 0 ; i--){
+      if (i % 2 == 0){ //strong beat: yes melody note
+        randomIndex = int(random(1, 4)); // random number 1, 2, or 3
+        chordNote = chords[i/2].getNote(randomIndex);
+        int duration;
+        if(melody[i+1] == null){duration = 2;}
+        else{duration = 1;}
+        melody[i] = new NumberNote(chordNote.getPitch(), 5, 1, i/4, i%4, duration);
+        
+      }
+      else if(weightedRandomChoice(weights) == 1){  //weak beat: maybe melody note
+        NumberNote target = melody[i+1];
+        if(target == null){
+          System.out.println("Big problem");
         }
-        //continue working here
+        int targetIndex = Arrays.asList(scale).indexOf(target.getPitch());
+        int myIndex = targetIndex + 1 + (-2 * int(random(2)));
+        if(myIndex == -1){
+          myIndex = 6;
+        }
+        else if(myIndex == 7){
+          myIndex = 0;
+        }
+        melody[i] = new NumberNote(scale[myIndex], 5, 1, i/4, i%4, 1);
+      }
+    }
+    for (int i = 0; i < melody.length; i++){
+      if(melody[i] == null){
+        System.out.print("- ");
+      }
+      else{
+        System.out.print(melody[i].getPitch() + " ");
       }
     }
   }
@@ -95,7 +123,21 @@ class Fragment{
   }
   
   NumberNote[] getNotes(){
-    return melody; // NEEDS TO BE NOTES FROM MELODY, CHORDS, AND EVERYTHING ELSE
+    ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();
+    for(Chord c : chords){
+      NumberNote[] chordNotes = c.getNotes();
+      for(NumberNote n : chordNotes){
+        finalList.add(n);
+      }
+    }
+    for(NumberNote n : melody){
+      if(n != null){
+        finalList.add(n);
+      }
+    }
+    
+    NumberNote[] finalArray = new NumberNote[finalList.size()];
+    return finalList.toArray(finalArray); // NEEDS TO BE NOTES FROM MELODY, CHORDS, AND EVERYTHING ELSE
   }
   
 }

@@ -4,10 +4,15 @@
 
 ## Instructions for Running Group Project (UpBeat)
 
-- Download and unzip repository
+- Ensure you have an internet connection
+- Download and unzip thiis repository
 - Navigate to RIBIT-REPO/src/musicApp
 - Open RoughSketch.pde in Processing
-- Run Code
+- At top right corner of Processing IDE, select "Java"
+- Click "Mange Modes..."
+- Go to the "Libraries"
+- Search for "The MidiBus". When it appears, click it and hit "Install".
+- Close intall menu and run code
 
 ## Members
 

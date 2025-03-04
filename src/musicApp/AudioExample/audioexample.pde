@@ -44,7 +44,7 @@ void setup() {
   
   for (int i=0; i<keysPressed.length; i++) {
     keysPressed[i] = false;
-    myBus.sendNoteOff(i!=9 ? i : 18, 60+i, 127);
+    myBus.sendNoteOff(i, 60+i, 127);
   } //for safety!
 }
 
@@ -65,7 +65,7 @@ void draw() {
   if (!keyPressed) {
     for (int i=0; i<keysPressed.length; i++) {
       keysPressed[i] = false;
-      myBus.sendNoteOff(i!=9 ? i : 18, 60+i, 127);
+      myBus.sendNoteOff(i, 60+i, 127);
     } //for safety!
   }
 }
@@ -76,7 +76,7 @@ void keyPressed() {
   for (int i=0; i<keysPressed.length; i++) {
     if (key == keyString.charAt(i)) {
       keysPressed[i] = true;
-      myBus.sendNoteOn(i!=9 ? i : 18, 60+i, 127); //channel, pitch, velocity
+      myBus.sendNoteOn(i, 60+i, 127); //channel, pitch, velocity
     }
   }
 }

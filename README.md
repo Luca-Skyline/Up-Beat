@@ -12,7 +12,7 @@
 - Click "Mange Modes..."
 - Go to the "Libraries"
 - Search for "The MidiBus". When it appears, click it and hit "Install".
-- Close intall menu and run code
+- Close install menu and run code
 
 ## Members
 

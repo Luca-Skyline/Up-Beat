@@ -50,7 +50,7 @@ Class Diagram - Luca DalCanto
 
 GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUI_Complete.png?raw=true" width="600" />
+<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUI_Done.png?raw=true" width="600" />
 
 #### To-Do List of maybes
 - make look different based on mood of song

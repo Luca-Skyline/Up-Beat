@@ -22,7 +22,7 @@ Song[] mySongs;
 //          
 void setup() {
   size(1200,700);
-  logo = loadImage("UpBeatLogo.png");
+  logo = loadImage("BlueUpBeat.png");
   logo.resize(350,350);
   pixel = createFont("pixel.ttf",30);
   textFont(pixel);

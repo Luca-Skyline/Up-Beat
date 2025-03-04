@@ -53,6 +53,8 @@ class Button {
 //TODO/IDEAS for zack ;;
 // GET A BACK AND NEXT BUTTON WORKING - make 2 types of buttons: 1 that just goes next/back
 // and one that is a toggle (glows or smth once selected and clicking next stores that info (somehow??) lol) 
+// have a HIGHLIGHT MODE that adds the shadow thing behind each box on screen (do this in main) (ok but maybe not each box? ;-;
+
 // https://coolors.co/ef798a-f7a9a8-ba96b0-9c8cb4-7d82b8-7672a8-6f6197-613f75-a381a3-e5c3d1           lmao
 // - more phases for options, 
 //SECONDARY things

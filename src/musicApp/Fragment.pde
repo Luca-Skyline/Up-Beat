@@ -18,9 +18,9 @@ class Fragment{
   
   public void generateChords(){
     chords = new Chord[(2*measures) - 1];
-    chords[(2*measures) - 2] = new Chord("I", scale, 4, 1, measures, 1, 4); //last chord in root position, whole note
+    chords[(2*measures) - 2] = new Chord("I", scale, 4, 1, (2*measures) - 2, 4); //last chord in root position, whole note
     for(int i = (2*measures) - 3; i >= 0; i--){
-      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 4, 1, (i+2)/2, 1+(2*(i%2)), 2);
+      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 4, 1, i, 2);
     }
     for(int i = 0; i < chords.length; i++){
       System.out.print(chords[i].getSymbol() + " ");
@@ -33,7 +33,7 @@ class Fragment{
     float[] weights = {melodyComplexity - 1.0, 2.0 - melodyComplexity};
     int randomIndex = int(random(1, 4)); // random number 1, 2, or 3
     NumberNote chordNote = chords[(2*measures)-2].getNote(randomIndex);
-    melody[(4*measures) - 4] = new NumberNote(chordNote.getPitch(), 5, 1, measures, 1, 4);
+    melody[(4*measures) - 4] = new NumberNote(chordNote.getPitch(), 5, 1, (4*measures) - 4, 4);
     for(int i = (4 * measures) - 5; i >= 0 ; i--){
       if (i % 2 == 0){ //strong beat: yes melody note
         randomIndex = int(random(1, 4)); // random number 1, 2, or 3
@@ -41,7 +41,7 @@ class Fragment{
         int duration;
         if(melody[i+1] == null){duration = 2;}
         else{duration = 1;}
-        melody[i] = new NumberNote(chordNote.getPitch(), 5, 1, i/4, (i%4)+1, duration);
+        melody[i] = new NumberNote(chordNote.getPitch(), 5, 1, i, duration);
         
       }
       else if(weightedRandomChoice(weights) == 1){  //weak beat: maybe melody note
@@ -57,7 +57,7 @@ class Fragment{
         else if(myIndex == 7){
           myIndex = 0;
         }
-        melody[i] = new NumberNote(scale[myIndex], 5, 1, i/4, i%4, 1);
+        melody[i] = new NumberNote(scale[myIndex], 5, 1, i, 1);
       }
     }
     for (int i = 0; i < melody.length; i++){

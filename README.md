@@ -64,10 +64,6 @@ GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUI_Complete.png?raw=true" width="600" />
 
-Diffrent Poposed Color Variation
-
-Orginal Paper Sketch 
-
 #### To-Do List of maybes
 - make look different based on mood of song
 

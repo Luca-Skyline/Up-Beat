@@ -6,7 +6,7 @@ class Scrollbar {
   boolean over;           // is the mouse over the slider?
   boolean locked;
   float ratio;
-  String phase, parameter;
+  String phase, parameter, txt;
   int rangeOne, rangeTwo; // range of values i want to display
   Scrollbar (float xp, float yp, int sw, int sh, String phase, String parameter, int rangeOne, int rangeTwo) {
     this.phase = phase;
@@ -23,6 +23,7 @@ class Scrollbar {
     sposMax = xpos + swidth - sheight;
     this.rangeOne = rangeOne;
     this.rangeTwo = rangeTwo;
+    this.txt = "";
   }
   
   void update() {
@@ -59,7 +60,8 @@ class Scrollbar {
   }
 
   void display() {
-    text(round(map(spos, xpos, xpos+swidth-sheight, rangeOne, rangeTwo)) + " " + parameter, xpos+swidth/2, ypos-sheight);
+    txt = str(round(map(spos, xpos, xpos+swidth-sheight, rangeOne, rangeTwo)));
+    text(txt + " " + parameter, xpos+swidth/2, ypos-sheight);
     noStroke();
     fill(204);
     rect(xpos, ypos, swidth, sheight);

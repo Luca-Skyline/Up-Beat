@@ -6,7 +6,7 @@ boolean firstMousePress = false;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[9];
+Button[] buttons = new Button[10];
 Scrollbar[] myScrolls = new Scrollbar[1];
 PImage logo;
 PFont pixel;
@@ -32,21 +32,21 @@ void setup() {
   globalPhase = "mainMenu";
   //this list of buttons and later sliders and stuff is going to be SUPER long uhm ;-;
   //what i plan on doing is putting all of the buttons and sliders and wheels and widgets into a giant text file then just reading from it :p
-  buttons[0] = new Button(850, 150, 300, 100, "Generate New Song", "mainMenu", "q1", "newSong");
+  buttons[0] = new Button(850, 150, 300, 100, "Generate New Song", "mainMenu", "qGenre", "newSong");
   buttons[1] = new Button(850, 300, 300, 100, "Load Old Song", "mainMenu", "old", "oldSong");
   buttons[2] = new Button(850, 450, 300, 100, "Settings", "mainMenu", "settings", "TEMP");
   
-  //this makes it go from q1 to q3 an im going insane laksdjflkasdjflkasdjf
-  buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "q1", "q2", "classical");
-  buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "q1", "q2", "pop");
-  buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "q1", "q2", "skyline");
-  //deleting these next 3 buttons makes it work but why
-  buttons[6] = new Button(200, 350, 250, 70, "1:00", "q2", "q3", "1:00");
-  buttons[7] = new Button(500, 350, 250, 70, "1:30", "q2", "q3", "1:30");
-  buttons[8] = new Button(800, 350, 250, 70, "2:00", "q2", "q3", "2:00");
+  buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "qGenre", "qLength", "classical");
+  buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "qGenre", "qLength", "pop");
+  buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "qGenre", "qLength", "skyline");
   
-  myScrolls[0] = new Scrollbar(width/2-200, height/2+100, 400, 50, "q3", "bpm", 60, 200);
-
+  buttons[6] = new Button(200, 350, 250, 70, "1:00", "qLength", "qTempo", "1:00");
+  buttons[7] = new Button(500, 350, 250, 70, "1:30", "qLength", "qTempo", "1:30");
+  buttons[8] = new Button(800, 350, 250, 70, "2:00", "qLength", "qTempo", "2:00");
+  
+  myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 50, "qTempo", "bpm", 60, 200);
+  buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "q4", myScrolls[0].txt);
+  
   pop = false;  
   classical = false;
   stroke(#1D201F);
@@ -81,6 +81,7 @@ void draw() {
   quad(600,height,620,height,820,0,800,0);
   text(globalPhase, 50, 50);
   //case switch statement would be ideal for "phases" or screens
+  
   if (globalPhase == "mainMenu") {
   textSize(80);
   fill(150);
@@ -108,25 +109,33 @@ void draw() {
   fill(255);
   //1st question -z
   //make this a case switch statement
-  if (globalPhase == "q1") {
-    fill(255);
-    text("What genre of song would you like your song to be?", width/2, 200);
-  }
-  if (globalPhase == "q2") {
-   fill(255);
-   //textSize(30);
-   text("How long would you like your song to be?", width/2, 80);
-  }
-  if (globalPhase == "q3") {
-    textSize(30);
-    text("what tempo would you like your song to be?", width/2, 180);
-  }
-  if (globalPhase == "old" || globalPhase == "settings") {
-   textSize(50);
-   text("work in progress c:", width/2, height/2);
-  }
+  switch (globalPhase) {
+    case "qGenre":
+      fill(255);
+      text("What genre of song would you like your song to be?", width/2, 200);
+      break;
+      
+    case "qLength": 
+      fill(255);
+      //textSize(30);
+      text("How long would you like your song to be?", width/2, 80);
+      break;
+      
+    case "qTempo":
+      textSize(30);
+      text("what tempo would you like your song to be?", width/2, 180);
+      break;
+    case "old":
+      textSize(50);
+      text("work in progress c:", width/2, height/2);
+      break;
+    case "settings":
+      textSize(50);
+      text("work in progress c:", width/2, height/2);
+      break;
   //fill(100, 70);               tint over the whole screen lol
   //rect(0,0,width,height);
+  }
 }
 
 //this is Luca's way to test his stuff in the console for rn so he can have an entry point.
@@ -139,8 +148,10 @@ void lucaTest(){
 void mousePressed() {
  for (int i=0; i<buttons.length; i++) {
      if (globalPhase == buttons[i].localPhase) {
+       if (buttons[i].on == true) {
        globalPhase = buttons[i].inside();
        break;
+       }
      }
    }
 }

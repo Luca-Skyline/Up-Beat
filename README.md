@@ -48,18 +48,6 @@ Class Diagram - Luca DalCanto
 
 ### User Interaction (Zach, Maggie, Jenna)
 
-Start Screen - Jenna Tran
-
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_1.png?raw=true" width="400" />
-
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_5.png?raw=true" width="400" />
-
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_2.png?raw=true" width="400" />
-
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_6.png?raw=true" width="400" />
-
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/Theme_3.png?raw=true" width="400" />
-
 GUI Mockup (Step-By-Step Pages/Screens)- Jenna Tran
 
 <img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/main/images/GUI_Complete.png?raw=true" width="600" />

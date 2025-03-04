@@ -6,7 +6,7 @@ boolean firstMousePress = false;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[10];
+Button[] buttons = new Button[24];
 Scrollbar[] myScrolls = new Scrollbar[1];
 PImage logo;
 PFont pixel;
@@ -47,6 +47,26 @@ void setup() {
   myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 50, "qTempo", "bpm", 60, 200);
   buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt);
   
+  buttons[10] = new Button(400, 250, 250, 70, "2/4", "qSign", "qKey", "2/4");
+  buttons[11] = new Button(800, 250, 250, 70, "3/4", "qSign", "qKey", "3/4");
+  buttons[12] = new Button(400, 550, 250, 70, "4/4", "qSign", "qKey", "4/4");
+  buttons[13] = new Button(800, 550, 250, 70, "6/8", "qSign", "qKey", "6/8");
+  
+  buttons[14] = new Button(800, 550, 250, 70, "Next", "qKey", "qInstruments", "filler");
+  
+  buttons[15] = new Button(400, 250, 250, 70, "Piano", "qInstruments", "preview", "Piano");  //big todo: make these toggles 
+  buttons[16] = new Button(800, 250, 250, 70, "Violin", "qInstruments", "preview", "Violin");//so that you can have multiple
+  buttons[17] = new Button(400, 550, 250, 70, "Trumpet", "qInstruments", "preview", "Trumpet");//instruments
+  buttons[18] = new Button(800, 550, 250, 70, "Flute", "qInstruments", "preview", "Flute");
+  
+  buttons[19] = new Button(800, 550, 250, 70, "Next", "preview", "play", "execute");
+  
+  buttons[20] = new Button(800, 550, 250, 70, "Finish", "play", "qName", "stop");
+  
+  buttons[21] = new Button(800, 550, 250, 70, "Next", "qName", "qSave", "filler");
+                                               //filler here ^^^ will become what is in the textbox once next is clicked
+  buttons[22] = new Button(400, 550, 250, 70, "Yes", "qSave", "mainMenu", "yesSave");
+  buttons[23] = new Button(800, 550, 250, 70, "No", "qSave", "mainMenu", "noSave");
   pop = false;  
   classical = false;
   stroke(#1D201F);
@@ -72,6 +92,7 @@ void draw() {
       stroke(c);
       line(width-(2*inter2), height, width, (height-(2*i))); //swapping height for 0 is very funny (and interesting) line(inter2-i, 0, width, i);
     }  
+    //UNIVERSAL BACKGROUND
   noStroke();
   fill(#f7b4e1); 
   quad(800,0,width,0,width,height,600,height);
@@ -79,17 +100,19 @@ void draw() {
   quad(1050,0,width,0,width,height,850,height); //aaaaaa these pinks hurt my eyes,,,, so bright./ ;-;
   fill(255);
   quad(600,height,620,height,820,0,800,0);
-  text(globalPhase, 50, 50);
+  text(globalPhase, 75, height-50);   //FOR DEBUG PURPOSES
   //case switch statement would be ideal for "phases" or screens
   
   if (globalPhase == "mainMenu") {
+    //MAIN MENU BACKGROUND
   textSize(80);
-  fill(150);
-  text("Welcome to", 300, 156);
+  fill(#df5594);
+  text("Welcome to", 300, 155);
   fill(255);
   text("Welcome to", 300, 150); 
   textSize(30);
   image(logo, 300,400);
+  quad(580,height,587,height,787,0,780,0);
   }
   
   //rendering buttons -z
@@ -112,7 +135,7 @@ void draw() {
   switch (globalPhase) {
     case "qGenre":
       fill(255);
-      text("What genre of song would you like your song to be?", width/2, 200);
+      text("What genre of music would you like your song to be?", width/2, 80);
       break;
       
     case "qLength": 
@@ -123,13 +146,19 @@ void draw() {
       
     case "qTempo":
       textSize(30);
-      text("what tempo would you like your song to be?", width/2, 180);
+      text("What tempo would you like your song to be?", width/2, 80);
       break;
     case "qSign":
     textSize(75);
       text("Time Signature", width/4, 50);
       textSize(20);
       text("Specifies how many note values of a particular type\nare contained in each measure (bar)", width/4, 80);
+      textSize(30);
+      break;
+    case "qKey": 
+      text("Select Key Signature:", width/2, 50);
+      textSize(20);
+      text("Combinations of sharps or flats indicating the key of a composition (WIP currently)", width/2, 80);
       break;
     case "old":
       textSize(50);

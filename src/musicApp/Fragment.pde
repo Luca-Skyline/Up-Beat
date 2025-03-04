@@ -27,7 +27,7 @@ class Fragment{
     }
   }
   
-  void generateMelody(){
+  public void generateMelody(){
     //start with rhythm of melody
     melody = new NumberNote[(4*measures)-3];
     float[] weights = {melodyComplexity - 1.0, 2.0 - melodyComplexity};
@@ -41,7 +41,7 @@ class Fragment{
         int duration;
         if(melody[i+1] == null){duration = 2;}
         else{duration = 1;}
-        melody[i] = new NumberNote(chordNote.getPitch(), 5, 1, i/4, i%4, duration);
+        melody[i] = new NumberNote(chordNote.getPitch(), 5, 1, i/4, (i%4)+1, duration);
         
       }
       else if(weightedRandomChoice(weights) == 1){  //weak beat: maybe melody note
@@ -122,7 +122,7 @@ class Fragment{
     return weights.length - 1;
   }
   
-  NumberNote[] getNotes(){
+  public NumberNote[] getNotes(){
     ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();
     for(Chord c : chords){
       NumberNote[] chordNotes = c.getNotes();

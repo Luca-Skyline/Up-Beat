@@ -14,7 +14,7 @@ class NumberNote{
   
   private float duration;
   
-  public NumberNote(String letterNote, int octave, float velocity, float startMeasure, float startBeat, float duration){
+  public NumberNote(String letterNote, int octave, float velocity, float beat, float duration){
     this.velocity = velocity;
     this.velocity = 127;
     

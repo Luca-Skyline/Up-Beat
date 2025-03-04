@@ -1,4 +1,4 @@
-// Luca DalCanto
+// Luca DalCanto and Micah Tien
 
 import java.util.Arrays;
 import java.util.Random;
@@ -71,6 +71,11 @@ abstract class Song {
     NumberNote[] finalArray = new NumberNote[finalList.size()];
     finalArray = finalList.toArray(finalArray);
     
-    
+    for (int i=0; i<finalArray.length; i++) {
+      NumberNote nNote = finalArray[i];
+      int tempo = 120; //change later
+      
+      
+    }
   }
 }

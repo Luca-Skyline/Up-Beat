@@ -87,6 +87,7 @@ void setup() {
   //mySongs[1] = new PopSong();
   
   instantiateMidiBus();
+  NumberNote testNote = new NumberNote("A", 4, 127, 2, 1, 1);
 }
 
 

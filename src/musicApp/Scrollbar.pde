@@ -1,3 +1,5 @@
+//made my Micah Tien fr fr ong fr ong ong fr ong fr 
+// slash j
 class Scrollbar {
   int swidth, sheight;    // width and height of bar
   float xpos, ypos;       // x and y position of bar

@@ -45,7 +45,7 @@ void setup() {
   buttons[8] = new Button(800, 350, 250, 70, "2:00", "qLength", "qTempo", "2:00");
   
   myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 50, "qTempo", "bpm", 60, 200);
-  buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "q4", myScrolls[0].txt);
+  buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt);
   
   pop = false;  
   classical = false;
@@ -124,6 +124,12 @@ void draw() {
     case "qTempo":
       textSize(30);
       text("what tempo would you like your song to be?", width/2, 180);
+      break;
+    case "qSign":
+    textSize(75);
+      text("Time Signature", width/4, 50);
+      textSize(20);
+      text("Specifies how many note values of a particular type\nare contained in each measure (bar)", width/4, 80);
       break;
     case "old":
       textSize(50);

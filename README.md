@@ -82,7 +82,3 @@ Now the program will run, but it won't synthesize sound. MacOS doesn't have any 
 2. Double click on **Empty Project**
 3. Select the **MIDI** track
 4. Optionally, you could press *Command + K* to see a keyboard of the MIDI notes being sequenced.
-
-
-Gui Link (Ignore) 
-https://app.diagrams.net/?src=about#LGui%201.1#%7B%22pageId%22%3A%22QWHKRHqg2Ia4UdQYpaNl%22%7D

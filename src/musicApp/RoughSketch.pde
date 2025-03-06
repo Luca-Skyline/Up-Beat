@@ -11,6 +11,8 @@
 
 
 //import statements for MIDI, scanners, etc. here
+import controlP5.*;
+ControlP5 cp5;
 
 String globalPhase;
 boolean firstMousePress = false;
@@ -24,7 +26,7 @@ PImage logo;
 PFont pixel;
 import themidibus.*;
 MidiBus basicBus;
-
+String[] textBoxes;
 
 Song[] mySongs;
 
@@ -42,6 +44,7 @@ void setup() {
   textFont(pixel);
   textAlign(CENTER);
   imageMode(CENTER);
+  cp5 = new ControlP5(this);
   textSize(25); 
   globalPhase = "mainMenu";
   //this list of buttons and later sliders and stuff is going to be SUPER long uhm ;-;
@@ -89,6 +92,8 @@ void setup() {
   //mySongs[1] = new PopSong();
   
   instantiateMidiBus();
+  
+  cp5.setPosition(20,20).addTextfield("").setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }
 
 
@@ -220,4 +225,15 @@ void instantiateMidiBus() {
     println("eww linux");
   } 
   
+}
+
+//erm
+//textbox things??../12/? stuff!@?>?
+void controlEvent(ControlEvent theEvent) {
+  if(theEvent.isAssignableFrom(Textfield.class)) {
+    println("controlEvent: accessing a string from controller '"
+            +theEvent.getName()+"': "
+            +theEvent.getStringValue()
+            );
+  }
 }

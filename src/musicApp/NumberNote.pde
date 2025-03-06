@@ -44,7 +44,7 @@ class NumberNote{
     return this.letterNote;
   }
   
-  //made by Jenna Tran
+  //made by Honeyman Tien
   public int stringLength(String str) {
     int inc = 0;
     for (int i=0; i<str.length(); i++) {

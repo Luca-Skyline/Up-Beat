@@ -28,6 +28,8 @@ MidiBus basicBus;
 
 Song[] mySongs;
 
+String keY, measures;
+
 
 //     TO DO : slider for chaos level and tempo, buttons for key and 
 //             time signature and type of song (classical/pop for now) ;p
@@ -52,26 +54,26 @@ void setup() {
   buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "qGenre", "qLength", "pop");
   buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "qGenre", "qLength", "skyline");
   
-  buttons[6] = new Button(200, 350, 250, 70, "1:00", "qLength", "qTempo", "1:00");
+  buttons[6] = new Button(200, 350, 250, 70, "", "qLength", "qTempo", "1:00");
   buttons[7] = new Button(500, 350, 250, 70, "1:30", "qLength", "qTempo", "1:30");
   buttons[8] = new Button(800, 350, 250, 70, "2:00", "qLength", "qTempo", "2:00");
   
-  myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 50, "qTempo", "bpm", 60, 200);
+  myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 30, "qTempo", "bpm", 60, 200);
   buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt);
   
   buttons[10] = new Button(400, 250, 250, 70, "2/4", "qSign", "qKey", "2/4");
   buttons[11] = new Button(800, 250, 250, 70, "3/4", "qSign", "qKey", "3/4");
-  buttons[12] = new Button(400, 550, 250, 70, "4/4", "qSign", "qKey", "4/4");
-  buttons[13] = new Button(800, 550, 250, 70, "6/8", "qSign", "qKey", "6/8");
+  buttons[12] = new Button(400, 400, 250, 70, "4/4", "qSign", "qKey", "4/4");
+  buttons[13] = new Button(800, 400, 250, 70, "6/8", "qSign", "qKey", "6/8");
   
   buttons[14] = new Button(800, 550, 250, 70, "Next", "qKey", "qInstruments", "filler");
   
   buttons[15] = new Button(400, 250, 250, 70, "Piano", "qInstruments", "preview", "Piano");  //big todo: make these toggles 
   buttons[16] = new Button(800, 250, 250, 70, "Violin", "qInstruments", "preview", "Violin");//so that you can have multiple
-  buttons[17] = new Button(400, 550, 250, 70, "Trumpet", "qInstruments", "preview", "Trumpet");//instruments
-  buttons[18] = new Button(800, 550, 250, 70, "Flute", "qInstruments", "preview", "Flute");
+  buttons[17] = new Button(400, 400, 250, 70, "Trumpet", "qInstruments", "preview", "Trumpet");//instruments
+  buttons[18] = new Button(800, 400, 250, 70, "Flute", "qInstruments", "preview", "Flute");
   
-  buttons[19] = new Button(800, 550, 250, 70, "Next", "preview", "play", "execute");
+  buttons[19] = new Button(800, 550, 250, 70, "Next", "preview", "play", "execute"  );
   
   buttons[20] = new Button(800, 550, 250, 70, "Finish", "play", "qName", "stop");
   
@@ -169,6 +171,11 @@ void draw() {
       text("Select Key Signature:", width/2, 50);
       textSize(20);
       text("Combinations of sharps or flats indicating the key of a composition (WIP currently)", width/2, 80);
+      textSize(30);
+      break;
+    case "qInstruments": 
+    textSize(30);
+      text("Select which instrument you would like your song to be played by", width/2, 50);
       break;
     case "old":
       textSize(50);

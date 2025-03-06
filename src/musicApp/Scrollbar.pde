@@ -64,15 +64,20 @@ class Scrollbar {
   void display() {
     txt = str(round(map(spos, xpos, xpos+swidth-sheight, rangeOne, rangeTwo)));
     text(txt + " " + parameter, xpos+swidth/2, ypos-sheight);
+    text(rangeTwo, xpos+swidth+sheight, ypos+sheight*(.65));
+    text(rangeOne, xpos-sheight, ypos+sheight*(.65));
     noStroke();
-    fill(204);
-    rect(xpos, ypos, swidth, sheight);
-    if (over || locked) {
-      fill(0, 0, 0);
+    fill(#5f757a);
+    rect(xpos, ypos, swidth, sheight,20);
+    if (locked) {
+      fill(#9ab0b5);
     } else {
-      fill(102, 102, 102);
+      
+      fill(#8da1a6);
+      
     }
-    rect(spos, ypos, sheight, sheight);
+    
+    circle(spos+sheight/2, ypos+sheight/2, sheight+sheight/2);
   }
 
   float getPos() {

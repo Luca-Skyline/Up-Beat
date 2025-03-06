@@ -61,3 +61,4 @@ class Button {
 //
 // - customizable color pallete
 // - settings tab for color pallette, screen size, textSize, 
+//https://stackoverflow.com/questions/17634070/how-can-i-make-a-textbox-function-in-processing

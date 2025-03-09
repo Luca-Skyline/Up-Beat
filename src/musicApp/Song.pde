@@ -2,6 +2,7 @@
 
 import java.util.Arrays;
 import java.util.Random;
+import themidibus.*;
 
 abstract class Song {
   protected int measures;

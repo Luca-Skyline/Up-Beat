@@ -12,6 +12,7 @@
 
 //import statements for MIDI, scanners, etc. here
 import controlP5.*;
+import themidibus.*;
 ControlP5 cp5;
 
 String globalPhase;
@@ -24,7 +25,6 @@ Button[] buttons = new Button[24];
 Scrollbar[] myScrolls = new Scrollbar[1];
 PImage logo;
 PFont pixel;
-import themidibus.*;
 MidiBus basicBus;
 String[] textBoxes;
 
@@ -133,12 +133,13 @@ void draw() {
   }
   
   //rendering buttons -z
-    for (int i=0; i<buttons.length; i++) {
-     if (globalPhase == buttons[i].localPhase) {
-       buttons[i].display();
-       buttons[i].hover(mouseX, mouseY);
-     }
-   }
+  for (int i=0; i<buttons.length; i++) {
+    if (globalPhase == buttons[i].localPhase) {
+      buttons[i].display();
+      buttons[i].hover(mouseX, mouseY);
+    }
+  }
+  
   //rendering scrollbars smiley face -z
   for (int i=0; i<myScrolls.length; i++) {
      if (globalPhase == myScrolls[i].phase) {

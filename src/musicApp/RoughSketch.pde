@@ -32,6 +32,7 @@ Song[] mySongs;
 MIDINote[] MIDINotes;
 int startMillis;
 float lastBeat;
+Jingle j;
 
 String keY, measures;
 
@@ -98,6 +99,7 @@ void setup() {
   MIDINotes = new MIDINote[0];
   startMillis = 0;
   lastBeat = 0;
+  j = new Jingle("C", 4);
   
   cp5.setPosition(20,20).addTextfield("").setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }
@@ -239,6 +241,10 @@ void mousePressed() {
        }
      }
    }
+}
+
+void mouseReleased() {
+  playSong(j);
 }
 
 //function made by Micah Tien

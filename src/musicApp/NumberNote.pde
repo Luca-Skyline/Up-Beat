@@ -25,9 +25,17 @@ class NumberNote {
     this.beat = beat;
     this.duration = duration;
   }
+  
+  public int getOctave(){
+    return octave;
+  }
 
   public String getPitch() {
     return this.letterNote;
+  }
+  
+  public float getBeat(){
+    return beat;
   }
 
 

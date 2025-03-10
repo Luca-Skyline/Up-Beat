@@ -5,10 +5,12 @@ class Chord{
   private float start;
   private float duration;
   private String symbol;
+  private float beat;
   
-  public Chord(String symbol, String[] majorScale, int octave, int velocity, float beat, float duration){
+  public Chord(String symbol, String[] majorScale, int octave, float velocity, float beat, float duration){
     
     this.symbol = symbol;
+    this.beat = beat;
     myNotes = new NumberNote[4];
     
     switch(symbol){
@@ -69,6 +71,10 @@ class Chord{
   
   public NumberNote getNote(int index){
     return myNotes[index];
+  }
+  
+  public float getBeat(){
+    return beat;
   }
   
   public NumberNote[] getNotes(){

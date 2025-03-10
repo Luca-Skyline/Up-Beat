@@ -18,13 +18,19 @@ class Fragment{
   
   public void generateChords(){
     chords = new Chord[(2*measures) - 1];
-    chords[(2*measures) - 2] = new Chord("I", scale, 4, 1, (2*measures) - 2, 4); //last chord in root position, whole note
+    chords[(2*measures) - 2] = new Chord("I", scale, 4, 1, (4*measures) - 3, 3); //last chord in root position, whole note
     for(int i = (2*measures) - 3; i >= 0; i--){
-      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 4, 1, i, 2);
+      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, .1, (i*2)+1, 2);
     }
     for(int i = 0; i < chords.length; i++){
-      System.out.print(chords[i].getSymbol() + " ");
+      System.out.print(chords[i].getSymbol() + "  ");
+      //for(NumberNote note : chords[i].getNotes()){
+      //  System.out.println(note.getPitch() + " " + note.getOctave());
+      //}
     }
+    System.out.println();
+    //chords = new Chord[1];
+    //chords[0] = new Chord("V", scale, 4, 1, 1, 4);
   }
   
   public void generateMelody(){
@@ -33,7 +39,7 @@ class Fragment{
     float[] weights = {melodyComplexity - 1.0, 2.0 - melodyComplexity};
     int randomIndex = int(random(1, 4)); // random number 1, 2, or 3
     NumberNote chordNote = chords[(2*measures)-2].getNote(randomIndex);
-    melody[(4*measures) - 4] = new NumberNote(chordNote.getPitch(), 5, 1, (4*measures) - 4, 4);
+    melody[(4*measures) - 4] = new NumberNote(chordNote.getPitch(), 6, 1, (4*measures) - 3, 3);
     for(int i = (4 * measures) - 5; i >= 0 ; i--){
       if (i % 2 == 0){ //strong beat: yes melody note
         randomIndex = int(random(1, 4)); // random number 1, 2, or 3
@@ -41,7 +47,7 @@ class Fragment{
         int duration;
         if(melody[i+1] == null){duration = 2;}
         else{duration = 1;}
-        melody[i] = new NumberNote(chordNote.getPitch(), 5, 1, i, duration);
+        melody[i] = new NumberNote(chordNote.getPitch(), 5, 1, i+1, duration);
         
       }
       else if(weightedRandomChoice(weights) == 1){  //weak beat: maybe melody note
@@ -57,7 +63,7 @@ class Fragment{
         else if(myIndex == 7){
           myIndex = 0;
         }
-        melody[i] = new NumberNote(scale[myIndex], 5, 1, i, 1);
+        melody[i] = new NumberNote(scale[myIndex], 5, 1, i+1, 1);
       }
     }
     for (int i = 0; i < melody.length; i++){
@@ -68,6 +74,7 @@ class Fragment{
         System.out.print(melody[i].getPitch() + " ");
       }
     }
+    //melody = new NumberNote[1];
   }
   
   private String randomChord(String nextChord){ //make private later

@@ -233,7 +233,11 @@ void draw() {
 }
 
 
-
+//to-do: make it so when you click, buttons[i].info will be stored - this will depend on which screen it's on though
+//for example, if(globalPhase == "qGenre") { 
+// genre = buttons[i].info; } etc etc
+//maybe make a whole case switch statement in here? I can't think of an easier way to do this
+//because each individual variable will need to be defined and that depends on which screen we're on
 //makes it so clicking buttons does stuff!! :) -z
 void mousePressed() {
  for (int i=0; i<buttons.length; i++) {

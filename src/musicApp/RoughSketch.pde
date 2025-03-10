@@ -32,12 +32,11 @@ Song[] mySongs;
 MIDINote[] MIDINotes;
 int startMillis;
 float lastBeat;
-int tempo; //length
-//String genre, timeSig, keySig, songName;
+int tempo, songLength;
+String genre, timeSig, keySig, songName, instrument;
 
 Jingle j;
 
-String keY, measures;
 
 
 //     TO DO : slider for chaos level and tempo, buttons for key and 
@@ -64,9 +63,9 @@ void setup() {
   buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "qGenre", "qLength", "pop");
   buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "qGenre", "qLength", "skyline");
   
-  buttons[6] = new Button(200, 350, 250, 70, "", "qLength", "qTempo", "1:00");
-  buttons[7] = new Button(500, 350, 250, 70, "1:30", "qLength", "qTempo", "1:30");
-  buttons[8] = new Button(800, 350, 250, 70, "2:00", "qLength", "qTempo", "2:00");
+  buttons[6] = new Button(200, 350, 250, 70, "4 measures", "qLength", "qTempo", "4");
+  buttons[7] = new Button(500, 350, 250, 70, "8 measures", "qLength", "qTempo", "8");
+  buttons[8] = new Button(800, 350, 250, 70, "16 measures", "qLength", "qTempo", "16");
   
   myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 30, "qTempo", "bpm", 60, 200);
   buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt);
@@ -106,7 +105,7 @@ void setup() {
   
   j = new Jingle("G", 4);
   
-  cp5.setPosition(20,20).addTextfield("").setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
+  cp5.addTextfield("").setPosition(20,20).setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }
 
 
@@ -115,13 +114,14 @@ void draw() {
   background(10);
   strokeWeight(4); //tinker w/this
   //smooth(); i think this does something ill test :P
-  for (int i = 0; i <= height; i++) {
-      float inter = map(i, 0, height, (-0.2), 1);
-      float inter2 = map(i, 0, height, 0, width);
-      color c = lerpColor(#df5594, #46bbd5, inter); //can tinker w/ this for some fun stff! #46bbd5
-      stroke(c);
-      line(width-(2*inter2), height, width, (height-(2*i))); //swapping height for 0 is very funny (and interesting) line(inter2-i, 0, width, i);
-    }  
+  // new verdict: DEATH TO ALL GRADIENTS
+  //for (int i = 0; i <= height; i++) {
+  //    float inter = map(i, 0, height, (-0.2), 1);
+  //    float inter2 = map(i, 0, height, 0, width);
+  //    color c = lerpColor(#df5594, #46bbd5, inter); //can tinker w/ this for some fun stff! #46bbd5
+  //    stroke(c);
+  //    line(width-(2*inter2), height, width, (height-(2*i))); //swapping height for 0 is very funny (and interesting) line(inter2-i, 0, width, i);
+  //  }  
     //UNIVERSAL BACKGROUND
   noStroke();
   fill(#f7b4e1); 
@@ -178,6 +178,7 @@ void draw() {
     case "qTempo":
       textSize(30);
       text("What tempo would you like your song to be?", width/2, 80);
+      buttons[9].info = myScrolls[0].txt;
       break;
     case "qSign":
     textSize(75);
@@ -196,6 +197,11 @@ void draw() {
     textSize(30);
       text("Select which instrument you would like your song to be played by", width/2, 50);
       break;
+    case "preview": 
+      textSize(75);
+      text("Overview", (width/2)-100, 200);
+      textSize(30);
+      text(genre + "\n" + songLength + "\n" + tempo + "\n" + timeSig + "\n" + keySig + "\n" + instrument, (width/2)-50, height/2);
     case "qName": 
       //buttons[i].info = whatevers in the text box; (i=21 currently)
       break;
@@ -249,29 +255,30 @@ void mousePressed() {
        if (buttons[i].on == true) {
       switch (globalPhase) { 
         case "qGenre": 
-          //genre = buttons[i].info;
+          System.out.println(cp5.get(Textfield.class,"").getText());
+          genre = buttons[i].info;
           break;
         case "qLength": 
-          //length = buttons[i].info;
+          songLength = int(buttons[i].info);
           break;
         case "qTempo": 
-          //tempo = buttons[i].info;
+          tempo = int(buttons[i].info);
           break;
         case "qSign": 
-          //timeSig = buttons[i].info;
+          timeSig = buttons[i].info;
           break;
         case "qKey": 
-          //keySig = buttons[i].info;
+          keySig = buttons[i].info;
           break;
         case "qInstruments": 
-          //instrument = buttons[i].info;  
+          instrument = buttons[i].info;  
           //for instruments you're gonna have to make smth to make it do multiple
           //maybe add a toggleable boolean to button, all instrument buttons are
           //toggleable, so here instruments += all the toggled buttons (use for loop ig)
           //or maybe have instrument1, instrument2, etc.
           break;
         case "qName": 
-          //songName = buttons[i].info; 
+          songName = cp5.get(Textfield.class,"").getText();
           break;
         }
        globalPhase = buttons[i].inside();
@@ -282,7 +289,7 @@ void mousePressed() {
 }
 
 void mouseReleased() {
-  playSong(j);
+  //playSong(j);
 }
 
 //function made by Micah Tien

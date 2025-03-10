@@ -32,7 +32,8 @@ Song[] mySongs;
 MIDINote[] MIDINotes;
 int startMillis;
 float lastBeat;
-int tempo;
+int tempo; //length
+//String genre, timeSig, keySig, songName;
 
 Jingle j;
 
@@ -195,6 +196,9 @@ void draw() {
     textSize(30);
       text("Select which instrument you would like your song to be played by", width/2, 50);
       break;
+    case "qName": 
+      //buttons[i].info = whatevers in the text box; (i=21 currently)
+      break;
     case "old":
       textSize(50);
       text("work in progress c:", width/2, height/2);
@@ -243,6 +247,33 @@ void mousePressed() {
  for (int i=0; i<buttons.length; i++) {
      if (globalPhase == buttons[i].localPhase) {
        if (buttons[i].on == true) {
+      switch (globalPhase) { 
+        case "qGenre": 
+          //genre = buttons[i].info;
+          break;
+        case "qLength": 
+          //length = buttons[i].info;
+          break;
+        case "qTempo": 
+          //tempo = buttons[i].info;
+          break;
+        case "qSign": 
+          //timeSig = buttons[i].info;
+          break;
+        case "qKey": 
+          //keySig = buttons[i].info;
+          break;
+        case "qInstruments": 
+          //instrument = buttons[i].info;  
+          //for instruments you're gonna have to make smth to make it do multiple
+          //maybe add a toggleable boolean to button, all instrument buttons are
+          //toggleable, so here instruments += all the toggled buttons (use for loop ig)
+          //or maybe have instrument1, instrument2, etc.
+          break;
+        case "qName": 
+          //songName = buttons[i].info; 
+          break;
+        }
        globalPhase = buttons[i].inside();
        break;
        }

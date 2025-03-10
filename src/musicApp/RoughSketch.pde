@@ -2,7 +2,7 @@
 // IN ORDER TO TEST OUR PROGRAM,
 // CREATE A NEW INSTANTIATION OF THE "Jingle" CLASS
 // THE JINGLE CLASS TAKES IN A KEY SIGNATURE AND A NUMBER OF MEASURES RIGHT NOW, LIKE SO:
-// Jingle j new Jingle("C", 4);
+// Jingle j = new Jingle("C", 4);
 // LET'S JUST DO FOUR MEASURES FOR RIGHT NOW
 // IN ORDER TO CREATE THE SONG, CALL THE "generate" FUNCTION:
 // j.generate();
@@ -25,10 +25,13 @@ Button[] buttons = new Button[24];
 Scrollbar[] myScrolls = new Scrollbar[1];
 PImage logo;
 PFont pixel;
-MidiBus basicBus;
+MidiBus mBus;
 String[] textBoxes;
 
 Song[] mySongs;
+MIDINote[] MIDINotes;
+int startMillis;
+float lastBeat;
 
 String keY, measures;
 
@@ -92,6 +95,9 @@ void setup() {
   //mySongs[1] = new PopSong();
   
   instantiateMidiBus();
+  MIDINotes = new MIDINote[0];
+  startMillis = 0;
+  lastBeat = 0;
   
   cp5.setPosition(20,20).addTextfield("").setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }
@@ -194,9 +200,36 @@ void draw() {
   //fill(100, 70);               tint over the whole screen lol
   //rect(0,0,width,height);
   }
+  
+  //actually playing songs (Micah)
+  if (MIDINotes.length > 0) {
+    int tempo = 120; //this will get set by zach later;
+    float millisPerBeat = 60000/tempo;
+    
+    float currentBeat = (millis() - startMillis)/millisPerBeat;
+    boolean songEnded = true;
+    for (MIDINote mn : MIDINotes) {
+      float start = mn.getBeat();
+      float end = start + mn.getDuration();
+      if (start > lastBeat && start <= currentBeat) { //beat started between last frame and this frame
+        mBus.sendNoteOn(mn.getPitch(), mn.getPitch(), mn.getVelocity());
+      }
+      if (end > lastBeat && end <= currentBeat) { //beat ended between last frame and this frame
+        mBus.sendNoteOff(mn.getPitch(), mn.getPitch(), mn.getVelocity());
+      }
+      
+      if (currentBeat < end) { //note hasn't been played yet 
+        songEnded = false;
+      }
+    }
+    lastBeat = currentBeat;
+    if (songEnded) MIDINotes = new MIDINote[0]; //songs over, you can stop doing this code
+  }
 }
 
-//makes it so clicking buttons does stuff!! :)
+
+
+//makes it so clicking buttons does stuff!! :) -z
 void mousePressed() {
  for (int i=0; i<buttons.length; i++) {
      if (globalPhase == buttons[i].localPhase) {
@@ -211,21 +244,31 @@ void mousePressed() {
 //function made by Micah Tien
 void instantiateMidiBus() {
   
-  basicBus = new MidiBus();
-  basicBus.registerParent(this);
+  mBus = new MidiBus();
+  mBus.registerParent(this);
   String OS = platformNames[platform];
   if (OS.equals("windows")) {
-    basicBus.addInput(0);
-    basicBus.addOutput(3);
+    mBus.addInput(0);
+    mBus.addOutput(3);
   } else if (OS.equals("macos")) {
-    basicBus.addInput(1);
-    basicBus.addOutput(2);
+    mBus.addInput(1);
+    mBus.addOutput(2);
     println("MacOS doesn't have a built-in synthesizer available for Processing.");
     println("To hear sound as this is running, you should open GarageBand, SimpleSynth, or another MIDI synthesizer.");
+    println("If MidiBus just spit out an error, you need to o into Audio MIDI Setup, view > ports, open the first port, and put it online.");
+    println("For more help, check our README.md :)");
   } else {
     println("eww linux");
   } 
   
+}
+
+//function made by Micah Tien
+void playSong(Song smong) {
+  smong.generate();
+  MIDINotes = smong.midiNotes();
+  startMillis = millis();
+  lastBeat = 0;
 }
 
 //erm

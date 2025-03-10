@@ -61,7 +61,7 @@ abstract class Song {
   }
   
   abstract public void generate();
-  public void play(){
+  public MIDINote[] midiNotes(){
     ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();
     for(Fragment f : myFragments){
       NumberNote[] fragmentList = f.getNotes();
@@ -69,14 +69,18 @@ abstract class Song {
         finalList.add(n);
       }
     }
+    
     NumberNote[] finalArray = new NumberNote[finalList.size()];
     finalArray = finalList.toArray(finalArray);
+    MIDINote[] noteArray = new MIDINote[finalList.size()];
     
     for (int i=0; i<finalArray.length; i++) {
       NumberNote nNote = finalArray[i];
-      int tempo = 120; //change later
-      
-      
+      noteArray[i] = nNote.convertToMidiNote();
     }
+    
+    //PLEASE add a sorting function right here please
+    // - micah
+    return noteArray;
   }
 }

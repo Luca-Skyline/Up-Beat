@@ -32,6 +32,8 @@ Song[] mySongs;
 MIDINote[] MIDINotes;
 int startMillis;
 float lastBeat;
+int tempo;
+
 Jingle j;
 
 String keY, measures;
@@ -99,6 +101,8 @@ void setup() {
   MIDINotes = new MIDINote[0];
   startMillis = 0;
   lastBeat = 0;
+  tempo = 300;
+  
   j = new Jingle("C", 4);
   
   cp5.setPosition(20,20).addTextfield("").setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
@@ -205,7 +209,6 @@ void draw() {
   
   //actually playing songs (Micah)
   if (MIDINotes.length > 0) {
-    int tempo = 120; //this will get set by zach later;
     float millisPerBeat = 60000/tempo;
     
     float currentBeat = (millis() - startMillis)/millisPerBeat;

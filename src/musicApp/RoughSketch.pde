@@ -102,9 +102,9 @@ void setup() {
   MIDINotes = new MIDINote[0];
   startMillis = 0;
   lastBeat = 0;
-  tempo = 300;
+  tempo = 80;
   
-  j = new Jingle("C", 4);
+  j = new Jingle("G", 4);
   
   cp5.setPosition(20,20).addTextfield("").setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }

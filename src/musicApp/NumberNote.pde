@@ -17,7 +17,7 @@ class NumberNote {
 
     this.letterNote = letterNote;
     this.octave = octave;
-    int[] tempOffsets = {9, 11, 0, 3, 4, 5, 7};
+    int[] tempOffsets = {9, 11, 0, 2, 4, 5, 7};
     letterOffsets = new int[7];
     letterOffsets = tempOffsets;
     pitch = calculatePitch();

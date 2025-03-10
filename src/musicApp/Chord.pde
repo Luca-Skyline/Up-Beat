@@ -58,6 +58,12 @@ class Chord{
         myNotes[2] = new NumberNote(majorScale[1], octave, velocity, beat, duration); // third
         myNotes[3] = new NumberNote(majorScale[3], octave, velocity, beat, duration); // fifth
         break;
+      case "II":
+        myNotes[0] = new NumberNote(majorScale[1], 2, velocity, beat, duration); // bass (root)
+        myNotes[1] = new NumberNote(majorScale[1], octave, velocity, beat, duration); // root
+        myNotes[2] = new NumberNote(majorScale[3] + "#", octave, velocity, beat, duration); // third
+        myNotes[3] = new NumberNote(majorScale[5], octave, velocity, beat, duration); // fifth
+        break;
       default:
         System.out.println("I'm not smart enough to handle the " + symbol + " chord yet :(");
         myNotes = new NumberNote[1];

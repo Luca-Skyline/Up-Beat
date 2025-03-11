@@ -2,7 +2,7 @@
 
 
 
-## Instructions for Running Group Project (UpBeat) -- READ THIS, IT'S COMPLICATED AND IT MATTERS
+## Instructions for UpBeat -- READ THIS, IT'S COMPLICATED AND IT MATTERS
 
 - Ensure you have an internet connection
 - Download and unzip thiis repository

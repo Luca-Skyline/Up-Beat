@@ -10,7 +10,7 @@ class Jingle extends Song{
     
     //set up probability table
     try{
-      probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsClassical.csv");
+      probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsPop.csv");
     }
     catch(Error e){
       System.out.println("Probablity File Not Found! Talk to Luca.");

@@ -37,6 +37,9 @@ class Button {
     //textSize();
     text(text, x+w/2, y+(h/2)+5);
     fill(255);
+    if (toggled == true) {
+      rect(x-50, y+(h/2), 5, 5); 
+    }
   }
 
   void hover(int mx, int my) {

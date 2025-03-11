@@ -306,12 +306,20 @@ void mousePressed() {
         case "qInstruments": 
           if (buttons[i].toggleable == true) {
             if (buttons[i].toggled == false) {
+              if (instruments.size() > 0) {
+              instruments.remove(instruments.size()-1);
+              }
               instruments.add(buttons[i].info);
-              buttons[i].toggled = true;
+              for (int m = 0; m<buttons.length; m++) {
+                 buttons[m].toggled = false; //resets each button to not be toggled
+              }
+              buttons[i].toggled = true; //sets only the clicked button to be toggled
               break;
             }
             if (buttons[i].toggled == true) {
+              if (instruments.size() > 0) {
               instruments.remove(instruments.size()-1);
+              }
               buttons[i].toggled = false;
               break;
             }

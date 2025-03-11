@@ -46,7 +46,7 @@ Logo - Jenna Tran
 
 Class Diagram - Maggie Cole
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/49aa40e8ed149a643bcb9aaca875b2188ba064f9/images/littleGuy.png" width="500" />
+
 
 ### User Interaction (Zach, Maggie, Jenna)
 

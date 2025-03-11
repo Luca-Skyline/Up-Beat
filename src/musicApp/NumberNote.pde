@@ -37,6 +37,19 @@ class NumberNote {
   public float getBeat(){
     return beat;
   }
+  
+  public void addToBeat(int change){
+    System.out.println(change);
+    beat += change;
+  }
+  
+  public void setPitch(String letterNote){
+    this.letterNote = letterNote;
+    int[] tempOffsets = {9, 11, 0, 2, 4, 5, 7};
+    letterOffsets = new int[7];
+    letterOffsets = tempOffsets;
+    pitch = calculatePitch();
+  }
 
 
   public int calculatePitch() {

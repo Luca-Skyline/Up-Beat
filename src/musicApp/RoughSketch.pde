@@ -106,9 +106,13 @@ void setup() {
   MIDINotes = new MIDINote[0];
   startMillis = 0;
   lastBeat = 0;
-  tempo = 80;
+  tempo = 160;
   
-  j = new Jingle("G", 4);
+  Jingle j = new Jingle(4, "C", "Piano");
+  //j.generate();
+  Song pop = new PopSong(false, 32, 4, "G", "Piano");
+  //pop.generate();
+  playSong(pop);
   
   cp5.addTextfield("").setPosition(20,20).setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }

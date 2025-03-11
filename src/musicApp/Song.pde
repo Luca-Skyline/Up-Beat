@@ -18,6 +18,7 @@ abstract class Song {
   //constructor by Luca DalCanto (this is where the magic happens)
   protected Song(int measures, String keySignature, int timeSignature, String instrument){
     this.timeSignature = timeSignature;
+    this.measures = measures;
     
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
     String[] orderOfNotes = {"A", "B", "C", "D", "E", "F", "G"};

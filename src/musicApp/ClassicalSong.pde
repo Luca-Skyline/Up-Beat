@@ -25,8 +25,7 @@ class ClassicalSong extends Song {
   
   @Override
   void generate(){
-    
-    
+    myFragments = new Fragment[measures/4];    
   }
   
 }

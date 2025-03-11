@@ -2,19 +2,27 @@
 
 class Chord{
   private NumberNote[] myNotes;
-  private float start;
   private float duration;
   private String symbol;
   private float beat;
+  private String[] majorScale;
+  private int octave;
+  private float velocity;
   
   public Chord(String symbol, String[] majorScale, int octave, float velocity, float beat, float duration){
-    
+    this.majorScale = majorScale;
     this.symbol = symbol;
     this.beat = beat;
+    this.octave = octave;
     myNotes = new NumberNote[4];
+    this.velocity = velocity;
+    this.duration = duration;
     
-    switch(symbol){
-      
+    makeType(symbol);
+  }
+  
+  public void makeType(String chordSymbol){
+    switch(chordSymbol){
       case "I":
         myNotes[0] = new NumberNote(majorScale[0], 2, velocity, beat, duration); // bass (root)
         myNotes[1] = new NumberNote(majorScale[0], octave, velocity, beat, duration); // root
@@ -69,6 +77,12 @@ class Chord{
         myNotes = new NumberNote[1];
     
     }  
+  }
+  
+  public void addDelay(int beat){
+    for(NumberNote c : myNotes){
+      c.addToBeat(beat);
+    }
   }
   
   public String getSymbol(){

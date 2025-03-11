@@ -8,20 +8,46 @@ class Fragment{
   private Table probabilitySettings;
   private String[] scale;
   private float melodyComplexity = 1.5; //should between 1 and 2 for 2 chords per measure in 4/4 time
+  private int chordsPerMeasure;
   
   public Fragment(int measures, int chordsPerMeasure, String[] scale, Table table){
     this.measures = measures;
     chords = new Chord[measures * chordsPerMeasure];
     probabilitySettings = table;
     this.scale = scale;
+    this.chordsPerMeasure = chordsPerMeasure;
   }
   
-  public void generateChords(){
-    chords = new Chord[(2*measures) - 1];
-    chords[(2*measures) - 2] = new Chord("I", scale, 3, 1, (4*measures) - 3, 3); //last chord in root position, whole note
+  public void generateChords(boolean end, String nextChord){
+    if(end){
+      chords[(chordsPerMeasure*measures) - 1] = null; 
+      chords[(chordsPerMeasure*measures) - 2] = new Chord("I", scale, 3, 1, (4*measures) - 3, 3); //last chord in root position, whole note
+    }
+    else{
+      chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2);
+      chords[(2*measures) - 2] = new Chord(randomChord(chords[(2*measures) - 1].getSymbol()), scale, 3, 1, (4*measures) - 3, 2);
+    }
     for(int i = (2*measures) - 3; i >= 0; i--){
       chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, .1, (i*2)+1, 2);
     }
+    for(int i = 0; i < chords.length; i++){
+      if(chords[i] == null){
+        System.out.print("-- ");
+      }
+      else{
+        System.out.print(chords[i].getSymbol() + "  ");
+      }
+    }
+    System.out.println();
+  }
+  
+  
+  public void generateChords(String nextChord, String firstChord){
+    chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2); //last chord in root position, whole note
+    for(int i = (2*measures) - 2; i >= 1; i--){
+      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, .1, (i*2)+1, 2);
+    }
+    chords[0] = new Chord(firstChord, scale, 3, 1, 1, 2);
     for(int i = 0; i < chords.length; i++){
       System.out.print(chords[i].getSymbol() + "  ");
       //for(NumberNote note : chords[i].getNotes()){
@@ -33,7 +59,7 @@ class Fragment{
     //chords[0] = new Chord("V", scale, 4, 1, 1, 4);
   }
   
-  public void generateMelody(){
+  public void generateMelody(boolean resolveToRoot){
     //start with rhythm of melody
     melody = new NumberNote[(4*measures)-3];
     float[] weights = {melodyComplexity - 1.0, 2.0 - melodyComplexity};
@@ -74,7 +100,28 @@ class Fragment{
         System.out.print(melody[i].getPitch() + " ");
       }
     }
-    //melody = new NumberNote[1];
+    melody = new NumberNote[1];
+  }
+  
+  public void makeResolve(){ // this is not right. We'll need to remove a chord prolly.
+    chords[chords.length - 1].makeType("I");
+    chords[chords.length - 2].makeType(randomChord("I"));
+    melody[melody.length - 1].setPitch(scale[0]);
+    if(melody[melody.length - 2] != null){
+      melody[melody.length - 2].setPitch(scale[6]);
+    }
+    int randomIndex = int(random(1, 4)); // random number 1, 2, or 3
+    NumberNote chordNote = chords[chords.length - 2].getNote(randomIndex);
+    melody[melody.length - 3].setPitch(chordNote.getPitch());
+  }
+  
+  public void addStartBeat(int beat){
+    for(Chord c : chords){
+      if(c == null){
+        return;
+      }
+      c.addDelay(beat);
+    }
   }
   
   private String randomChord(String nextChord){ //make private later
@@ -129,12 +176,18 @@ class Fragment{
     return weights.length - 1;
   }
   
+  public String getFirstChord(){
+    return chords[0].getSymbol();
+  }
+  
   public NumberNote[] getNotes(){
     ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();
     for(Chord c : chords){
-      NumberNote[] chordNotes = c.getNotes();
-      for(NumberNote n : chordNotes){
-        finalList.add(n);
+      if(c != null){
+        NumberNote[] chordNotes = c.getNotes();
+        for(NumberNote n : chordNotes){
+          finalList.add(n);
+        }
       }
     }
     for(NumberNote n : melody){

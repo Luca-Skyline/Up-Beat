@@ -1,6 +1,6 @@
-# RIBIT
+# Up Beat
 
-**RIBIT:** RISE International Baccalaureate Information Technology
+
 
 ## Instructions for Running Group Project (UpBeat) -- READ THIS, IT'S COMPLICATED AND IT MATTERS
 
@@ -15,7 +15,8 @@
 - Search for "ControlP5". When it appears, click it and hit "Install".
 - Close install menu and run code
 
-## Members
+## Members - The RIBIT Team
+**RIBIT:** Teams RISE International Baccalaureate Information Technology
 
 ### Backend
 

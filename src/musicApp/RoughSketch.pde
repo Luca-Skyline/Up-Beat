@@ -1,13 +1,13 @@
-// NOTE TO FRONTEND NERDS: (LOOKING AT YOU ZACK AND JENNA)
-// IN ORDER TO TEST OUR PROGRAM,
-// CREATE A NEW INSTANTIATION OF THE "Jingle" CLASS
-// THE JINGLE CLASS TAKES IN A KEY SIGNATURE AND A NUMBER OF MEASURES RIGHT NOW, LIKE SO:
-// Jingle j = new Jingle("C", 4);
-// LET'S JUST DO FOUR MEASURES FOR RIGHT NOW
-// IN ORDER TO CREATE THE SONG, CALL THE "generate" FUNCTION:
-// j.generate();
-// THEN IN ORDER TO PLAY THE SONG, CALL THE "play()" FUNCTION:
-// j.play();
+// create a pop song:
+// Song september = new PopSong(false, 16, 4, "A#", "Piano");
+//create a jazz song:
+// Song jazzyTune = new PopSong(true, 32, 4, "G", "Piano");
+// create a classical song:
+// Song moonlightSonata = new ClassicalSong(false, 64, 3, "C", "Piano");
+// create a skyline song:
+// Song olympus = new ClassicalSong(true, 16, 4, "G#", "Piano");
+// create a jingle:
+// Song mcdonalds = new Jingle(4, "A", "Piano");
 
 
 //import statements for MIDI, scanners, etc. here

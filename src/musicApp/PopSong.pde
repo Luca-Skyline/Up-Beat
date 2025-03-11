@@ -1,7 +1,7 @@
 class PopSong extends Song {
   PercussionTrack percussion;
   
-  PopSong(){
+  PopSong(boolean jazzMode, int measures, int timeSignature, String keySignature, String instrument){
     super("C");
   }
   

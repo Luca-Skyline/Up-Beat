@@ -1,6 +1,6 @@
 class ClassicalSong extends Song {
   
-  ClassicalSong(){
+  ClassicalSong(boolean mrSkylineMode, int measures, int timeSignature, String keySignature, String instrument){
     super("A");
   }
   

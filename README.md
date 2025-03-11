@@ -44,9 +44,10 @@ Logo - Jenna Tran
 - Fundemental music theory awareness
 - Outputs as MIDI information and audio
 
-Class Diagram - Luca DalCanto
+Class Diagram - Maggie Cole
 
-<img src="https://github.com/Luca-Skyline/RIBIT-REPO/blob/49aa40e8ed149a643bcb9aaca875b2188ba064f9/images/InheritanceMusic.png" width="500" />
+<img src="https://github.com/Luca-Skyline/Up-Beat/blob/main/images/littleGuy.png?raw=true" width="800" />
+
 
 ### User Interaction (Zach, Maggie, Jenna)
 

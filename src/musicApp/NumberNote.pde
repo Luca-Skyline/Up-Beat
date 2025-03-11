@@ -38,6 +38,10 @@ class NumberNote {
     return beat;
   }
   
+  public float getDuration(){
+    return duration;
+  }
+  
   public void addToBeat(int change){
     beat += change;
   }

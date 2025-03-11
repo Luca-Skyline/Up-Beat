@@ -58,6 +58,27 @@ abstract class Song {
     }
   }
   
+  protected Chord[] copyChords(Fragment f){
+    ArrayList<Chord> chordList = new ArrayList<Chord>();
+    for(Chord c: f.getChords()){
+      chordList.add(new Chord(c.getSymbol(), scale, c.getOctave(), c.getVelocity(), c.getBeat(), c.getDuration()));
+    }
+    Chord[] myChords = new Chord[4];
+    myChords = chordList.toArray(myChords);
+    return myChords;
+  }
+  
+  protected NumberNote[] copyMelody(Fragment f){
+    NumberNote[] myMelody = new NumberNote[f.getMelody().length];
+    for(int i = 0; i < f.getMelody().length; i++){
+      NumberNote n = f.getMelody()[i];
+      if(n != null){
+        myMelody[i] = new NumberNote(n.getPitch(), n.getOctave(), 1, n.getBeat(), n.getDuration());
+      }
+    }
+    return myMelody;
+  }
+  
   abstract public void generate();
   public ArrayList<MIDINote[]> midiNotes(){
     ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();

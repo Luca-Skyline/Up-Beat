@@ -34,46 +34,46 @@ class PopSong extends Song {
         return;
     } 
     Fragment verseB = new Fragment(4, 2, scale, probabilitySettings);
-    verseB.generateChords(false, "I");
+    verseB.generateChords(true, "I");
     verseB.generateMelody(false);
     Fragment verseA = new Fragment(4, 2, scale, probabilitySettings);
     verseA.generateChords(false, verseB.getFirstChord(), "I");
     verseA.generateMelody(false);
     Fragment chorusD = new Fragment(4, 2, scale, probabilitySettings);
-    chorusD.generateChords(false, verseA.getFirstChord());
+    chorusD.generateChords(true, verseA.getFirstChord());
     chorusD.generateMelody(true);
     Fragment chorusC = new Fragment(4, 2, scale, probabilitySettings);
     chorusC.generateChords(false, chorusD.getFirstChord());
     chorusC.generateMelody(false);
     Fragment verseBPrime = new Fragment(4, 2, scale, probabilitySettings);
-    verseBPrime.generateChords(false, chorusC.getFirstChord(), verseB.getFirstChord());
+    verseBPrime.generateChords(true, chorusC.getFirstChord(), verseB.getFirstChord());
     verseBPrime.generateMelody(false);
     
     for(int i = 0; i < myFragments.length; i++){
       if(i == 15 || i == 13 || i == 7 || i == 5){ //chorus D
         myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(chorusD));
-        myFragments[i].setMelody(chorusD.getMelody());
+        myFragments[i].setMelody(copyMelody(chorusD));
       }
       else if(i == 14 || i == 12 || i == 6 || i == 4){
         myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(chorusC));
-        myFragments[i].setMelody(chorusC.getMelody());
+        myFragments[i].setMelody(copyMelody(chorusC));
       }
       else if(i == 3 || i == 11){
         myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(verseBPrime));
-        myFragments[i].setMelody(verseBPrime.getMelody());
+        myFragments[i].setMelody(copyMelody(verseBPrime));
       }
       else if(i == 1 || i == 9){
         myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(verseB));
-        myFragments[i].setMelody(verseB.getMelody());
+        myFragments[i].setMelody(copyMelody(verseB));
       }
       else if(i==0 || i == 2 || i == 8 || i==10){
         myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(verseA));
-        myFragments[i].setMelody(verseA.getMelody());
+        myFragments[i].setMelody(copyMelody(verseA));
       }
       myFragments[i].addStartBeat(16*i);
       
@@ -82,14 +82,6 @@ class PopSong extends Song {
     
   }
   
-  private Chord[] copyChords(Fragment f){
-    ArrayList<Chord> chordList = new ArrayList<Chord>();
-    for(Chord c: f.getChords()){
-      chordList.add(new Chord(c.getSymbol(), scale, c.getOctave(), c.getVelocity(), c.getBeat(), c.getDuration()));
-    }
-    Chord[] myChords = new Chord[4];
-    myChords = chordList.toArray(myChords);
-    return myChords;
-  }
+
   
 }

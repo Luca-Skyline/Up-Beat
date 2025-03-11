@@ -14,17 +14,14 @@ class Jingle extends Song{
       System.out.println("Probablity File Not Found! Talk to Luca.");
     }
     
-    myFragments = new Fragment[2]; //a jingle consists of a single fragment
-    myFragments[0] = new Fragment(4, 2, scale, probabilitySettings);
-    myFragments[1] = new Fragment(4, 2, scale, probabilitySettings);
+    myFragments = new Fragment[1]; //a jingle consists of a single fragment
+    myFragments[0] = new Fragment(2, 2, scale, probabilitySettings);
   }
   
   @Override
   public void generate(){
-    myFragments[0].generateChords("V", "I");  
+    myFragments[0].generateChords(true, "I");  
     myFragments[0].generateMelody(true);
-    myFragments[1].generateChords("V", "I");
-    myFragments[1].generateMelody(true);
-    myFragments[1].addStartBeat(16);
+    myFragments[0].makeResolve();
   }
 }

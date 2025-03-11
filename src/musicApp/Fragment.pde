@@ -18,13 +18,12 @@ class Fragment{
     this.chordsPerMeasure = chordsPerMeasure;
   }
   
-  public void generateChords(boolean end, String nextChord){
-    if(end){
-      chords[(chordsPerMeasure*measures) - 1] = null; 
+  public void generateChords(boolean resolve, String nextChord){
+    chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2);
+    if(resolve){
       chords[(chordsPerMeasure*measures) - 2] = new Chord("I", scale, 3, 1, (4*measures) - 3, 3); //last chord in root position, whole note
     }
     else{
-      chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2);
       chords[(2*measures) - 2] = new Chord(randomChord(chords[(2*measures) - 1].getSymbol()), scale, 3, 1, (4*measures) - 3, 2);
     }
     for(int i = (2*measures) - 3; i >= 0; i--){
@@ -42,9 +41,16 @@ class Fragment{
   }
   
   
-  public void generateChords(String nextChord, String firstChord){
-    chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2); //last chord in root position, whole note
-    for(int i = (2*measures) - 2; i >= 1; i--){
+  public void generateChords(boolean resolve, String nextChord, String firstChord){
+    chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2);
+    if(resolve){
+      chords[(chordsPerMeasure*measures) - 2] = new Chord("I", scale, 3, 1, (4*measures) - 3, 2);
+    }
+    else{
+       chords[(2*measures) - 2] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 3, 2);
+    }
+    
+    for(int i = (2*measures) - 3; i >= 1; i--){
       chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, 1, (i*2)+1, 2);
     }
     chords[0] = new Chord(firstChord, scale, 3, 1, 1, 2);
@@ -104,6 +110,9 @@ class Fragment{
         else if(myIndex == 7){
           myIndex = 0;
         }
+        else if(myIndex == -2){
+          myIndex = 5;
+        }
         melody[i] = new NumberNote(scale[myIndex], 5, 1, i+1, 1);
       }
     }
@@ -119,23 +128,25 @@ class Fragment{
   }
   
   public void makeResolve(){ // this is not right. We'll need to remove a chord prolly.
-    chords[chords.length - 1].makeType("I");
-    chords[chords.length - 2].makeType(randomChord("I"));
-    melody[melody.length - 1].setPitch(scale[0]);
-    if(melody[melody.length - 2] != null){
-      melody[melody.length - 2].setPitch(scale[6]);
+    chords[chords.length - 1] = null;
+    if(melody[melody.length - 1] != null){
+      melody[melody.length - 1] = null;
     }
-    int randomIndex = int(random(1, 4)); // random number 1, 2, or 3
-    NumberNote chordNote = chords[chords.length - 2].getNote(randomIndex);
-    melody[melody.length - 3].setPitch(chordNote.getPitch());
+    if(melody[melody.length - 2] != null){
+      melody[melody.length - 2] = null;
+    }
   }
   
   public void addStartBeat(int beat){
     for(Chord c : chords){
-      if(c == null){
-        return;
+      if(c != null){
+        c.addDelay(beat);
       }
-      c.addDelay(beat);
+    }
+    for(NumberNote m : melody){  
+      if(m != null){
+        m.addToBeat(beat);
+      }
     }
   }
   

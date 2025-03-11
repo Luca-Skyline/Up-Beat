@@ -37,7 +37,7 @@ class PopSong extends Song {
     verseB.generateChords(false, "I");
     verseB.generateMelody(false);
     Fragment verseA = new Fragment(4, 2, scale, probabilitySettings);
-    verseA.generateChords(verseB.getFirstChord(), "I");
+    verseA.generateChords(false, verseB.getFirstChord(), "I");
     verseA.generateMelody(false);
     Fragment chorusD = new Fragment(4, 2, scale, probabilitySettings);
     chorusD.generateChords(false, verseA.getFirstChord());
@@ -46,7 +46,7 @@ class PopSong extends Song {
     chorusC.generateChords(false, chorusD.getFirstChord());
     chorusC.generateMelody(false);
     Fragment verseBPrime = new Fragment(4, 2, scale, probabilitySettings);
-    verseBPrime.generateChords(chorusC.getFirstChord(), verseB.getFirstChord());
+    verseBPrime.generateChords(false, chorusC.getFirstChord(), verseB.getFirstChord());
     verseBPrime.generateMelody(false);
     
     for(int i = 0; i < myFragments.length; i++){

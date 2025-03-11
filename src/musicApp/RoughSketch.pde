@@ -115,7 +115,7 @@ void setup() {
   //j.generate();
   Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();
-  //playSong(pop);
+  playSong(pop);
   
   cp5.addTextfield("").setPosition(20,20).setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }

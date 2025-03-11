@@ -100,6 +100,19 @@ class Chord{
   public NumberNote[] getNotes(){
     return myNotes;
   }
+  
+  public int getOctave(){
+    return octave;
+  }
+  
+  
+  public float getVelocity(){
+    return velocity;
+  }
+  
+  public float getDuration(){
+    return duration;
+  }
 
 }
 

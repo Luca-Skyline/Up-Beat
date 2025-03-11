@@ -12,6 +12,7 @@
 - Click "Mange Modes..."
 - Go to the "Libraries"
 - Search for "The MidiBus". When it appears, click it and hit "Install".
+- Search for "ControlP5". When it appears, click it and hit "Install".
 - Close install menu and run code
 
 ## Members

@@ -4,10 +4,10 @@ class Button {
   int x, y, w, h;
   String text, localPhase, nextPhase, info;
   color c1, c2;
-  boolean on; // whether or not the mouse is over it
+  boolean on, toggleable, toggled; // whether or not the mouse is over it
 
   // Constructador
-  Button(int x, int y, int w, int h, String text,  String localPhase, String nextPhase, String info) {
+  Button(int x, int y, int w, int h, String text,  String localPhase, String nextPhase, String info, boolean toggleable) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -19,6 +19,8 @@ class Button {
     c1 = color(#df5594); //might be better as lighter pink #f7b4e1 instead
     c2 = color(#c4417d);
     on = false;
+    this.toggleable = toggleable;
+    toggled = false;
   }         
 
   void display() {

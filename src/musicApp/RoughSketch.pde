@@ -26,19 +26,21 @@ boolean firstMousePress = false;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[24];
+Button[] buttons = new Button[25];
 Scrollbar[] myScrolls = new Scrollbar[1];
 PImage logo;
 PFont pixel;
 MidiBus mBus;
 String[] textBoxes;
 
+ArrayList<String> instruments = new ArrayList<String>();
+
 Song[] mySongs;
 MIDINote[] MIDINotes;
 int startMillis;
 float lastBeat;
 int tempo, songLength;
-String genre, timeSig, keySig, songName, instrument;
+String genre, timeSig, keySig, songName, instrumentsText;
 
 Jingle j;
 
@@ -60,41 +62,42 @@ void setup() {
   globalPhase = "mainMenu";
   //this list of buttons and later sliders and stuff is going to be SUPER long uhm ;-;
   //what i plan on doing is putting all of the buttons and sliders and wheels and widgets into a giant text file then just reading from it :p
-  buttons[0] = new Button(850, 150, 300, 100, "Generate New Song", "mainMenu", "qGenre", "newSong");
-  buttons[1] = new Button(850, 300, 300, 100, "Load Old Song", "mainMenu", "old", "oldSong");
-  buttons[2] = new Button(850, 450, 300, 100, "Settings", "mainMenu", "settings", "TEMP");
+  buttons[0] = new Button(850, 150, 300, 100, "Generate New Song", "mainMenu", "qGenre", "newSong", false);
+  buttons[1] = new Button(850, 300, 300, 100, "Load Old Song", "mainMenu", "old", "oldSong", false);
+  buttons[2] = new Button(850, 450, 300, 100, "Settings", "mainMenu", "settings", "TEMP", false);
   
-  buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "qGenre", "qLength", "classical");
-  buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "qGenre", "qLength", "pop");
-  buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "qGenre", "qLength", "skyline");
+  buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "qGenre", "qLength", "classical", false);
+  buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "qGenre", "qLength", "pop", false);
+  buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "qGenre", "qLength", "skyline", false);
   
-  buttons[6] = new Button(200, 350, 250, 70, "4 measures", "qLength", "qTempo", "4");
-  buttons[7] = new Button(500, 350, 250, 70, "8 measures", "qLength", "qTempo", "8");
-  buttons[8] = new Button(800, 350, 250, 70, "16 measures", "qLength", "qTempo", "16");
+  buttons[6] = new Button(200, 350, 250, 70, "4 measures", "qLength", "qTempo", "4", false);
+  buttons[7] = new Button(500, 350, 250, 70, "8 measures", "qLength", "qTempo", "8", false);
+  buttons[8] = new Button(800, 350, 250, 70, "16 measures", "qLength", "qTempo", "16", false);
   
   myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 30, "qTempo", "bpm", 60, 200);
-  buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt);
+  buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt, false);
   
-  buttons[10] = new Button(400, 250, 250, 70, "2/4", "qSign", "qKey", "2/4");
-  buttons[11] = new Button(800, 250, 250, 70, "3/4", "qSign", "qKey", "3/4");
-  buttons[12] = new Button(400, 400, 250, 70, "4/4", "qSign", "qKey", "4/4");
-  buttons[13] = new Button(800, 400, 250, 70, "6/8", "qSign", "qKey", "6/8");
+  buttons[10] = new Button(400, 250, 250, 70, "2/4", "qSign", "qKey", "2/4", false);
+  buttons[11] = new Button(800, 250, 250, 70, "3/4", "qSign", "qKey", "3/4", false);
+  buttons[12] = new Button(400, 400, 250, 70, "4/4", "qSign", "qKey", "4/4", false);
+  buttons[13] = new Button(800, 400, 250, 70, "6/8", "qSign", "qKey", "6/8", false);
   
-  buttons[14] = new Button(800, 550, 250, 70, "Next", "qKey", "qInstruments", "filler");
+  buttons[14] = new Button(800, 550, 250, 70, "Next", "qKey", "qInstruments", "filler", false);
   
-  buttons[15] = new Button(400, 250, 250, 70, "Piano", "qInstruments", "preview", "Piano");  //big todo: make these toggles 
-  buttons[16] = new Button(800, 250, 250, 70, "Violin", "qInstruments", "preview", "Violin");//so that you can have multiple
-  buttons[17] = new Button(400, 400, 250, 70, "Trumpet", "qInstruments", "preview", "Trumpet");//instruments
-  buttons[18] = new Button(800, 400, 250, 70, "Flute", "qInstruments", "preview", "Flute");
+  buttons[15] = new Button(400, 250, 250, 70, "Piano", "qInstruments", "preview", "Piano", true);  //big todo: make these toggles 
+  buttons[16] = new Button(800, 250, 250, 70, "Violin", "qInstruments", "preview", "Violin", true);//so that you can have multiple
+  buttons[17] = new Button(400, 400, 250, 70, "Trumpet", "qInstruments", "preview", "Trumpet", true);//instruments
+  buttons[18] = new Button(800, 400, 250, 70, "Flute", "qInstruments", "preview", "Flute", true);
+  buttons[19] = new Button(800, 500, 250, 70, "Next", "qInstruments", "preview", "filler", false);
   
-  buttons[19] = new Button(800, 550, 250, 70, "Next", "preview", "play", "execute"  );
+  buttons[20] = new Button(800, 550, 250, 70, "Next", "preview", "play", "execute", false);
   
-  buttons[20] = new Button(800, 550, 250, 70, "Finish", "play", "qName", "stop");
+  buttons[21] = new Button(800, 550, 250, 70, "Finish", "play", "qName", "stop", false);
   
-  buttons[21] = new Button(800, 550, 250, 70, "Next", "qName", "qSave", "filler");
+  buttons[22] = new Button(800, 550, 250, 70, "Next", "qName", "qSave", "filler", false);
                                                //filler here ^^^ will become what is in the textbox once next is clicked
-  buttons[22] = new Button(400, 550, 250, 70, "Yes", "qSave", "mainMenu", "yesSave");
-  buttons[23] = new Button(800, 550, 250, 70, "No", "qSave", "mainMenu", "noSave");
+  buttons[23] = new Button(400, 550, 250, 70, "Yes", "qSave", "mainMenu", "yesSave", false);
+  buttons[24] = new Button(800, 550, 250, 70, "No", "qSave", "mainMenu", "noSave", false);
   pop = false;  
   classical = false;
   stroke(#1D201F);
@@ -108,11 +111,15 @@ void setup() {
   lastBeat = 0;
   tempo = 160;
   
+<<<<<<< Updated upstream
   Jingle j = new Jingle(4, "C", "Piano");
   //j.generate();
   Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();
   playSong(pop);
+=======
+  //j = new Jingle("G", 4);
+>>>>>>> Stashed changes
   
   cp5.addTextfield("").setPosition(20,20).setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }
@@ -172,6 +179,7 @@ void draw() {
   fill(255);
   //1st question -z
   //make this a case switch statement
+  
   switch (globalPhase) {
     case "qGenre":
       fill(255);
@@ -207,10 +215,11 @@ void draw() {
       text("Select which instrument you would like your song to be played by", width/2, 50);
       break;
     case "preview": 
+    System.out.println(instrumentsText);
       textSize(75);
-      text("Overview", (width/2)-100, 200);
+      text("Overview", (width/2)-70, 70);
       textSize(30);
-      text(genre + "\n" + songLength + "\n" + tempo + "\n" + timeSig + "\n" + keySig + "\n" + instrument, (width/2)-50, height/2);
+      text("Genre: " + genre + "\n" + songLength + " measures\n" + tempo + " bpm\nTime Signature: " + timeSig + "\nKey Signature: " + keySig + "\n Instrument(s): " + instrumentsText, (width/2)-250, height/3);
     case "qName": 
       //buttons[i].info = whatevers in the text box; (i=21 currently)
       break;
@@ -262,6 +271,7 @@ void mousePressed() {
  for (int i=0; i<buttons.length; i++) {
      if (globalPhase == buttons[i].localPhase) {
        if (buttons[i].on == true) {
+        // if (buttons[i].info != "filler") {
       switch (globalPhase) { 
         case "qGenre": 
           System.out.println(cp5.get(Textfield.class,"").getText());
@@ -280,18 +290,39 @@ void mousePressed() {
           keySig = buttons[i].info;
           break;
         case "qInstruments": 
-          instrument = buttons[i].info;  
+          if (buttons[i].toggleable == true) {
+            if (buttons[i].toggled == false) {
+              instruments.add(buttons[i].info);
+              buttons[i].toggled = true;
+              break;
+            }
+            if (buttons[i].toggled == true) {
+              instruments.remove(instruments.size()-1);
+              buttons[i].toggled = false;
+              break;
+            }
+          } 
+          if (buttons[i].toggleable == false)  {
+              for (int q = 0; q< instruments.size(); q++) {
+                instrumentsText   += instruments.get(q) + " ";
+              } 
+              instrumentsText = instrumentsText.substring(4);
+              break;
+          }
+          
           //for instruments you're gonna have to make smth to make it do multiple
           //maybe add a toggleable boolean to button, all instrument buttons are
-          //toggleable, so here instruments += all the toggled buttons (use for loop ig)
-          //or maybe have instrument1, instrument2, etc.
-          break;
+          //toggleable, so here instruments += all the toggled buttons (use for loop ig) //further add-on: make an arraylist for this
+          //or maybe have instrument1, instrument2, etc
         case "qName": 
           songName = cp5.get(Textfield.class,"").getText();
           break;
         }
+    //    }
+       if (buttons[i].toggleable == false) {
        globalPhase = buttons[i].inside();
        break;
+       }
        }
      }
    }

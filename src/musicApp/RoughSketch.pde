@@ -26,14 +26,14 @@ boolean firstMousePress = false;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[25];
+Button[] buttons = new Button[35];
 Scrollbar[] myScrolls = new Scrollbar[1];
 InfoBubble[] infoBubbles = new InfoBubble[4];
 PImage logo;
 PFont pixel;
 MidiBus mBus;
 String[] textBoxes;
-
+String[] instruments = new String[3];
 //ArrayList<String> instruments = new ArrayList<String>();
 
 Song[] mySongs;                  //
@@ -41,7 +41,7 @@ ArrayList<MIDINote[]> MIDINotes;
 int startMillis;
 float lastBeat;
 int tempo, songLength;
-String genre, timeSig, keySig, songName, bassInstrument, middleInstrument, melInstrument; //contents of strings are in camel case e.g. electricKeyboard
+String genre, timeSig, keySig, songName, instrumentsText; //contents of strings are in camel case e.g. electricKeyboard
 
 Jingle j;
 
@@ -83,22 +83,34 @@ void setup() {
   buttons[12] = new Button(400, 400, 250, 70, "4/4", "qSign", "qKey", "4/4", false);
   buttons[13] = new Button(800, 400, 250, 70, "6/8", "qSign", "qKey", "6/8", false);
   
-  buttons[14] = new Button(800, 550, 250, 70, "Next", "qKey", "qInstruments", "filler", false);
+  buttons[14] = new Button(800, 550, 250, 70, "Next", "qKey", "qBassInstrument", "filler", false);
   
-  buttons[15] = new Button(400, 250, 250, 70, "Piano", "qInstruments", "preview", "Piano", true);  //big todo: make these toggles 
-  buttons[16] = new Button(800, 250, 250, 70, "Violin", "qInstruments", "preview", "Violin", true);//so that you can have multiple
-  buttons[17] = new Button(400, 400, 250, 70, "Trumpet", "qInstruments", "preview", "Trumpet", true);//instruments
-  buttons[18] = new Button(800, 400, 250, 70, "Flute", "qInstruments", "preview", "Flute", true);
-  buttons[19] = new Button(800, 500, 250, 70, "Next", "qInstruments", "preview", "filler", false);
+  buttons[15] = new Button(400, 250, 250, 70, "Piano", "qBassInstrument", "qMiddleInstrument", "Piano", true);  //big todo: make these toggles 
+  buttons[16] = new Button(800, 250, 250, 70, "Violin", "qBassInstrument", "qMiddleInstrument", "Violin", true);//so that you can have multiple
+  buttons[17] = new Button(400, 400, 250, 70, "Trumpet", "qBassInstrument", "qMiddleInstrument", "Trumpet", true);//instruments
+  buttons[18] = new Button(800, 400, 250, 70, "Flute", "qBassInstrument", "qMiddleInstrument", "Flute", true);
+  buttons[19] = new Button(800, 500, 250, 70, "Next", "qBassInstrument", "qMiddleInstrument", "filler", false);
   
-  buttons[20] = new Button(800, 550, 250, 70, "Next", "preview", "play", "execute", false);
+  buttons[20] = new Button(400, 250, 250, 70, "Piano", "qMiddleInstrument", "qMelInstrument", "Piano", true);  //big todo: make these toggles 
+  buttons[21] = new Button(800, 250, 250, 70, "Violin", "qMiddleInstrument", "qMelInstrument", "Violin", true);//so that you can have multiple
+  buttons[22] = new Button(400, 400, 250, 70, "Trumpet", "qMiddleInstrument", "qMelInstrument", "Trumpet", true);//instruments
+  buttons[23] = new Button(800, 400, 250, 70, "Flute", "qMiddleInstrument", "qMelInstrument", "Flute", true);
+  buttons[24] = new Button(800, 500, 250, 70, "Next", "qMiddleInstrument", "qMelInstrument", "filler", false);
   
-  buttons[21] = new Button(800, 550, 250, 70, "Finish", "play", "qName", "stop", false);
+  buttons[25] = new Button(400, 250, 250, 70, "Piano", "qMelInstrument", "preview", "Piano", true);  //big todo: make these toggles 
+  buttons[26] = new Button(800, 250, 250, 70, "Violin", "qMelInstrument", "preview", "Violin", true);//so that you can have multiple
+  buttons[27] = new Button(400, 400, 250, 70, "Trumpet", "qMelInstrument", "preview", "Trumpet", true);//instruments
+  buttons[28] = new Button(800, 400, 250, 70, "Flute", "qMelInstrument", "preview", "Flute", true);
+  buttons[29] = new Button(800, 500, 250, 70, "Next", "qMelInstrument", "preview", "filler", false);
   
-  buttons[22] = new Button(800, 550, 250, 70, "Next", "qName", "qSave", "filler", false);
+  buttons[30] = new Button(800, 550, 250, 70, "Next", "preview", "play", "execute", false);
+  
+  buttons[31] = new Button(800, 550, 250, 70, "Finish", "play", "qName", "stop", false);
+  
+  buttons[32] = new Button(800, 550, 250, 70, "Next", "qName", "qSave", "filler", false);
                                                //filler here ^^^ will become what is in the textbox once next is clicked
-  buttons[23] = new Button(400, 550, 250, 70, "Yes", "qSave", "mainMenu", "yesSave", false);
-  buttons[24] = new Button(800, 550, 250, 70, "No", "qSave", "mainMenu", "noSave", false);
+  buttons[33] = new Button(400, 550, 250, 70, "Yes", "qSave", "mainMenu", "yesSave", false);
+  buttons[34] = new Button(800, 550, 250, 70, "No", "qSave", "mainMenu", "noSave", false);
   
   //  InfoBubble(float, float, float, String) will take in xposition, yposition, radius, and text in that order. 
   //  Change these as needed!
@@ -164,7 +176,7 @@ void draw() {
   quad(600,height,620,height,820,0,800,0);
   text(globalPhase, 75, height-50);   //FOR DEBUG PURPOSES
   //case switch statement would be ideal for "phases" or screens
-  
+  text((str(mouseX) + " " + str(mouseY)), mouseX, mouseY);
   if (globalPhase == "mainMenu") {
     //MAIN MENU BACKGROUND
   textSize(80);
@@ -230,12 +242,20 @@ void draw() {
     textSize(30);
       text("Select which instrument you would like your song to be played by", width/2, 50);
       break;
+    case "qMiddleInstrument": 
+    textSize(30);
+      text("Select which instrument you would like your song to be played by", width/2, 50);
+      break;
+    case "qMelInstrument": 
+    textSize(30);
+      text("Select which instrument you would like your song to be played by", width/2, 50);
+      break;
     case "preview": 
-    System.out.println(instrumentsText);
       textSize(75);
       text("Overview", (width/2)-70, 70);
       textSize(30);
-      text("Genre: " + genre + "\n" + songLength + " measures\n" + tempo + " bpm\nTime Signature: " + timeSig + "\nKey Signature: " + keySig + "\n Instrument(s): " + instrumentsText, (width/2)-250, height/3);
+      //instrumentsText = instruments[0] + " " + instruments[1] + " " + instruments[2];
+      text("Genre: " + genre + "\n" + songLength + " measures\n" + tempo + " bpm\nTime Signature: " + timeSig + "\nKey Signature: " + keySig + "\nBass Instrument: " + instruments[0] + "\nMiddle Instrument: " + instruments[1] + "\nMelody Instrument: " + instruments[2], (width/2)-250, height/3);
     case "qName": 
       //buttons[i].info = whatevers in the text box; (i=21 currently)
       break;
@@ -303,34 +323,57 @@ void mousePressed() {
         case "qKey": 
           keySig = buttons[i].info;
           break;
-        case "qInstruments": 
+        case "qBassInstrument": 
           if (buttons[i].toggleable == true) {
             if (buttons[i].toggled == false) {
-              if (instruments.size() > 0) {
-              instruments.remove(instruments.size()-1);
-              }
-              instruments.add(buttons[i].info);
+              instruments[0] = buttons[i].info;
               for (int m = 0; m<buttons.length; m++) {
                  buttons[m].toggled = false; //resets each button to not be toggled
               }
               buttons[i].toggled = true; //sets only the clicked button to be toggled
               break;
             }
-            if (buttons[i].toggled == true) {
-              if (instruments.size() > 0) {
-              instruments.remove(instruments.size()-1);
-              }
+            if (buttons[i].toggled == true) { 
+              instruments[0] = "";
               buttons[i].toggled = false;
               break;
             }
-          } 
-          if (buttons[i].toggleable == false)  {
-              for (int q = 0; q< instruments.size(); q++) {
-                instrumentsText   += instruments.get(q) + " ";
-              } 
-              instrumentsText = instrumentsText.substring(4);
-              break;
           }
+         
+          case "qMiddleInstrument": 
+          if (buttons[i].toggleable == true) {
+            if (buttons[i].toggled == false) {
+              instruments[1] = buttons[i].info;
+              for (int m = 0; m<buttons.length; m++) {
+                 buttons[m].toggled = false; //resets each button to not be toggled
+              }
+              buttons[i].toggled = true; //sets only the clicked button to be toggled
+              break;
+            }
+            if (buttons[i].toggled == true) { 
+              instruments[1] = "";
+              buttons[i].toggled = false;
+              break;
+            }
+          }
+          
+          case "qMelInstrument": 
+          if (buttons[i].toggleable == true) {
+            if (buttons[i].toggled == false) {
+              instruments[2] = buttons[i].info;
+              for (int m = 0; m<buttons.length; m++) {
+                 buttons[m].toggled = false; //resets each button to not be toggled
+              }
+              buttons[i].toggled = true; //sets only the clicked button to be toggled
+              break;
+            }
+            if (buttons[i].toggled == true) { 
+              instruments[2] = "";
+              buttons[i].toggled = false;
+              break;
+            }
+          }
+  
           
           //for instruments you're gonna have to make smth to make it do multiple
           //maybe add a toggleable boolean to button, all instrument buttons are

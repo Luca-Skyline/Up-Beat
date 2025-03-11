@@ -9,6 +9,11 @@
 // create a jingle:
 // Song mcdonalds = new Jingle(4, "A", "Piano");
 
+//NOTES:
+// -please pass me the key signature in SHARP format (example: pass me Bb as A#)
+// -Jingle doesn't take a number of measures
+// -IDK if this is something you want to do, but songs of different classes can be stored in the same array because they all have super class Song!
+
 
 //import statements for MIDI, scanners, etc. here
 import controlP5.*;

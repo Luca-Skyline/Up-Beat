@@ -13,8 +13,12 @@ abstract class Song {
   protected String[] scale;
   protected Table probabilitySettings;
   protected Fragment[] myFragments;
+  protected int timeSignature;
   
-  protected Song(String keySignature){
+  //constructor by Luca DalCanto (this is where the magic happens)
+  protected Song(int measures, String keySignature, int timeSignature, String instrument){
+    this.timeSignature = timeSignature;
+    
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
     String[] orderOfNotes = {"A", "B", "C", "D", "E", "F", "G"};
     String[] orderOfSharps = {"F", "C", "G", "D", "A", "E", "B", "F", "C", "G", "D"};
@@ -44,13 +48,6 @@ abstract class Song {
       }
     }
     
-    //set up probability table
-    try{
-      probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsClassical.csv");
-    }
-    catch(Error e){
-      System.out.println("Probablity File Not Found! Talk to Luca.");
-    }
   }
   
   void printScale(){

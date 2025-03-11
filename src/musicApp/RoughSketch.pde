@@ -1,5 +1,5 @@
 // create a pop song:
-// Song september = new PopSong(false, 16, 4, "A#", "Piano");
+// Song september = new PopSong(false, 16, 4, "A#", "Piano"); <-- measures, beats per measure (time sig), key, instrument
 //create a jazz song:
 // Song jazzyTune = new PopSong(true, 32, 4, "G", "Piano");
 // create a classical song:

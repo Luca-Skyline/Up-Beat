@@ -39,8 +39,8 @@ class NumberNote {
   }
   
   public void addToBeat(int change){
-    System.out.println(change);
     beat += change;
+    System.out.println(beat);
   }
   
   public void setPitch(String letterNote){

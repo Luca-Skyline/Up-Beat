@@ -28,7 +28,7 @@ class Fragment{
       chords[(2*measures) - 2] = new Chord(randomChord(chords[(2*measures) - 1].getSymbol()), scale, 3, 1, (4*measures) - 3, 2);
     }
     for(int i = (2*measures) - 3; i >= 0; i--){
-      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, .1, (i*2)+1, 2);
+      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, 1, (i*2)+1, 2);
     }
     for(int i = 0; i < chords.length; i++){
       if(chords[i] == null){
@@ -45,7 +45,7 @@ class Fragment{
   public void generateChords(String nextChord, String firstChord){
     chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2); //last chord in root position, whole note
     for(int i = (2*measures) - 2; i >= 1; i--){
-      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, .1, (i*2)+1, 2);
+      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, 1, (i*2)+1, 2);
     }
     chords[0] = new Chord(firstChord, scale, 3, 1, 1, 2);
     for(int i = 0; i < chords.length; i++){

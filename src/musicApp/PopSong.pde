@@ -66,6 +66,7 @@ class PopSong extends Song {
       else if(i==0 || i == 2 || i == 8 || i==10){
         myFragments[i] = verseA;
       }
+      System.out.println(i);
       myFragments[i].addStartBeat(16*i);
       
     }

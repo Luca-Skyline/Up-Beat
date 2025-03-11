@@ -28,6 +28,7 @@ boolean pop; // pop
 boolean classical; // classical
 Button[] buttons = new Button[25];
 Scrollbar[] myScrolls = new Scrollbar[1];
+InfoBubble[] infoBubbles = new InfoBubble[4];
 PImage logo;
 PFont pixel;
 MidiBus mBus;
@@ -98,6 +99,22 @@ void setup() {
                                                //filler here ^^^ will become what is in the textbox once next is clicked
   buttons[23] = new Button(400, 550, 250, 70, "Yes", "qSave", "mainMenu", "yesSave", false);
   buttons[24] = new Button(800, 550, 250, 70, "No", "qSave", "mainMenu", "noSave", false);
+  
+  //  InfoBubble(float, float, float, String) will take in xposition, yposition, radius, and text in that order. 
+  //  Change these as needed!
+  //    -Micah
+  //                           xpos  ypos
+  //                              |  |
+  //                              |  |
+  //                              v  v
+  infoBubbles[0] = new InfoBubble(0, 0, 11, "A genre with randomness\nfine-tuned by our famous\nmusic theorist Mr. Skyline."); //topleft bubble for Skyline Special
+  infoBubbles[1] = new InfoBubble(0, 0, 11, "Rhythmic, improvisational,\nwonderfully chaotic.\nFull of rich harmonies."); //bottomleft bubble for Jazz
+  infoBubbles[2] = new InfoBubble(0, 0, 11, "A good old-fashioned\nclassical composition for\npeople named Jenna Tran."); //topright bubble for Classical
+  infoBubbles[3] = new InfoBubble(0, 0, 11, "Very catchy and melodic\nmusic. Has upbeat rhythms\nand lots of polish."); //bottomright bubble for Pop
+  //you can tell which ones I chatgpted very easily. 
+  //i am the pro mpt engineer and im not ashamed of it
+  
+  
   pop = false;  
   classical = false;
   stroke(#1D201F);

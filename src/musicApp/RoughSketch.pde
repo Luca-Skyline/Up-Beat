@@ -128,11 +128,13 @@ void setup() {
   lastBeat = 0;
   tempo = 160;
   
-  Jingle j = new Jingle(4, "C", "Piano");
+  j = new Jingle(4, "C", "Piano");
   //j.generate();
-  Song pop = new PopSong(false, 32, 4, "G", "Piano");
+  //Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();
-  playSong(pop);
+
+  
+  
   
   cp5.addTextfield("").setPosition(20,20).setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }
@@ -339,7 +341,7 @@ void mousePressed() {
 }
 
 void mouseReleased() {
-  //playSong(j);
+  playSong(j);
 }
 
 //function made by Micah Tien

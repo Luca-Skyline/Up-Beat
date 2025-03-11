@@ -61,12 +61,27 @@ class Fragment{
   
   public void generateMelody(boolean resolveToRoot){
     //start with rhythm of melody
-    melody = new NumberNote[(4*measures)-3];
+    melody = new NumberNote[(4*measures)];
     float[] weights = {melodyComplexity - 1.0, 2.0 - melodyComplexity};
     int randomIndex = int(random(1, 4)); // random number 1, 2, or 3
-    NumberNote chordNote = chords[(2*measures)-2].getNote(randomIndex);
-    melody[(4*measures) - 4] = new NumberNote(chordNote.getPitch(), 5, 1, (4*measures) - 3, 3);
-    for(int i = (4 * measures) - 5; i >= 0 ; i--){
+    
+    NumberNote chordNote;
+    
+    if(chords[chords.length - 1] != null){
+      randomIndex = int(random(1, 4)); // random number 1, 2, or 3
+      chordNote = chords[chords.length-1].getNote(randomIndex);
+      melody[melody.length-2] = new NumberNote(chordNote.getPitch(), 5, 1, (4*measures)-1, 1);
+    }
+    
+    if(resolveToRoot){
+      melody[melody.length-4] = new NumberNote(scale[0], 5, 1, (4*measures)-3, 2);
+    } else {
+      randomIndex = int(random(1, 4)); // random number 1, 2, or 3
+      chordNote = chords[randomIndex].getNote(randomIndex);
+      melody[melody.length-4] = new NumberNote(chordNote.getPitch(), 5, 1, (4*measures)-3, 2);
+    }
+    
+    for(int i = melody.length - 5; i >= 0 ; i--){
       if (i % 2 == 0){ //strong beat: yes melody note
         randomIndex = int(random(1, 4)); // random number 1, 2, or 3
         chordNote = chords[i/2].getNote(randomIndex);
@@ -92,15 +107,15 @@ class Fragment{
         melody[i] = new NumberNote(scale[myIndex], 5, 1, i+1, 1);
       }
     }
-    //for (int i = 0; i < melody.length; i++){
-    //  if(melody[i] == null){
-    //    System.out.print("- ");
-    //  }
-    //  else{
-    //    System.out.print(melody[i].getPitch() + " ");
-    //  }
-    //}
-    melody = new NumberNote[1];
+    for (int i = 0; i < melody.length; i++){
+      if(melody[i] == null){
+        System.out.print("- ");
+      }
+      else{
+        System.out.print(melody[i].getPitch() + " ");
+      }
+    }
+    //melody = new NumberNote[1];
   }
   
   public void makeResolve(){ // this is not right. We'll need to remove a chord prolly.

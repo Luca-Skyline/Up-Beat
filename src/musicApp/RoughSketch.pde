@@ -111,15 +111,15 @@ void setup() {
   lastBeat = 0;
   tempo = 160;
   
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
   Jingle j = new Jingle(4, "C", "Piano");
   //j.generate();
   Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();
-  playSong(pop);
-=======
+  //playSong(pop);
+//=======
   //j = new Jingle("G", 4);
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
   
   cp5.addTextfield("").setPosition(20,20).setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }

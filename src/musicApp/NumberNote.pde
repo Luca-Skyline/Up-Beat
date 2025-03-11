@@ -40,7 +40,6 @@ class NumberNote {
   
   public void addToBeat(int change){
     beat += change;
-    System.out.println(beat);
   }
   
   public void setPitch(String letterNote){

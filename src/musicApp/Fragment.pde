@@ -92,14 +92,14 @@ class Fragment{
         melody[i] = new NumberNote(scale[myIndex], 5, 1, i+1, 1);
       }
     }
-    for (int i = 0; i < melody.length; i++){
-      if(melody[i] == null){
-        System.out.print("- ");
-      }
-      else{
-        System.out.print(melody[i].getPitch() + " ");
-      }
-    }
+    //for (int i = 0; i < melody.length; i++){
+    //  if(melody[i] == null){
+    //    System.out.print("- ");
+    //  }
+    //  else{
+    //    System.out.print(melody[i].getPitch() + " ");
+    //  }
+    //}
     melody = new NumberNote[1];
   }
   
@@ -122,6 +122,22 @@ class Fragment{
       }
       c.addDelay(beat);
     }
+  }
+  
+  public Chord[] getChords(){
+    return chords;
+  }
+  
+  public void setChords(Chord[] chords){
+    this.chords = chords;
+  }
+  
+  public NumberNote[] getMelody(){
+    return melody;
+  }
+  
+  public void setMelody(NumberNote[] m){
+    melody = m;
   }
   
   private String randomChord(String nextChord){ //make private later

@@ -59,7 +59,7 @@ abstract class Song {
   }
   
   abstract public void generate();
-  public MIDINote[] midiNotes(){
+  public ArrayList<MIDINote[]> midiNotes(){
     ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();
     for(Fragment f : myFragments){
       NumberNote[] fragmentList = f.getNotes();
@@ -79,6 +79,12 @@ abstract class Song {
     
     //PLEASE add a sorting function right here please
     // - micah
-    return noteArray;
+    
+    
+    //this is temp code! right now it will just return one instrument. this will need to be changed later for sure
+    ArrayList<MIDINote[]> midiNotesList = new ArrayList<MIDINote[]>();
+    midiNotesList.add(noteArray);
+    
+    return midiNotesList;
   }
 }

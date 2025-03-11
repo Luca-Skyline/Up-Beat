@@ -36,7 +36,7 @@ String[] textBoxes;
 ArrayList<String> instruments = new ArrayList<String>();
 
 Song[] mySongs;
-MIDINote[] MIDINotes;
+ArrayList<MIDINote[]> MIDINotes;
 int startMillis;
 float lastBeat;
 int tempo, songLength;
@@ -106,20 +106,16 @@ void setup() {
   //mySongs[1] = new PopSong();
   
   instantiateMidiBus();
-  MIDINotes = new MIDINote[0];
+  MIDINotes = new ArrayList<MIDINote[]>();
   startMillis = 0;
   lastBeat = 0;
   tempo = 160;
   
-//<<<<<<< Updated upstream
   Jingle j = new Jingle(4, "C", "Piano");
   //j.generate();
   Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();
   //playSong(pop);
-//=======
-  //j = new Jingle("G", 4);
-//>>>>>>> Stashed changes
   
   cp5.addTextfield("").setPosition(20,20).setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
 }
@@ -236,27 +232,24 @@ void draw() {
   }
   
   //actually playing songs (Micah)
-  if (MIDINotes.length > 0) {
+  if (MIDINotes.size() > 0) {
     float millisPerBeat = 60000/tempo;
-    
     float currentBeat = (millis() - startMillis)/millisPerBeat;
-    boolean songEnded = true;
-    for (MIDINote mn : MIDINotes) {
-      float start = mn.getBeat();
-      float end = start + mn.getDuration();
-      if (start > lastBeat && start <= currentBeat) { //beat started between last frame and this frame
-        mBus.sendNoteOn(mn.getPitch(), mn.getPitch(), mn.getVelocity());
-      }
-      if (end > lastBeat && end <= currentBeat) { //beat ended between last frame and this frame
-        mBus.sendNoteOff(mn.getPitch(), mn.getPitch(), mn.getVelocity());
-      }
+    
+    for (int i=0; i<MIDINotes.size(); i++) { //loops over every instrument
+      MIDINote[] midiArray = MIDINotes.get(i);
       
-      if (currentBeat < end) { //note hasn't been played yet 
-        songEnded = false;
+      for (MIDINote mn : midiArray) { //loops over ever beat
+        float start = mn.getBeat();
+        float end = start + mn.getDuration();
+        
+        if (lastBeat < start && start <= currentBeat) mBus.sendNoteOn(mn.getPitch(), mn.getPitch(), mn.getVelocity()); //note began between this and last frame
+        if (lastBeat < end && end <= currentBeat) mBus.sendNoteOff(mn.getPitch(), mn.getPitch(), mn.getVelocity());    //note ended between this and last frame
       }
     }
     lastBeat = currentBeat;
-    if (songEnded) MIDINotes = new MIDINote[0]; //songs over, you can stop doing this code
+    
+    
   }
 }
 

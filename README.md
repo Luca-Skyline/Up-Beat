@@ -2,7 +2,7 @@
 
 **RIBIT:** RISE International Baccalaureate Information Technology
 
-## Instructions for Running Group Project (UpBeat)
+## Instructions for Running Group Project (UpBeat) -- READ THIS, IT'S COMPLICATED AND IT MATTERS
 
 - Ensure you have an internet connection
 - Download and unzip thiis repository

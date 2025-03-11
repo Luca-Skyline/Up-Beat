@@ -34,14 +34,14 @@ PFont pixel;
 MidiBus mBus;
 String[] textBoxes;
 
-ArrayList<String> instruments = new ArrayList<String>();
+//ArrayList<String> instruments = new ArrayList<String>();
 
-Song[] mySongs;
+Song[] mySongs;                  //
 ArrayList<MIDINote[]> MIDINotes;
 int startMillis;
 float lastBeat;
 int tempo, songLength;
-String genre, timeSig, keySig, songName, instrumentsText;
+String genre, timeSig, keySig, songName, bassInstrument, middleInstrument, melInstrument; //contents of strings are in camel case e.g. electricKeyboard
 
 Jingle j;
 
@@ -226,7 +226,7 @@ void draw() {
       text("Combinations of sharps or flats indicating the key of a composition (WIP currently)", width/2, 80);
       textSize(30);
       break;
-    case "qInstruments": 
+    case "qBassInstrument": 
     textSize(30);
       text("Select which instrument you would like your song to be played by", width/2, 50);
       break;

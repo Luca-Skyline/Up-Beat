@@ -17,7 +17,7 @@
 - Close install menu and run code
 
 ## Members - The RIBIT Team
-**RIBIT:** Teams RISE International Baccalaureate Information Technology
+**RIBIT:** RISE International Baccalaureate Information Technology
 
 ### Backend
 

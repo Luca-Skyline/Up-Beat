@@ -13,6 +13,7 @@
 - Go to the "Libraries"
 - Search for "The MidiBus". When it appears, click it and hit "Install".
 - Search for "ControlP5". When it appears, click it and hit "Install".
+- If on Mac, open GarageBand or another MIDI synthesizer. See below for more details.
 - Close install menu and run code
 
 ## Members - The RIBIT Team

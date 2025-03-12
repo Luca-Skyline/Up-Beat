@@ -4,6 +4,7 @@
 
 ## Instructions for UpBeat -- READ THIS, IT'S COMPLICATED AND IT MATTERS
 
+- If on Mac, open GarageBand or another MIDI synthesizer in the background. See below for more details.
 - Ensure you have an internet connection
 - Download and unzip thiis repository
 - Navigate to RIBIT-REPO/src/musicApp
@@ -13,7 +14,6 @@
 - Go to the "Libraries"
 - Search for "The MidiBus". When it appears, click it and hit "Install".
 - Search for "ControlP5". When it appears, click it and hit "Install".
-- If on Mac, open GarageBand or another MIDI synthesizer. See below for more details.
 - Close install menu and run code
 
 ## Members - The RIBIT Team

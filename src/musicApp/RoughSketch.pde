@@ -51,7 +51,7 @@ Jingle j;
 //             time signature and type of song (classical/pop for now) ;p
 //          
 void setup() {
-  size(1057,507);
+  size(964,455);
   //images!!! oh joy :)
   logo = loadImage("BlueUpBeat.png");
   logo.resize(350,350);
@@ -181,7 +181,7 @@ void setup() {
   tempo = 150;
   
   String[] instruments = {"Piano", "Piano", "Piano"};
-  j = new Jingle(4, "G", instruments);
+  j = new Jingle(4, "G", true, instruments);
   //j.generate();
   //Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();

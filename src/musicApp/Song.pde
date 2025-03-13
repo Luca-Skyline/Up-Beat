@@ -19,7 +19,7 @@ abstract class Song {
   protected boolean major;
   
   //constructor by Luca DalCanto (this is where the magic happens)
-  protected Song(int measures, String keySignature, int timeSignature, boolean major, String[] instruments){
+  protected Song(int measures, String keySignature, int timeSignature, boolean major){
     this.timeSignature = timeSignature;
     this.measures = measures;
     myThreeInstruments = instruments;

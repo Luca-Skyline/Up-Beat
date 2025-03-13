@@ -3,8 +3,8 @@
 class Jingle extends Song{
   
   //precondition: measures > 1
-  public Jingle(int timeSignature, String keySignature, boolean major, String[] instruments){
-    super(2, keySignature, timeSignature, major, instruments);
+  public Jingle(int timeSignature, String keySignature, boolean major){
+    super(2, keySignature, timeSignature, major);
     
     //set up probability table
     try{

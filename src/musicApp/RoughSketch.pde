@@ -181,7 +181,7 @@ void setup() {
   tempo = 150;
   
   String[] instruments = {"Piano", "Piano", "Piano"};
-  j = new Jingle(4, "G", instruments);
+  j = new Jingle(4, "G", true, instruments);
   //j.generate();
   //Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();

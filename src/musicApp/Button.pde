@@ -39,12 +39,13 @@ class Button {
     //textAlign(CENTER);
     textSize(40);
     text(text, x+w/2, y+(h/2)+10);
-    fill(255);
+    }
     if (toggled == true) {
-      rect(x-50, y+(h/2), 5, 5); 
+      fill(0);
+      rect(x-50, y+(h/2), 7, 7); 
     }
     textSize(30);
-    }
+    
   }
 
   void hover(int mx, int my) {

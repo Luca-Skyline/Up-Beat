@@ -28,7 +28,7 @@ boolean pop; // pop
 boolean classical; // classical
 Button[] buttons = new Button[52];
 Scrollbar[] myScrolls = new Scrollbar[2];
-InfoBubble[] infoBubbles = new InfoBubble[4];
+InfoBubble[] infoBubbles = new InfoBubble[5];
 PImage logo, mainMenu, genreScreen, chordScreen, lengthScreen, tempoScreen, timeScreen, keyScreen, bassScreen, chordInstrumentScreen, melodyScreen, previewScreen, playScreen, nameScreen, saveScreen;
 PFont pixel;
 MidiBus mBus;
@@ -59,13 +59,13 @@ void setup() {
   mainMenu.resize(width,height);
   genreScreen = loadImage("genreScreen.png");
   genreScreen.resize(width,height);
-  chordScreen = loadImage("chordsScreen.png");
+  chordScreen = loadImage("chordScreen.png");
   chordScreen.resize(width,height);
   lengthScreen = loadImage("lengthScreen.png");
   lengthScreen.resize(width,height);
   tempoScreen = loadImage("tempoScreen.png");
   tempoScreen.resize(width,height);
-  timeScreen = loadImage("timeSigScreen.png");
+  timeScreen = loadImage("timeScreen.png");
   timeScreen.resize(width,height);
   keyScreen = loadImage("keyScreen.png");
   keyScreen.resize(width,height);
@@ -177,6 +177,7 @@ void setup() {
   infoBubbles[1] = new InfoBubble(528, 308, 11, "Rhythmic, improvisational,\nwonderfully chaotic.\nFull of rich harmonies.", "qGenre"); //bottomleft bubble for Jazz
   infoBubbles[2] = new InfoBubble(100, 208, 11, "A good old-fashioned\nclassical composition for\npeople named Jenna Tran.", "qGenre"); //topright bubble for Classical
   infoBubbles[3] = new InfoBubble(528, 208, 11, "Very catchy and melodic\nmusic. Has upbeat rhythms\nand lots of polish.", "qGenre"); //bottomright bubble for Pop
+  infoBubbles[4] = new InfoBubble(335, 419, 11, "Short, 4-measure jingle with a simple melody.", "qGenre"); //bottom bubble for jingle
   //you can tell which ones I chatgpted very easily. 
   //i am the pro mpt engineer and im not ashamed of it
   
@@ -226,7 +227,7 @@ void draw() {
   //case switch statement would be ideal for "phases" or screens
   if (globalPhase == "mainMenu") {
     //MAIN MENU BACKGROUND
-  //image(mainMenu,0,0);
+  image(mainMenu,0,0);
   }
 
   fill(255);

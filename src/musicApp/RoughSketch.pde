@@ -308,6 +308,7 @@ void draw() {
       infoBubbles[i].display(); 
     }
   }
+  
   //actually playing songs (Micah)
   if (MIDINotes.size() > 0) {
     float millisPerBeat = 60000/tempo;
@@ -320,8 +321,14 @@ void draw() {
         float start = mn.getBeat();
         float end = start + mn.getDuration();
         
-        if (lastBeat < start && start <= currentBeat) mBus.sendNoteOn(mn.getPitch(), mn.getPitch(), mn.getVelocity()); //note began between this and last frame
-        if (lastBeat < end && end <= currentBeat) mBus.sendNoteOff(mn.getPitch(), mn.getPitch(), mn.getVelocity());    //note ended between this and last frame
+        if (lastBeat < start && start <= currentBeat) {
+          mBus.sendMessage(0xC0 | mn.getPitch(), getProgramNumber(instruments[i]));
+          mBus.sendNoteOn(mn.getPitch(), mn.getPitch(), mn.getVelocity());   //note began between this and last frame
+        }
+        if (lastBeat < end && end <= currentBeat) {
+          mBus.sendMessage(0xC0 | mn.getPitch(), getProgramNumber(instruments[i]));
+          mBus.sendNoteOff(mn.getPitch(), mn.getPitch(), mn.getVelocity());  //note ended between this and last frame
+        }
       }
     }
     lastBeat = currentBeat;
@@ -478,6 +485,25 @@ void playSong(Song smong) {
   //MIDINotes = smong.midiNotes();
   startMillis = millis();
   lastBeat = 0;
+}
+
+//function made by Micah Tien
+int getProgramNumber(String instr) {
+    switch (instr) {
+        case "strings":
+            return 40;
+        case "bass":
+            return 32;
+        case "electricKeyboard":
+            return 4;
+        case "brass":
+            return 56;
+        case "lead":
+            return 80;
+        case "piano":
+        default:
+            return 0; //if no instrument, just use the basic basic piano
+    }
 }
 
 //erm

@@ -26,8 +26,8 @@ boolean firstMousePress = false;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[35];
-Scrollbar[] myScrolls = new Scrollbar[1];
+Button[] buttons = new Button[39];
+Scrollbar[] myScrolls = new Scrollbar[2];
 InfoBubble[] infoBubbles = new InfoBubble[4];
 PImage logo, mainMenu, genreScreen, chordScreen, lengthScreen, tempoScreen, timeScreen, bassScreen, chordInstrumentScreen, melodyScreen, previewScreen, playScreen, nameScreen, saveScreen;
 PFont pixel;
@@ -95,50 +95,59 @@ void setup() {
   buttons[1] = new Button(677, 354, 276, 116, "Load Old Song", "mainMenu", "old", "oldSong", false, true);
   buttons[2] = new Button(746, 50, 276, 116, "Settings", "mainMenu", "settings", "TEMP", false, true);
   
-  buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "qGenre", "qLength", "classical", false, true);
-  buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "qGenre", "qLength", "pop", false, true);
-  buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "qGenre", "qLength", "skyline", false, true);
+  buttons[3] = new Button(154, 170, 266, 75, "Classical", "qGenre", "Chord", "classical", false, true);
+  buttons[4] = new Button(574, 170, 266, 75, "Pop", "qGenre", "qChord", "pop", false, true);
+  buttons[5] = new Button(154, 270, 266, 75, "Mr. Skyline", "qGenre", "qChord", "skyline", false, true);
+  buttons[6] = new Button(574, 270, 266, 75, "Jazz", "qGenre", "qChord", "jazz", false, true);
+  buttons[7] = new Button(382, 380, 266, 75, "Jingle", "qGenre", "qChord", "jingle", false, true);
   
-  buttons[6] = new Button(200, 350, 250, 70, "4 measures", "qLength", "qTempo", "4", false, true);
-  buttons[7] = new Button(500, 350, 250, 70, "8 measures", "qLength", "qTempo", "8", false, true);
-  buttons[8] = new Button(800, 350, 250, 70, "16 measures", "qLength", "qTempo", "16", false, true);
+  buttons[8] = new Button(715, 114, 266, 75, "Major", "qChord", "qLength", "major", false, true);
+  buttons[9] = new Button(715, 250, 266, 75, "Minor", "qChord", "qLength", "minor", false, true);
   
-  myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 30, "qTempo", "bpm", 60, 200);
-  buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt, false, true);
+  myScrolls[0] = new Scrollbar(width/2-200, 300, 400, 30, "qLength", "measures", 1, 16);
+  buttons[10] = new Button(500, 400, 266, 75, "Done", "qLength", "qTempo", myScrolls[0].txt, false, true);
+  //buttons[8] = new Button(200, 350, 266, 75, "4 measures", "qLength", "qTempo", "4", false, true);
+  //buttons[9] = new Button(500, 350, 266, 75, "8 measures", "qLength", "qTempo", "8", false, true);
+  //buttons[10] = new Button(800, 350, 266, 75, "16 measures", "qLength", "qTempo", "16", false, true);
   
-  buttons[10] = new Button(400, 250, 250, 70, "2/4", "qSign", "qKey", "2/4", false, true);
-  buttons[11] = new Button(800, 250, 250, 70, "3/4", "qSign", "qKey", "3/4", false, true);
-  buttons[12] = new Button(400, 400, 250, 70, "4/4", "qSign", "qKey", "4/4", false, true);
-  buttons[13] = new Button(800, 400, 250, 70, "6/8", "qSign", "qKey", "6/8", false, true);
+  myScrolls[1] = new Scrollbar(width/2-200, 350, 400, 30, "qTempo", "bpm", 60, 200);
+  buttons[11] = new Button(500, 500, 266, 75, "Done", "qTempo", "qSign", myScrolls[1].txt, false, true);
   
-  buttons[14] = new Button(800, 450, 250, 70, "Next", "qKey", "qBassInstrument", "filler", false, true);
+  buttons[12] = new Button(240, 245, 266, 75, "2/4", "qSign", "qKey", "2/4", false, true);
+  buttons[13] = new Button(551, 245, 266, 75, "3/4", "qSign", "qKey", "3/4", false, true);
+  buttons[14] = new Button(240, 342, 266, 75, "4/4", "qSign", "qKey", "4/4", false, true);
+  buttons[15] = new Button(551, 342, 266, 75, "6/8", "qSign", "qKey", "6/8", false, true);
   
-  buttons[15] = new Button(400, 250, 250, 70, "Piano", "qBassInstrument", "qMiddleInstrument", "Piano", true, true);  //big todo: make these toggles 
-  buttons[16] = new Button(800, 250, 250, 70, "Violin", "qBassInstrument", "qMiddleInstrument", "Violin", true, true);//so that you can have multiple
-  buttons[17] = new Button(400, 400, 250, 70, "Trumpet", "qBassInstrument", "qMiddleInstrument", "Trumpet", true, true);//instruments
-  buttons[18] = new Button(800, 400, 250, 70, "Flute", "qBassInstrument", "qMiddleInstrument", "Flute", true, true);
-  buttons[19] = new Button(800, 500, 250, 70, "Next", "qBassInstrument", "qMiddleInstrument", "filler", false, true);
+  buttons[16] = new Button(800, 450, 266, 75, "Next", "qKey", "qBassInstrument", "filler", false, true);
   
-  buttons[20] = new Button(400, 250, 250, 70, "Piano", "qMiddleInstrument", "qMelInstrument", "Piano", true, true);  //big todo: make these toggles 
-  buttons[21] = new Button(800, 250, 250, 70, "Violin", "qMiddleInstrument", "qMelInstrument", "Violin", true, true);//so that you can have multiple
-  buttons[22] = new Button(400, 400, 250, 70, "Trumpet", "qMiddleInstrument", "qMelInstrument", "Trumpet", true, true);//instruments
-  buttons[23] = new Button(800, 400, 250, 70, "Flute", "qMiddleInstrument", "qMelInstrument", "Flute", true, true);
-  buttons[24] = new Button(800, 500, 250, 70, "Next", "qMiddleInstrument", "qMelInstrument", "filler", false, true);
+  buttons[17] = new Button(63, 198, 266, 80, "Piano", "qBassInstrument", "qMiddleInstrument", "piano", true, true);  //big todo: make these toggles 
+  buttons[18] = new Button(394, 198, 266, 80, "Strings", "qBassInstrument", "qMiddleInstrument", "strings", true, true);//so that you can have multiple
+  buttons[19] = new Button(724, 198, 266, 80, "Brass", "qBassInstrument", "qMiddleInstrument", "brass", true, true);//instruments
+  buttons[20] = new Button(115, 306, 381, 80, "Electric Keyboard", "qBassInstrument", "qMiddleInstrument", "electricKeyboard", true, true);
+  buttons[21] = new Button(561, 306, 381, 80, "Electric Bass", "qBassInstrument", "qMiddleInstrument", "electricBass", true, true);
+  buttons[22] = new Button(874, 410, 266, 80, "Next", "qBassInstrument", "qMiddleInstrument", "filler", false, true);
   
-  buttons[25] = new Button(400, 250, 250, 70, "Piano", "qMelInstrument", "preview", "Piano", true, true);  //big todo: make these toggles 
-  buttons[26] = new Button(800, 250, 250, 70, "Violin", "qMelInstrument", "preview", "Violin", true, true);//so that you can have multiple
-  buttons[27] = new Button(400, 400, 250, 70, "Trumpet", "qMelInstrument", "preview", "Trumpet", true, true);//instruments
-  buttons[28] = new Button(800, 400, 250, 70, "Flute", "qMelInstrument", "preview", "Flute", true, true);
-  buttons[29] = new Button(800, 500, 250, 70, "Next", "qMelInstrument", "preview", "filler", false, true);
+  buttons[23] = new Button(119, 193, 381, 80, "Piano", "qMiddleInstrument", "qMelInstrument", "piano", true, true);  //big todo: make these toggles 
+  buttons[24] = new Button(553, 193, 381, 80, "Strings", "qMiddleInstrument", "qMelInstrument", "strings", true, true);//so that you can have multiple
+  buttons[25] = new Button(553, 298, 381, 80, "Brass", "qMiddleInstrument", "qMelInstrument", "brass", true, true);//instruments
+  buttons[26] = new Button(119, 298, 381, 80, "Electric Keyboard", "qMiddleInstrument", "qMelInstrument", "electricKeyboard", true, true);
+  buttons[27] = new Button(857, 396, 266, 80, "Next", "qMiddleInstrument", "qMelInstrument", "filler", false, true);
+ 
+  buttons[28] = new Button(63, 190, 266, 80, "Piano", "qMelInstrument", "preview", "piano", true, true);  //big todo: make these toggles 
+  buttons[29] = new Button(392, 190, 266, 80, "Strings", "qMelInstrument", "preview", "strings", true, true);//so that you can have multiple
+  buttons[30] = new Button(724, 190, 266, 80, "Brass", "qMelInstrument", "preview", "brass", true, true);//instruments
+  buttons[31] = new Button(114, 295, 381, 80, "Electric Keyboard", "qMelInstrument", "preview", "electricKeyboard", true, true);
+  buttons[32] = new Button(560, 295, 381, 80, "Lead", "qMelInstrument", "preview", "lead", true, true);
+  buttons[33] = new Button(874, 410, 266, 80, "Next", "qMelInstrument", "preview", "next", false, true);
   
-  buttons[30] = new Button(800, 450, 250, 70, "Next", "preview", "play", "execute", false, true);
+  buttons[34] = new Button(295, 395, 175, 80, "Next", "preview", "play", "execute", false, true);
   
-  buttons[31] = new Button(800, 450, 250, 70, "Finish", "play", "qName", "stop", false, true);
+  buttons[35] = new Button(120, 380, 266, 75, "Finish", "play", "qName", "stop", false, true);
   
-  buttons[32] = new Button(800, 450, 250, 70, "Next", "qName", "qSave", "filler", false, true);
+  buttons[36] = new Button(856, 400, 176, 76, "Next", "qName", "qSave", "filler", false, true);
                                                //filler here ^^^ will become what is in the textbox once next is clicked
-  buttons[33] = new Button(400, 450, 250, 70, "Yes", "qSave", "mainMenu", "yesSave", false, true);
-  buttons[34] = new Button(800, 450, 250, 70, "No", "qSave", "mainMenu", "noSave", false, true);
+  buttons[37] = new Button(203, 298, 239, 101, "YES", "qSave", "mainMenu", "yesSave", false, true);
+  buttons[38] = new Button(650, 298, 239, 101, "NO", "qSave", "mainMenu", "noSave", false, true);
   
   //  InfoBubble(float, float, float, String) will take in xposition, yposition, radius, and text in that order. 
   //  Change these as needed!
@@ -147,10 +156,10 @@ void setup() {
   //                              |  |
   //                              |  |
   //                              v  v
-  infoBubbles[0] = new InfoBubble(0, 0, 11, "A genre with randomness\nfine-tuned by our famous\nmusic theorist Mr. Skyline."); //topleft bubble for Skyline Special
-  infoBubbles[1] = new InfoBubble(0, 0, 11, "Rhythmic, improvisational,\nwonderfully chaotic.\nFull of rich harmonies."); //bottomleft bubble for Jazz
-  infoBubbles[2] = new InfoBubble(0, 0, 11, "A good old-fashioned\nclassical composition for\npeople named Jenna Tran."); //topright bubble for Classical
-  infoBubbles[3] = new InfoBubble(0, 0, 11, "Very catchy and melodic\nmusic. Has upbeat rhythms\nand lots of polish."); //bottomright bubble for Pop
+  infoBubbles[0] = new InfoBubble(100, 308, 11, "A genre with randomness\nfine-tuned by our famous\nmusic theorist Mr. Skyline.", "qGenre"); //topleft bubble for Skyline Special
+  infoBubbles[1] = new InfoBubble(528, 308, 11, "Rhythmic, improvisational,\nwonderfully chaotic.\nFull of rich harmonies.", "qGenre"); //bottomleft bubble for Jazz
+  infoBubbles[2] = new InfoBubble(100, 208, 11, "A good old-fashioned\nclassical composition for\npeople named Jenna Tran.", "qGenre"); //topright bubble for Classical
+  infoBubbles[3] = new InfoBubble(528, 208, 11, "Very catchy and melodic\nmusic. Has upbeat rhythms\nand lots of polish.", "qGenre"); //bottomright bubble for Pop
   //you can tell which ones I chatgpted very easily. 
   //i am the pro mpt engineer and im not ashamed of it
   
@@ -210,11 +219,12 @@ void draw() {
     case "qGenre":
       image(genreScreen, 0, 0);
       break;
-      
+    case "qChord": 
+      image(chordScreen, 0, 0);
+      break;
     case "qLength": 
       image(lengthScreen, 0, 0);
       break;
-      
     case "qTempo":
       image(tempoScreen, 0, 0);
       buttons[9].info = myScrolls[0].txt;
@@ -246,6 +256,7 @@ void draw() {
       break;
     case "play": 
       image(playScreen, 0, 0);
+      break;
     case "qName": 
       image(nameScreen, 0, 0);
       //buttons[i].info = whatevers in the text box; (i=31 currently)
@@ -280,7 +291,12 @@ void draw() {
        myScrolls[i].display();
      }
    }
-  
+  //rendering infobubbles!!!! ty micah for making these c:
+  for (int i=0; i<infoBubbles.length; i++) {
+    if(globalPhase == infoBubbles[i].phase) {
+      infoBubbles[i].display(); 
+    }
+  }
   //actually playing songs (Micah)
   if (MIDINotes.size() > 0) {
     float millisPerBeat = 60000/tempo;

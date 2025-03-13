@@ -48,8 +48,8 @@ class Button {
   }
 
   void hover(int mx, int my) {
-    on = (mx > x && mx < x+w && my > y && my < y+h); //there is currently CONSIDERABLE lag on the color 
-  }                                                  //changing when hovered over and i dont know why ;~;
+    on = (mx > x && mx < x+w && my > y && my < y+h);
+  }                             
   String inside() {
     if (mouseX>x && mouseX<(x+w) && mouseY>y && mouseY<(y+h)) {
        return nextPhase;

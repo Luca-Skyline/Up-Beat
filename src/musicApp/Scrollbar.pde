@@ -63,9 +63,14 @@ class Scrollbar {
 
   void display() {
     txt = str(round(map(spos, xpos, xpos+swidth-sheight, rangeOne, rangeTwo)));
+    if (this.parameter == "measures") {
+      txt = str(round(float(txt)*4));
+    }
     text(txt + " " + parameter, xpos+swidth/2, ypos-sheight);
+    if (this.parameter != "measures") {
     text(rangeTwo, xpos+swidth+sheight, ypos+sheight*(.65));
     text(rangeOne, xpos-sheight, ypos+sheight*(.65));
+    }
     noStroke();
     fill(#5f757a);
     rect(xpos, ypos, swidth, sheight,20);

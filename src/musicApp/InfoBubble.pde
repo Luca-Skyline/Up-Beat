@@ -1,13 +1,14 @@
 //created by Micah Tien
 class InfoBubble {
   private float xpos, ypos, radius;
-  private String text;
+  private String text, phase;
   
-  public InfoBubble(float xpos, float ypos, float radius, String text) {
+  public InfoBubble(float xpos, float ypos, float radius, String text, String phase) {
     this.xpos = xpos;
     this.ypos = ypos;
     this.radius = radius;
     this.text = text;
+    this.phase = phase;
   }
   
   public void display() {
@@ -35,7 +36,7 @@ class InfoBubble {
       rect(this.xpos-this.radius, this.ypos-this.radius-margin-boxHeight, boxWidth, boxHeight, cornerRounding);
       fill(0);
       textSize(18);
-      text(this.text, this.xpos-this.radius+5, this.ypos-this.radius-boxHeight+15);
+      text(this.text, this.xpos+105, this.ypos-this.radius-boxHeight+15);
       pop();
     }
   }

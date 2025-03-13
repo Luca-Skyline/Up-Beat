@@ -12,7 +12,7 @@ class Fragment{
   private int beatsPerMeasure;
   private boolean major;
   
-  public Fragment(int measures, int chordsPerMeasure, int beatsPerMeasure, String[] scale, Table table){
+  public Fragment(int measures, int chordsPerMeasure, int beatsPerMeasure, String[] scale, Table table, boolean major){
     this.measures = measures;
     int chordsCount = measures * chordsPerMeasure;
     chords = new Chord[chordsCount];

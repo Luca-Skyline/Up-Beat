@@ -51,7 +51,7 @@ Jingle j;
 //             time signature and type of song (classical/pop for now) ;p
 //          
 void setup() {
-  size(964,455);
+  size(1047,502);
   //images!!! oh joy :)
   logo = loadImage("BlueUpBeat.png");
   logo.resize(350,350);
@@ -69,7 +69,7 @@ void setup() {
   timeScreen.resize(width,height);
   bassScreen = loadImage("bassScreen.png");
   bassScreen.resize(width,height);
-  chordInstrumentScreen = loadImage("chordInstrumentScreen.png");
+  chordInstrumentScreen = loadImage("chordsInstrumentScreen.png");
   chordInstrumentScreen.resize(width,height);
   melodyScreen = loadImage("melodyScreen.png");
   melodyScreen.resize(width,height);

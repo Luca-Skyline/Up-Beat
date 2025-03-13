@@ -100,7 +100,7 @@ void setup() {
   //what i plan on doing is putting all of the buttons and sliders and wheels and widgets into a giant text file then just reading from it :p
   buttons[0] = new Button(715, 203, 276, 116, "Generate New ", "mainMenu", "qGenre", "newSong", false, true);
   buttons[1] = new Button(677, 354, 276, 116, "Load Old Song", "mainMenu", "old", "oldSong", false, true);
-  buttons[2] = new Button(746, 50, 276, 116, "Settings", "mainMenu", "settings", "TEMP", false, true);
+  buttons[2] = new Button(746, 50, 276, 116, "Settings", "mainMenu", "mainMenu", "TEMP", false, true);
   
   buttons[3] = new Button(154, 170, 266, 75, "Classical", "qGenre", "qChord", "classical", false, true);
   buttons[4] = new Button(574, 170, 266, 75, "Pop", "qGenre", "qChord", "pop", false, true);
@@ -280,7 +280,6 @@ void draw() {
       break;
     case "qName": 
       image(nameScreen, 0, 0);
-      textGenerated = false;
       if (textGenerated == false) {
           cp5.addTextfield("").setPosition(195,271).setSize(657,97).setFont(pixel).setFocus(true).setColor(color(255,100,100));
           textGenerated = true;
@@ -477,6 +476,7 @@ void mousePressed() { //if you click
             if (timeSig == "6/8") {
               timeSig = "3";
               songLength*=2;
+              
             }
             if (timeSig == "2/2") {
               timeSig = "4";
@@ -504,6 +504,9 @@ void mousePressed() { //if you click
             playSong(userSong);
             //songNumber++;    //increment the songNumber each time a new song is generated - so u do mySongs[songNumber] = new Song()...
           }
+          break;
+        case "play":
+          textGenerated = false;
           break;
         case "qName": 
           songName = cp5.get(Textfield.class,"").getText();

@@ -29,6 +29,8 @@ class Fragment{
       homeChord = "vi";
       homeNote = 5;
     }
+    
+    System.out.println(homeChord);
   }
   
   public void generateChords(boolean resolve, String nextChord){

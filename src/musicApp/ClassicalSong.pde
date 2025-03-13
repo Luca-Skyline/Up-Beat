@@ -1,7 +1,7 @@
 class ClassicalSong extends Song {
   
-  ClassicalSong(boolean mrSkylineMode, int measures, int timeSignature, String keySignature, boolean major, String[] instruments){
-    super(measures, keySignature, timeSignature, major, instruments);
+  ClassicalSong(boolean mrSkylineMode, int measures, int timeSignature, String keySignature, boolean major){
+    super(measures, keySignature, timeSignature, major);
     
     //set up probability table
     

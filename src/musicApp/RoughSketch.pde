@@ -140,9 +140,10 @@ void setup() {
   lastBeat = 0;
   tempo = 150;
   
-  j = new Jingle(4, "G", "Piano");
+  String[] instruments = {"Piano", "Piano", "Piano"};
+  j = new Jingle(4, "G", instruments);
   //j.generate();
-  Song pop = new PopSong(false, 32, 4, "G", "Piano");
+  //Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();
   
   playSong(j);

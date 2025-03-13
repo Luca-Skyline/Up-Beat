@@ -82,22 +82,44 @@ abstract class Song {
   }
   
   abstract public void generate();
-  public ArrayList<MIDINote[]> midiNotes(){
-    ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();
+  
+  public String[] getInstruments(){
+    return myThreeInstruments;
+  }
+  
+  public MIDINote[][] midiNotes(){    
+    ArrayList<NumberNote> bassList = new ArrayList<NumberNote>();
+    ArrayList<NumberNote> chordsList = new ArrayList<NumberNote>();
+    ArrayList<NumberNote> melodyList = new ArrayList<NumberNote>();
     for(Fragment f : myFragments){
-      NumberNote[] fragmentList = f.getNotes();
-      for(NumberNote n : fragmentList){
-        finalList.add(n);
+      for(NumberNote n : f.getBassNotes()){
+        bassList.add(n);
+      }
+      for(NumberNote n : f.getChordNotes()){
+        chordsList.add(n);
+      }
+      for(NumberNote n : f.getMelodyNotes()){
+        chordsList.add(n);
       }
     }
     
-    NumberNote[] finalArray = new NumberNote[finalList.size()];
-    finalArray = finalList.toArray(finalArray);
-    MIDINote[] noteArray = new MIDINote[finalList.size()];
+    MIDINote[] bassArray = new MIDINote[bassList.size()];
+    MIDINote[] chordsArray = new MIDINote[chordsList.size()];
+    MIDINote[] melodyArray = new MIDINote[chordsList.size()];
     
-    for (int i=0; i<finalArray.length; i++) {
-      NumberNote nNote = finalArray[i];
-      noteArray[i] = nNote.convertToMidiNote();
+    for (int i=0; i<bassList.size(); i++) {
+      NumberNote nNote = bassList.get(i);
+      bassArray[i] = nNote.convertToMidiNote();
+    }
+    
+    for (int i=0; i<chordsList.size(); i++) {
+      NumberNote nNote = chordsList.get(i);
+      chordsArray[i] = nNote.convertToMidiNote();
+    }
+    
+    for (int i=0; i<melodyList.size(); i++) {
+      NumberNote nNote = melodyList.get(i);
+      melodyArray[i] = nNote.convertToMidiNote();
     }
     
     //PLEASE add a sorting function right here please
@@ -105,9 +127,8 @@ abstract class Song {
     
     
     //this is temp code! right now it will just return one instrument. this will need to be changed later for sure
-    ArrayList<MIDINote[]> midiNotesList = new ArrayList<MIDINote[]>();
-    midiNotesList.add(noteArray);
+    MIDINote[][] bigArray = {bassArray, chordsArray, melodyArray};
     
-    return midiNotesList;
+    return bigArray;
   }
 }

@@ -304,12 +304,12 @@ void draw() {
     if (globalPhase == buttons[i].localPhase) {
       if(buttons[i].info == "back") {
           if (globalPhase!="play" && globalPhase!="qName" && globalPhase != "qSave" && globalPhase !="mainMenu") {
-          //buttons[i].display();
+          buttons[i].display();
           buttons[i].hover(mouseX, mouseY);
         }
       }
       else {
-      //buttons[i].display();
+      buttons[i].display();
       buttons[i].hover(mouseX, mouseY);
       }  
     }

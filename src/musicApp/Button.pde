@@ -21,7 +21,7 @@ class Button {
     on = false;
     this.toggleable = toggleable;
     toggled = false;
-    this.displayable = displayable;
+    this.displayable = false;
   }         
 
   void display() {

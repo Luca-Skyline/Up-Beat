@@ -32,7 +32,7 @@ boolean classical; // classical
 Button[] buttons = new Button[52];
 Scrollbar[] myScrolls = new Scrollbar[2];
 InfoBubble[] infoBubbles = new InfoBubble[5];
-PImage logo, mainMenu, genreScreen, chordScreen, lengthScreen, tempoScreen, timeScreen, keyScreen, bassScreen, chordInstrumentScreen, melodyScreen, previewScreen, playScreen, nameScreen, saveScreen;
+PImage logo, mainMenu, genreScreen, chordScreen, lengthScreen, tempoScreen, timeScreen, keyScreen, bassScreen, chordInstrumentScreen, melodyScreen, previewScreen, playScreen, nameScreen, saveScreen, savedSongScreen;
 PFont pixel;
 MidiBus mBus;
 String[] textBoxes;
@@ -87,6 +87,8 @@ void setup() {
   nameScreen.resize(width,height);
   saveScreen = loadImage("saveScreen.png");
   saveScreen.resize(width,height);
+  savedSongScreen = loadImage("savedSongsScreen.png");
+  savedSongScreen.resize(width,height);
   pixel = createFont("pixel.ttf",30);
   textFont(pixel);
   textAlign(CENTER);
@@ -118,7 +120,7 @@ void setup() {
   myScrolls[1] = new Scrollbar(width/2-200, 350, 400, 30, "qTempo", "bpm", 60, 200);
   buttons[11] = new Button(850, 395, 172, 78, "Next", "qTempo", "qSign", myScrolls[1].txt, false, true);
   
-  buttons[12] = new Button(240, 245, 266, 75, "2/4", "qSign", "qKey", "2/4", false, true);
+  buttons[12] = new Button(240, 245, 266, 75, "2/2", "qSign", "qKey", "2/2", false, true);
   buttons[13] = new Button(551, 245, 266, 75, "3/4", "qSign", "qKey", "3/4", false, true);
   buttons[14] = new Button(240, 342, 266, 75, "4/4", "qSign", "qKey", "4/4", false, true);
   buttons[15] = new Button(551, 342, 266, 75, "6/8", "qSign", "qKey", "6/8", false, true);
@@ -179,7 +181,7 @@ void setup() {
   infoBubbles[1] = new InfoBubble(528, 308, 11, "Rhythmic, improvisational,\nwonderfully chaotic.\nFull of rich harmonies.", "qGenre"); //bottomleft bubble for Jazz
   infoBubbles[2] = new InfoBubble(100, 208, 11, "A good old-fashioned\nclassical composition for\npeople named Jenna Tran.", "qGenre"); //topright bubble for Classical
   infoBubbles[3] = new InfoBubble(528, 208, 11, "Very catchy and melodic\nmusic. Has upbeat rhythms\nand lots of polish.", "qGenre"); //bottomright bubble for Pop
-  infoBubbles[4] = new InfoBubble(335, 419, 11, "Short, 4-measure jingle with a simple melody.", "qGenre"); //bottom bubble for jingle
+  infoBubbles[4] = new InfoBubble(335, 419, 11, "Short, 4-measure jingle\n with a simple melody.", "qGenre"); //bottom bubble for jingle
   //you can tell which ones I chatgpted very easily. 
   //i am the pro mpt engineer and im not ashamed of it
   
@@ -202,10 +204,10 @@ void setup() {
   
   j = new Jingle(4, "G", true);
   //j.generate();
-  Song pop = new PopSong(true, 32, 4, "G", true);
-  pop.generate();
+  //Song pop = new PopSong(true, 32, 4, "G", true);
+  //pop.generate();
   
-  playSong(pop);
+  //playSong(pop);
   
   
   
@@ -284,8 +286,7 @@ void draw() {
       image(saveScreen, 0, 0);
       break;
     case "old":
-      textSize(50);
-      text("work in progress c:", width/2, height/2);
+      image(savedSongScreen, 0, 0);
       break;
     case "settings":
       textSize(50);
@@ -357,7 +358,7 @@ void draw() {
     
     
   }
-    text((str(mouseX) + " " + str(mouseY)), mouseX, mouseY);
+    //text((str(mouseX) + " " + str(mouseY)), mouseX, mouseY);     FOR DEBUG PURPOSES ONLY
 }
 
 
@@ -504,9 +505,13 @@ void mousePressed() { //if you click
           songName = cp5.get(Textfield.class,"").getText();
           break;
         case "qSave": 
-          //lastPhase.clear();
-          
-          break;
+          if (buttons[i].text == "YES") {
+            saveSong("mySong :)"); 
+            break;
+          }
+          else {
+            break; 
+          }
         }
          if (buttons[i].toggleable == false) {
            if (buttons[i].info == "back") {

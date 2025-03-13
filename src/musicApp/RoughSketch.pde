@@ -36,8 +36,8 @@ String[] textBoxes;
 String[] instruments = new String[3];
 //ArrayList<String> instruments = new ArrayList<String>();
 
-Song[] mySongs;                  //
-ArrayList<MIDINote[]> MIDINotes;
+Song[] mySongs;
+MIDINote[][] MIDINotes;
 int startMillis;
 float lastBeat;
 int tempo, songLength;
@@ -175,12 +175,13 @@ void setup() {
   //mySongs[1] = new PopSong();
   
   instantiateMidiBus();
-  MIDINotes = new ArrayList<MIDINote[]>();
+  MIDINotes = new MIDINote[3][];
   startMillis = 0;
   lastBeat = 0;
   tempo = 150;
   
-  String[] instruments = {"Piano", "Piano", "Piano"};
+  String[] tinstruments = {"piano", "brass", "brass"};
+  instruments = tinstruments; //i hate processing
   j = new Jingle(4, "G", true, instruments);
   //j.generate();
   //Song pop = new PopSong(false, 32, 4, "G", "Piano");
@@ -211,7 +212,7 @@ void draw() {
   //case switch statement would be ideal for "phases" or screens
   if (globalPhase == "mainMenu") {
     //MAIN MENU BACKGROUND
-  image(mainMenu,0,0);
+  //image(mainMenu,0,0);
   }
 
   fill(255);
@@ -310,24 +311,29 @@ void draw() {
   }
   
   //actually playing songs (Micah)
-  if (MIDINotes.size() > 0) {
+  if (MIDINotes[0].length > 0) {
     float millisPerBeat = 60000/tempo;
     float currentBeat = (millis() - startMillis)/millisPerBeat;
     
-    for (int i=0; i<MIDINotes.size(); i++) { //loops over every instrument
-      MIDINote[] midiArray = MIDINotes.get(i);
+    for (int i=0; i<MIDINotes.length; i++) { //loops over every instrument
+      MIDINote[] midiArray = MIDINotes[i];
       
       for (MIDINote mn : midiArray) { //loops over ever beat
-        float start = mn.getBeat();
-        float end = start + mn.getDuration();
-        
-        if (lastBeat < start && start <= currentBeat) {
-          mBus.sendMessage(0xC0 | mn.getPitch(), getProgramNumber(instruments[i]));
-          mBus.sendNoteOn(mn.getPitch(), mn.getPitch(), mn.getVelocity());   //note began between this and last frame
-        }
-        if (lastBeat < end && end <= currentBeat) {
-          mBus.sendMessage(0xC0 | mn.getPitch(), getProgramNumber(instruments[i]));
-          mBus.sendNoteOff(mn.getPitch(), mn.getPitch(), mn.getVelocity());  //note ended between this and last frame
+        if (mn != null) {
+          float start = mn.getBeat();
+          float end = start + mn.getDuration();
+          int channel = i;
+          
+          if (lastBeat < start && start <= currentBeat) {
+            mBus.sendControllerChange(channel, 0, 90);
+            mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
+            mBus.sendNoteOn(channel, mn.getPitch(), mn.getVelocity());   //note began between this and last frame
+          }
+          if (lastBeat < end && end <= currentBeat) {
+            mBus.sendControllerChange(channel, 0, 90);
+            mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
+            mBus.sendNoteOff(channel, mn.getPitch(), mn.getVelocity());  //note ended between this and last frame
+          }
         }
       }
     }
@@ -482,7 +488,7 @@ void instantiateMidiBus() {
 //function made by Micah Tien
 void playSong(Song smong) {
   smong.generate();
-  //MIDINotes = smong.midiNotes();
+  MIDINotes = smong.midiNotes();
   startMillis = millis();
   lastBeat = 0;
 }

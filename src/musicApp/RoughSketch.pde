@@ -22,6 +22,7 @@ ControlP5 cp5;
 String globalPhase, info;
 ArrayList<String> lastPhase = new ArrayList<String>();
 boolean firstMousePress = false;
+boolean major;
 //could be much more options - options would be 
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
@@ -37,6 +38,7 @@ String[] instruments = new String[3];
 //ArrayList<String> instruments = new ArrayList<String>();
 
 Song[] mySongs;
+Song userSong;
 MIDINote[][] MIDINotes;
 int startMillis;
 float lastBeat;
@@ -83,8 +85,6 @@ void setup() {
   nameScreen.resize(width,height);
   saveScreen = loadImage("saveScreen.png");
   saveScreen.resize(width,height);
-  
-  
   pixel = createFont("pixel.ttf",30);
   textFont(pixel);
   textAlign(CENTER);
@@ -200,7 +200,7 @@ void setup() {
   j = new Jingle(4, "G", true);
   //j.generate();
   Song pop = new PopSong(true, 32, 4, "G", true);
-  //pop.generate();
+  pop.generate();
   
   playSong(pop);
   
@@ -268,7 +268,7 @@ void draw() {
       //instrumentsText = instruments[0] + " " + instruments[1] + " " + instruments[2];
       fill(0);
       textSize(25);
-      text("Genre: " + genre + "\n" + songLength + " measures\n" + tempo + " bpm\nTime Signature: " + timeSig + "\nKey Signature: " + keySig + "\nBass Instrument: " + instruments[0] + "\nMiddle Instrument: " + instruments[1] + "\nMelody Instrument: " + instruments[2], 852, 105);
+      text("Genre: " + genre + "\nMajor?: " + major + "\n" + songLength + " measures\n" + tempo + " bpm\nTime Signature: " + timeSig + "\nKey Signature: " + keySig + "\nBass Instrument: " + instruments[0] + "\nMiddle Instrument: " + instruments[1] + "\nMelody Instrument: " + instruments[2], 852, 105);
       break;
     case "play": 
       image(playScreen, 0, 0);
@@ -374,8 +374,18 @@ void mousePressed() { //if you click
           System.out.println(cp5.get(Textfield.class,"").getText());
           genre = buttons[i].info;
           break;
+        case "qChord": 
+          if (buttons[i].info == "major") {
+            major = true;
+            break;
+          } 
+          if (buttons[i].info == "minor") {
+            major = false;
+            break;
+          }
+          break;
         case "qLength": 
-          songLength = int(buttons[i].info);
+          songLength = int(myScrolls[0].txt);
           break;
         case "qTempo": 
           tempo = int(myScrolls[1].txt); //buttons[i].info doesnt work??? man idk and its 12;30 im tired ;-;
@@ -451,6 +461,40 @@ void mousePressed() { //if you click
             }
           }
         case "preview": 
+          if (buttons[i].info != "back") {
+            if (timeSig == "3/4") {
+              timeSig = "3"; 
+            }
+            if (timeSig == "6/8") {
+              timeSig = "3";
+              songLength*=2;
+            }
+            if (timeSig == "2/2") {
+              timeSig = "4";
+              tempo *=2;
+            }
+            if (timeSig == "4/4") { //gaslighting :)
+              timeSig = "4"; 
+            }
+            if (genre == "pop") {
+              userSong = new PopSong(false, songLength, int(timeSig), keySig, major);
+            }
+            if (genre == "jazz") {
+              userSong = new PopSong(true, songLength, int(timeSig), keySig, major);
+            }
+            if (genre == "classical") {
+              userSong = new ClassicalSong(false, songLength, int(timeSig), keySig, major); 
+            }
+            if (genre == "skyline") {
+              userSong = new ClassicalSong(true, songLength, int(timeSig), keySig, major); 
+            }
+            if (genre == "jingle") {
+              userSong = new Jingle(int(timeSig), keySig, major); 
+            }
+            userSong.generate();
+            playSong(userSong);
+            //songNumber++;    //increment the songNumber each time a new song is generated - so u do mySongs[songNumber] = new Song()...
+          }
           break;
         case "qName": 
           songName = cp5.get(Textfield.class,"").getText();

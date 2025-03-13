@@ -195,15 +195,14 @@ void setup() {
   lastBeat = 0;
   tempo = 150;
   
-  String[] tinstruments = {"electricKeyboard", "electricKeyboard", "electricKeyboard"};
+  String[] tinstruments = {"brass", "piano", "brass"};
   instruments = tinstruments; //i hate processing
-  
   j = new Jingle(4, "G", true);
   //j.generate();
-  Song pop = new PopSong(true, 32, 4, "G", true);
+  //Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();
   
-  playSong(pop);
+  playSong(j);
   
   
   
@@ -228,7 +227,7 @@ void draw() {
   //case switch statement would be ideal for "phases" or screens
   if (globalPhase == "mainMenu") {
     //MAIN MENU BACKGROUND
-  image(mainMenu,0,0);
+    image(mainMenu,0,0);
   }
 
   fill(255);
@@ -338,13 +337,13 @@ void draw() {
           int channel = i;
           
           if (lastBeat < start && start <= currentBeat) {
-            //mBus.sendControllerChange(channel, 0, 90);
-            //mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
+            mBus.sendControllerChange(channel, 0, 90);
+            mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
             mBus.sendNoteOn(channel, mn.getPitch(), mn.getVelocity());   //note began between this and last frame
           }
           if (lastBeat < end && end <= currentBeat) {
-            //mBus.sendControllerChange(channel, 0, 90);
-            //mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
+            mBus.sendControllerChange(channel, 0, 90);
+            mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
             mBus.sendNoteOff(channel, mn.getPitch(), mn.getVelocity());  //note ended between this and last frame
           }
         }
@@ -379,7 +378,7 @@ void mousePressed() { //if you click
           songLength = int(buttons[i].info);
           break;
         case "qTempo": 
-          tempo = int(myScrolls[1].txt); //buttons[i].info doesnt work??? man idk and its 12;30 im tired ;-;
+          tempo = int(buttons[i].info);
           break;
         case "qSign": 
           timeSig = buttons[i].info;
@@ -518,10 +517,6 @@ void playSong(Song smong) {
   MIDINotes = smong.midiNotes();
   startMillis = millis();
   lastBeat = 0;
-  for (int i=0; i<instruments.length; i++) {
-    mBus.sendControllerChange(i, 0, 90);
-    mBus.sendMessage(0xC0 | i, getProgramNumber(instruments[i]));
-  }
 }
 
 //function made by Micah Tien

@@ -236,7 +236,7 @@ class Fragment{
   public NumberNote[] getBassNotes(){
     ArrayList<NumberNote> bassList = new ArrayList<NumberNote>();
     for(Chord c : chords){
-      if(c != null){
+      if(c != null){ //this is causing some errors i think -z
         NumberNote bassNote = c.getNote(0); //index 0 = bass note cus I was smart phew
         bassList.add(bassNote);
       }

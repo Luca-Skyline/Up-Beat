@@ -24,7 +24,7 @@ ControlP5 cp5;
 String globalPhase, info;
 ArrayList<String> lastPhase = new ArrayList<String>();
 boolean firstMousePress = false;
-boolean major;
+boolean major, textGenerated;
 //could be much more options - options would be 
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
@@ -188,6 +188,7 @@ void setup() {
   
   pop = false;  
   classical = false;
+  textGenerated = false;
   stroke(#1D201F);
   //mySongs = new Song[2];
   //mySongs[0] = new ClassicalSong();
@@ -204,14 +205,14 @@ void setup() {
   
   j = new Jingle(4, "G", true);
   //j.generate();
-  //Song pop = new PopSong(true, 32, 4, "G", true);
+  Song pop = new PopSong(true, 32, 4, "G", true);
   //pop.generate();
   
-  //playSong(pop);
+  playSong(pop);
   
   
   
-  cp5.addTextfield("").setPosition(20,20).setSize(100,40).setFont(pixel).setFocus(true).setColor(color(255,100,100));
+  //cp5.addTextfield("").setPosition(195,271).setSize(657,97).setFont(pixel).setFocus(true).setColor(color(255,100,100)); //todo: find a way to set this so it only appears in qname
 }
 
 
@@ -280,7 +281,10 @@ void draw() {
       break;
     case "qName": 
       image(nameScreen, 0, 0);
-      //buttons[i].info = whatevers in the text box; (i=31 currently)
+      if (textGenerated == false) {
+          cp5.addTextfield("").setPosition(195,271).setSize(657,97).setFont(pixel).setFocus(true).setColor(color(255,100,100));
+          textGenerated = true;
+      }
       break;
     case "qSave": 
       image(saveScreen, 0, 0);
@@ -358,7 +362,7 @@ void draw() {
     
     
   }
-    //text((str(mouseX) + " " + str(mouseY)), mouseX, mouseY);     FOR DEBUG PURPOSES ONLY
+    //text((str(mouseX) + " " + str(mouseY)), mouseX, mouseY);     //FOR DEBUG PURPOSES ONLY
 }
 
 
@@ -375,7 +379,7 @@ void mousePressed() { //if you click
         // if (buttons[i].text != "filler") {
       switch (globalPhase) { 
         case "qGenre": 
-          System.out.println(cp5.get(Textfield.class,"").getText());
+          //System.out.println(cp5.get(Textfield.class,"").getText()); FOR DEBUG PURPOSES ONLY
           genre = buttons[i].info;
           break;
         case "qChord": 
@@ -503,10 +507,11 @@ void mousePressed() { //if you click
           break;
         case "qName": 
           songName = cp5.get(Textfield.class,"").getText();
+          cp5.get(Textfield.class,"").remove();
           break;
         case "qSave": 
           if (buttons[i].text == "YES") {
-            saveSong("mySong :)"); 
+            saveSong(songName); 
             break;
           }
           else {

@@ -195,7 +195,7 @@ void setup() {
   //mySongs[1] = new PopSong();
   
   instantiateMidiBus();
-  MIDINotes = new MIDINote[3][];
+  MIDINotes = new MIDINote[3][0];
   startMillis = 0;
   lastBeat = 0;
   tempo = 150;
@@ -203,12 +203,12 @@ void setup() {
   String[] tinstruments = {"electricKeyboard", "electricKeyboard", "electricKeyboard"};
   instruments = tinstruments; //i hate processing
   
-  j = new Jingle(4, "G", true);
-  //j.generate();
-  Song pop = new PopSong(true, 32, 4, "G", true);
-  //pop.generate();
+  //j = new Jingle(4, "G", true);
+  ////j.generate();
+  //Song pop = new PopSong(true, 32, 4, "G", true);
+  ////pop.generate();
   
-  playSong(pop);
+  //playSong(pop);
   
   
   

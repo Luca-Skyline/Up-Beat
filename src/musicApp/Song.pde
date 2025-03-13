@@ -100,14 +100,16 @@ abstract class Song {
     ArrayList<NumberNote> chordsList = new ArrayList<NumberNote>();
     ArrayList<NumberNote> melodyList = new ArrayList<NumberNote>();
     for(Fragment f : myFragments){
-      for(NumberNote n : f.getBassNotes()){
-        bassList.add(n);
-      }
-      for(NumberNote n : f.getChordNotes()){
-        chordsList.add(n);
-      }
-      for(NumberNote n : f.getMelodyNotes()){
-        chordsList.add(n);
+      if (f != null) {
+        for(NumberNote n : f.getBassNotes()){
+          bassList.add(n);
+        }
+        for(NumberNote n : f.getChordNotes()){
+          chordsList.add(n);
+        }
+        for(NumberNote n : f.getMelodyNotes()){
+          chordsList.add(n);
+        }
       }
     }
     

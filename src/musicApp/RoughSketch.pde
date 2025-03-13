@@ -111,7 +111,7 @@ void setup() {
   buttons[8] = new Button(715, 114, 266, 75, "Major", "qChord", "qLength", "major", false, true);
   buttons[9] = new Button(715, 250, 266, 75, "Minor", "qChord", "qLength", "minor", false, true);
   
-  myScrolls[0] = new Scrollbar(width/2-200, 300, 400, 30, "qLength", "measures", 1, 16);
+  myScrolls[0] = new Scrollbar(width/2-200, 300, 400, 30, "qLength", "measures", 1, 8);
   buttons[10] = new Button(865, 395, 172, 80, "Next", "qLength", "qTempo", myScrolls[0].txt, false, true);
   //buttons[8] = new Button(200, 350, 266, 75, "4 measures", "qLength", "qTempo", "4", false, true);
   //buttons[9] = new Button(500, 350, 266, 75, "8 measures", "qLength", "qTempo", "8", false, true);
@@ -304,12 +304,12 @@ void draw() {
     if (globalPhase == buttons[i].localPhase) {
       if(buttons[i].info == "back") {
           if (globalPhase!="play" && globalPhase!="qName" && globalPhase != "qSave" && globalPhase !="mainMenu") {
-          buttons[i].display();
+          //buttons[i].display();
           buttons[i].hover(mouseX, mouseY);
         }
       }
       else {
-      buttons[i].display();
+      //buttons[i].display();
       buttons[i].hover(mouseX, mouseY);
       }  
     }

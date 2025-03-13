@@ -1,5 +1,4 @@
 class PopSong extends Song {
-  PercussionTrack percussion;
   
   PopSong(boolean jazzMode, int measures, int timeSignature, String keySignature, String[] instruments){
     super(measures, keySignature, timeSignature, instruments);
@@ -7,6 +6,7 @@ class PopSong extends Song {
     //set up probability table
     
     if(jazzMode){
+      percussionDirectory = "drums/jazz" + timeSignature+ ".mid";
       try{
         probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsJazz.csv");
       }
@@ -15,6 +15,7 @@ class PopSong extends Song {
       }
     }
     else{
+      percussionDirectory = "drums/pop" + timeSignature+ ".mid";
       try{
         probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsPop.csv");
       }
@@ -33,45 +34,45 @@ class PopSong extends Song {
         myFragments[0].generateMelody(true);
         return;
     } 
-    Fragment verseB = new Fragment(4, 2, scale, probabilitySettings);
+    Fragment verseB = new Fragment(4, 1, timeSignature, scale, probabilitySettings);
     verseB.generateChords(true, "I");
     verseB.generateMelody(false);
-    Fragment verseA = new Fragment(4, 2, scale, probabilitySettings);
+    Fragment verseA = new Fragment(4, 1, timeSignature, scale, probabilitySettings);
     verseA.generateChords(false, verseB.getFirstChord(), "I");
     verseA.generateMelody(false);
-    Fragment chorusD = new Fragment(4, 2, scale, probabilitySettings);
+    Fragment chorusD= new Fragment(4, 1, timeSignature, scale, probabilitySettings);
     chorusD.generateChords(true, verseA.getFirstChord());
     chorusD.generateMelody(true);
-    Fragment chorusC = new Fragment(4, 2, scale, probabilitySettings);
+    Fragment chorusC = new Fragment(4, 1, timeSignature, scale, probabilitySettings);
     chorusC.generateChords(false, chorusD.getFirstChord());
     chorusC.generateMelody(false);
-    Fragment verseBPrime = new Fragment(4, 2, scale, probabilitySettings);
+    Fragment verseBPrime = new Fragment(4, 2, timeSignature, scale, probabilitySettings);
     verseBPrime.generateChords(true, chorusC.getFirstChord(), verseB.getFirstChord());
     verseBPrime.generateMelody(false);
     
     for(int i = 0; i < myFragments.length; i++){
       if(i == 15 || i == 13 || i == 7 || i == 5){ //chorus D
-        myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
+        myFragments[i] = new Fragment(4, 2, timeSignature, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(chorusD));
         myFragments[i].setMelody(copyMelody(chorusD));
       }
       else if(i == 14 || i == 12 || i == 6 || i == 4){
-        myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
+        myFragments[i] = new Fragment(4, 2, timeSignature, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(chorusC));
         myFragments[i].setMelody(copyMelody(chorusC));
       }
       else if(i == 3 || i == 11){
-        myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
+        myFragments[i] = new Fragment(4, 2, timeSignature, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(verseBPrime));
         myFragments[i].setMelody(copyMelody(verseBPrime));
       }
       else if(i == 1 || i == 9){
-        myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
+        myFragments[i] = new Fragment(4, 2, timeSignature, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(verseB));
         myFragments[i].setMelody(copyMelody(verseB));
       }
       else if(i==0 || i == 2 || i == 8 || i==10){
-        myFragments[i] = new Fragment(4, 2, scale, probabilitySettings);
+        myFragments[i] = new Fragment(4, 2, timeSignature, scale, probabilitySettings);
         myFragments[i].setChords(copyChords(verseA));
         myFragments[i].setMelody(copyMelody(verseA));
       }

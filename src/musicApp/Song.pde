@@ -15,12 +15,14 @@ abstract class Song {
   protected Fragment[] myFragments;
   protected int timeSignature;
   private String[] myThreeInstruments; //[bass, chords, melody]
+  protected String percussionDirectory;
   
   //constructor by Luca DalCanto (this is where the magic happens)
   protected Song(int measures, String keySignature, int timeSignature, String[] instruments){
     this.timeSignature = timeSignature;
     this.measures = measures;
     myThreeInstruments = instruments;
+    percussionDirectory = "";
     
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
     String[] orderOfNotes = {"A", "B", "C", "D", "E", "F", "G"};
@@ -85,6 +87,10 @@ abstract class Song {
   
   public String[] getInstruments(){
     return myThreeInstruments;
+  }
+  
+  public String getPercussion(){
+    return percussionDirectory;
   }
   
   public MIDINote[][] midiNotes(){    

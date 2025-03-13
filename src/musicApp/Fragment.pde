@@ -9,25 +9,28 @@ class Fragment{
   private String[] scale;
   private float melodyComplexity = 1.5; //should between 1 and 2 for 2 chords per measure in 4/4 time
   private int chordsPerMeasure;
+  private int beatsPerMeasure;
   
-  public Fragment(int measures, int chordsPerMeasure, String[] scale, Table table){
+  public Fragment(int measures, int chordsPerMeasure, int beatsPerMeasure, String[] scale, Table table){
     this.measures = measures;
-    chords = new Chord[measures * chordsPerMeasure];
+    int chordsCount = measures * chordsPerMeasure;
+    chords = new Chord[chordsCount];
     probabilitySettings = table;
     this.scale = scale;
     this.chordsPerMeasure = chordsPerMeasure;
+    this.beatsPerMeasure = beatsPerMeasure;
   }
   
   public void generateChords(boolean resolve, String nextChord){
-    chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2);
+    chords[(chordsPerMeasure*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (((chordsPerMeasure*measures)-1)*(beatsPerMeasure/chordsPerMeasure)) + 1, beatsPerMeasure/chordsPerMeasure); //leading chord into the next fragment (on beat 3 of either time sig trust)
     if(resolve){
-      chords[(chordsPerMeasure*measures) - 2] = new Chord("I", scale, 3, 1, (4*measures) - 3, 3); //last chord in root position, whole note
+      chords[(chordsPerMeasure*measures) - 2] = new Chord("I", scale, 3, 1, (((chordsPerMeasure*measures)-2)*(beatsPerMeasure/chordsPerMeasure)) + 1, beatsPerMeasure/chordsPerMeasure);
     }
     else{
-      chords[(2*measures) - 2] = new Chord(randomChord(chords[(2*measures) - 1].getSymbol()), scale, 3, 1, (4*measures) - 3, 2);
+      chords[(chordsPerMeasure*measures) - 2] = new Chord(randomChord(chords[(chordsPerMeasure*measures) - 1].getSymbol()), scale, 3, 1, (((chordsPerMeasure*measures)-2)*(beatsPerMeasure/chordsPerMeasure)) + 1, beatsPerMeasure/chordsPerMeasure);
     }
-    for(int i = (2*measures) - 3; i >= 0; i--){
-      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, 1, (i*2)+1, 2);
+    for(int i = (chordsPerMeasure*measures) - 3; i >= 0; i--){
+      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, 1, (i*(beatsPerMeasure/chordsPerMeasure))+1, beatsPerMeasure/chordsPerMeasure);
     }
     for(int i = 0; i < chords.length; i++){
       if(chords[i] == null){
@@ -42,18 +45,17 @@ class Fragment{
   
   
   public void generateChords(boolean resolve, String nextChord, String firstChord){
-    chords[(2*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 1, 2);
+    chords[(chordsPerMeasure*measures) - 1] = new Chord(randomChord(nextChord), scale, 3, 1, (((chordsPerMeasure*measures)-1)*(beatsPerMeasure/chordsPerMeasure)) + 1, beatsPerMeasure/chordsPerMeasure); //leading chord into the next fragment (on beat 3 of either time sig trust)
     if(resolve){
-      chords[(chordsPerMeasure*measures) - 2] = new Chord("I", scale, 3, 1, (4*measures) - 3, 2);
+      chords[(chordsPerMeasure*measures) - 2] = new Chord("I", scale, 3, 1, (((chordsPerMeasure*measures)-2)*(beatsPerMeasure/chordsPerMeasure)) + 1, beatsPerMeasure/chordsPerMeasure);
     }
     else{
-       chords[(2*measures) - 2] = new Chord(randomChord(nextChord), scale, 3, 1, (4*measures) - 3, 2);
+      chords[(chordsPerMeasure*measures) - 2] = new Chord(randomChord(chords[(chordsPerMeasure*measures) - 1].getSymbol()), scale, 3, 1, (((chordsPerMeasure*measures)-2)*(beatsPerMeasure/chordsPerMeasure)) + 1, beatsPerMeasure/chordsPerMeasure);
     }
-    
-    for(int i = (2*measures) - 3; i >= 1; i--){
-      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, 1, (i*2)+1, 2);
+    for(int i = (chordsPerMeasure*measures) - 3; i >= 1; i--){
+      chords[i] = new Chord(randomChord(chords[i+1].getSymbol()), scale, 3, 1, (i*(beatsPerMeasure/chordsPerMeasure))+1, beatsPerMeasure/chordsPerMeasure);
     }
-    chords[0] = new Chord(firstChord, scale, 3, 1, 1, 2);
+    chords[0] = new Chord(firstChord, scale, 3, 1, 1, beatsPerMeasure/chordsPerMeasure);
     for(int i = 0; i < chords.length; i++){
       System.out.print(chords[i].getSymbol() + "  ");
       //for(NumberNote note : chords[i].getNotes()){
@@ -67,41 +69,41 @@ class Fragment{
   
   public void generateMelody(boolean resolveToRoot){
     //start with rhythm of melody
-    melody = new NumberNote[(4*measures)];
+    melody = new NumberNote[(beatsPerMeasure*measures)];
     float[] weights = {melodyComplexity - 1.0, 2.0 - melodyComplexity};
-    int randomIndex = int(random(1, 4)); // random number 1, 2, or 3
+    int randomIndex; // random number 1, 2, or 3
     
     NumberNote chordNote;
     
     if(chords[chords.length - 1] != null){
       randomIndex = int(random(1, 4)); // random number 1, 2, or 3
       chordNote = chords[chords.length-1].getNote(randomIndex);
-      melody[melody.length-2] = new NumberNote(chordNote.getPitch(), 5, 1, (4*measures)-1, 1);
+      melody[melody.length-2] = new NumberNote(chordNote.getPitch(), 5, 1, (beatsPerMeasure*measures)-1, 1);
     }
     
     if(resolveToRoot){
-      melody[melody.length-4] = new NumberNote(scale[0], 5, 1, (4*measures)-3, 2);
+      melody[melody.length-(2*(beatsPerMeasure/chordsPerMeasure))] = new NumberNote(scale[0], 5, 1, (((chordsPerMeasure*measures)-2)*(beatsPerMeasure/chordsPerMeasure)) + 1, beatsPerMeasure/chordsPerMeasure);
     } else {
       randomIndex = int(random(1, 4)); // random number 1, 2, or 3
       chordNote = chords[randomIndex].getNote(randomIndex);
-      melody[melody.length-4] = new NumberNote(chordNote.getPitch(), 5, 1, (4*measures)-3, 2);
+      melody[melody.length-(2*(beatsPerMeasure/chordsPerMeasure))] = new NumberNote(chordNote.getPitch(), 5, 1, (((chordsPerMeasure*measures)-2)*(beatsPerMeasure/chordsPerMeasure)) + 1, beatsPerMeasure/chordsPerMeasure);
     }
     
-    for(int i = melody.length - 5; i >= 0 ; i--){
-      if (i % 2 == 0){ //strong beat: yes melody note
+    for(int i = melody.length - (2*(beatsPerMeasure/chordsPerMeasure)) - 1; i >= 0 ; i--){
+      if ((i % 2 == 0 && beatsPerMeasure == 4) || (i%3 == 0 && beatsPerMeasure == 3)){ //strong beat: yes melody note
         randomIndex = int(random(1, 4)); // random number 1, 2, or 3
-        chordNote = chords[i/2].getNote(randomIndex);
-        int duration;
-        if(melody[i+1] == null){duration = 2;}
-        else{duration = 1;}
+        chordNote = chords[i*chordsPerMeasure/(beatsPerMeasure)].getNote(randomIndex);
+        int duration = 1;
+        int j = 1;
+        while(melody[i+j] == null){
+          duration++;
+          j++;
+        }
         melody[i] = new NumberNote(chordNote.getPitch(), 5, 1, i+1, duration);
         
       }
-      else if(weightedRandomChoice(weights) == 1){  //weak beat: maybe melody note
+      else if(melody[i+1] != null && weightedRandomChoice(weights) == 1){  //weak beat: maybe melody note
         NumberNote target = melody[i+1];
-        if(target == null){
-          System.out.println("Big problem");
-        }
         int targetIndex = Arrays.asList(scale).indexOf(target.getPitch());
         int myIndex = targetIndex + 1 + (-2 * int(random(2)));
         if(myIndex == -1){
@@ -127,13 +129,12 @@ class Fragment{
     //melody = new NumberNote[1];
   }
   
-  public void makeResolve(){ // this is not right. We'll need to remove a chord prolly.
+  public void makeResolve(){ 
     chords[chords.length - 1] = null;
-    if(melody[melody.length - 1] != null){
-      melody[melody.length - 1] = null;
-    }
-    if(melody[melody.length - 2] != null){
-      melody[melody.length - 2] = null;
+    for(int i = melody.length - 1; i >= melody.length -(beatsPerMeasure/chordsPerMeasure); i--){
+      if(melody[i] != null){
+        melody[i] = null;
+      }
     }
   }
   

@@ -14,11 +14,13 @@ abstract class Song {
   protected Table probabilitySettings;
   protected Fragment[] myFragments;
   protected int timeSignature;
+  private String[] myThreeInstruments; //[bass, chords, melody]
   
   //constructor by Luca DalCanto (this is where the magic happens)
-  protected Song(int measures, String keySignature, int timeSignature, String instrument){
+  protected Song(int measures, String keySignature, int timeSignature, String[] instruments){
     this.timeSignature = timeSignature;
     this.measures = measures;
+    myThreeInstruments = instruments;
     
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
     String[] orderOfNotes = {"A", "B", "C", "D", "E", "F", "G"};

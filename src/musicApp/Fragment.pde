@@ -222,24 +222,43 @@ class Fragment{
     return chords[0].getSymbol();
   }
   
-  public NumberNote[] getNotes(){
+  public NumberNote[] getBassNotes(){
+    ArrayList<NumberNote> bassList = new ArrayList<NumberNote>();
+    for(Chord c : chords){
+      if(c != null){
+        NumberNote bassNote = c.getNote(0); //index 0 = bass note cus I was smart phew
+        bassList.add(bassNote);
+      }
+    }
+    NumberNote[] finalArray = new NumberNote[bassList.size()];
+    return bassList.toArray(finalArray);
+  }
+  
+  public NumberNote[] getChordNotes(){
     ArrayList<NumberNote> finalList = new ArrayList<NumberNote>();
     for(Chord c : chords){
       if(c != null){
         NumberNote[] chordNotes = c.getNotes();
-        for(NumberNote n : chordNotes){
-          finalList.add(n);
+        for(int i = 1; i < 4; i++){
+          finalList.add(chordNotes[i]);
         }
       }
     }
+    NumberNote[] finalArray = new NumberNote[finalList.size()];
+    return finalList.toArray(finalArray);
+  }
+  
+  public NumberNote[] getMelodyNotes(){     
+    ArrayList<NumberNote> melodyList = new ArrayList<NumberNote>();
     for(NumberNote n : melody){
       if(n != null){
-        finalList.add(n);
+        melodyList.add(n);
       }
     }
-    
-    NumberNote[] finalArray = new NumberNote[finalList.size()];
-    return finalList.toArray(finalArray); // NEEDS TO BE NOTES FROM MELODY, CHORDS, AND EVERYTHING ELSE
+    NumberNote[] finalArray = new NumberNote[melodyList.size()];
+    return melodyList.toArray(finalArray);    
   }
+  
+
   
 }

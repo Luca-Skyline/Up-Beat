@@ -145,7 +145,7 @@ void setup() {
   Song pop = new PopSong(false, 32, 4, "G", "Piano");
   //pop.generate();
   
-  playSong(pop);
+  playSong(j);
   
   
   

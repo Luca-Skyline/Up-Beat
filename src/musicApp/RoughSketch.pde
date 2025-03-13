@@ -188,7 +188,6 @@ void setup() {
   
   pop = false;  
   classical = false;
-  textGenerated = false;
   stroke(#1D201F);
   //mySongs = new Song[2];
   //mySongs[0] = new ClassicalSong();
@@ -281,6 +280,7 @@ void draw() {
       break;
     case "qName": 
       image(nameScreen, 0, 0);
+      textGenerated = false;
       if (textGenerated == false) {
           cp5.addTextfield("").setPosition(195,271).setSize(657,97).setFont(pixel).setFocus(true).setColor(color(255,100,100));
           textGenerated = true;

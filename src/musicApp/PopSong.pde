@@ -1,7 +1,7 @@
 class PopSong extends Song {
   
-  PopSong(boolean jazzMode, int measures, int timeSignature, String keySignature, boolean major, String[] instruments){
-    super(measures, keySignature, timeSignature, major, instruments);
+  PopSong(boolean jazzMode, int measures, int timeSignature, String keySignature, boolean major){
+    super(measures, keySignature, timeSignature, major);
     
     //set up probability table
     

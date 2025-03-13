@@ -18,8 +18,6 @@
 //import statements for MIDI, scanners, etc. here
 import controlP5.*;
 import themidibus.*;
-import javax.sound.midi.*;
-import java.io.*;
 ControlP5 cp5;
 String globalPhase, info;
 ArrayList<String> lastPhase = new ArrayList<String>();
@@ -197,13 +195,12 @@ void setup() {
   lastBeat = 0;
   tempo = 150;
   
-  String[] tinstruments = {"electricKeyboard", "electricKeyboard", "electricKeyboard"};
+  String[] tinstruments = {"brass", "lead", "brass"};
   instruments = tinstruments; //i hate processing
-  
   j = new Jingle(4, "G", true);
   //j.generate();
   Song pop = new PopSong(true, 32, 4, "G", true);
-  pop.generate();
+  //pop.generate();
   
   playSong(pop);
   
@@ -340,13 +337,13 @@ void draw() {
           int channel = i;
           
           if (lastBeat < start && start <= currentBeat) {
-            //mBus.sendControllerChange(channel, 0, 90);
-            //mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
+            mBus.sendControllerChange(channel, 0, 90);
+            mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
             mBus.sendNoteOn(channel, mn.getPitch(), mn.getVelocity());   //note began between this and last frame
           }
           if (lastBeat < end && end <= currentBeat) {
-            //mBus.sendControllerChange(channel, 0, 90);
-            //mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
+            mBus.sendControllerChange(channel, 0, 90);
+            mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
             mBus.sendNoteOff(channel, mn.getPitch(), mn.getVelocity());  //note ended between this and last frame
           }
         }
@@ -463,7 +460,6 @@ void mousePressed() { //if you click
               break;
             }
           }
-          break;
         case "preview": 
           if (buttons[i].info != "back") {
             if (timeSig == "3/4") {
@@ -535,7 +531,6 @@ void mousePressed() { //if you click
 
 void mouseReleased() {
   //playSong(j);
-  //saveSong("The very first song");
 }
 
 //function made by Micah Tien
@@ -566,74 +561,25 @@ void playSong(Song smong) {
   MIDINotes = smong.midiNotes();
   startMillis = millis();
   lastBeat = 0;
-  for (int i=0; i<instruments.length; i++) {
-    mBus.sendControllerChange(i, 0, 90);
-    mBus.sendMessage(0xC0 | i, getProgramNumber(instruments[i]));
-  }
 }
 
 //function made by Micah Tien
 int getProgramNumber(String instr) {
-  switch (instr) {
-    case "strings":
-      return 40;
-    case "bass":
-      return 32;
-    case "electricKeyboard":
-      return 4;
-    case "brass":
-      return 56;
-    case "lead":
-      return 80;
-    case "piano":
-    default:
-      return 0; //if no instrument, just use the basic basic piano
-  }
-}
-
-//function made by Micah Tien
-void saveSong(String songName) {
-  try {
-    Sequence sequence = new Sequence(Sequence.PPQ, 480);
-    Track track = sequence.createTrack();
-    
-    //tempo
-    MetaMessage tempoMessage = new MetaMessage();
-    int mpqn = 60000000 / tempo; //microseconds per quarter note
-    byte[] tempoData = {(byte) ((mpqn >> 16) & 0xFF), (byte) ((mpqn >> 8) & 0xFF), (byte) (mpqn & 0xFF)}; //stolen from mr gpt
-    tempoMessage.setMessage(0x51, tempoData, 3);
-    track.add(new MidiEvent(tempoMessage, 0));
-    
-    for (int i=0; i<MIDINotes.length; i++) {
-      
-      //instruments
-      ShortMessage programChange = new ShortMessage();
-      programChange.setMessage(ShortMessage.PROGRAM_CHANGE, i, getProgramNumber(instruments[i]), 0);
-      track.add(new MidiEvent(programChange, 0));
-      
-      //note info
-      for (MIDINote mn : MIDINotes[i]) {
-        if (mn != null) {
-          //MIDI is dumb and uses long instead of float
-          ShortMessage noteOn = new ShortMessage();
-          noteOn.setMessage(ShortMessage.NOTE_ON, i, mn.getPitch(), mn.getVelocity());
-          track.add(new MidiEvent(noteOn, (long) (mn.getBeat() * 480)));
-  
-          ShortMessage noteOff = new ShortMessage();
-          noteOff.setMessage(ShortMessage.NOTE_OFF, i, mn.getPitch(), 0);
-          track.add(new MidiEvent(noteOff, (long) ((mn.getBeat()+mn.getDuration()) * 480)));
-        }
-      }
+    switch (instr) {
+        case "strings":
+            return 40;
+        case "bass":
+            return 32;
+        case "electricKeyboard":
+            return 4;
+        case "brass":
+            return 56;
+        case "lead":
+            return 80;
+        case "piano":
+        default:
+            return 0; //if no instrument, just use the basic basic piano
     }
-    
-    songName += ".mid";
-    File midiFile = new File(songName);
-    MidiSystem.write(sequence, 1, midiFile);
-    println("MIDI file saved: " + songName);
-
-  } catch (Exception e) {
-    e.printStackTrace();
-  }
 }
 
 //erm

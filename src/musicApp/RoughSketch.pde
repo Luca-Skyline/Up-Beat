@@ -195,14 +195,14 @@ void setup() {
   lastBeat = 0;
   tempo = 150;
   
-  String[] tinstruments = {"brass", "piano", "brass"};
+  String[] tinstruments = {"brass", "lead", "brass"};
   instruments = tinstruments; //i hate processing
   j = new Jingle(4, "G", true);
   //j.generate();
-  //Song pop = new PopSong(false, 32, 4, "G", "Piano");
+  Song pop = new PopSong(true, 32, 4, "G", true);
   //pop.generate();
   
-  playSong(j);
+  playSong(pop);
   
   
   

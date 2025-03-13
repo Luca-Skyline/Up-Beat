@@ -46,7 +46,7 @@ class PopSong extends Song {
     Fragment chorusC = new Fragment(4, 1, timeSignature, scale, probabilitySettings, major);
     chorusC.generateChords(false, chorusD.getFirstChord());
     chorusC.generateMelody(false);
-    Fragment verseBPrime = new Fragment(4, 2, timeSignature, scale, probabilitySettings, major);
+    Fragment verseBPrime = new Fragment(4, 1, timeSignature, scale, probabilitySettings, major);
     verseBPrime.generateChords(true, chorusC.getFirstChord(), verseB.getFirstChord());
     verseBPrime.generateMelody(false);
     

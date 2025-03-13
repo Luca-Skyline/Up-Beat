@@ -29,7 +29,7 @@ boolean classical; // classical
 Button[] buttons = new Button[35];
 Scrollbar[] myScrolls = new Scrollbar[1];
 InfoBubble[] infoBubbles = new InfoBubble[4];
-PImage logo;
+PImage logo, mainMenu, genreScreen, chordScreen, lengthScreen, tempoScreen, timeScreen, bassScreen, chordInstrumentScreen, melodyScreen, previewScreen, playScreen, nameScreen, saveScreen;
 PFont pixel;
 MidiBus mBus;
 String[] textBoxes;
@@ -51,66 +51,94 @@ Jingle j;
 //             time signature and type of song (classical/pop for now) ;p
 //          
 void setup() {
-  size(1200,700);
+  size(1057,507);
+  //images!!! oh joy :)
   logo = loadImage("BlueUpBeat.png");
   logo.resize(350,350);
+  mainMenu = loadImage("mainMenu.png");
+  mainMenu.resize(width,height);
+  genreScreen = loadImage("genreScreen.png");
+  genreScreen.resize(width,height);
+  chordScreen = loadImage("chordScreen.png");
+  chordScreen.resize(width,height);
+  lengthScreen = loadImage("lengthScreen.png");
+  lengthScreen.resize(width,height);
+  tempoScreen = loadImage("tempoScreen.png");
+  tempoScreen.resize(width,height);
+  timeScreen = loadImage("timeScreen.png");
+  timeScreen.resize(width,height);
+  bassScreen = loadImage("bassScreen.png");
+  bassScreen.resize(width,height);
+  chordInstrumentScreen = loadImage("chordInstrumentScreen.png");
+  chordInstrumentScreen.resize(width,height);
+  melodyScreen = loadImage("melodyScreen.png");
+  melodyScreen.resize(width,height);
+  previewScreen = loadImage("previewScreen.png");
+  previewScreen.resize(width,height);
+  playScreen = loadImage("playScreen.png");
+  playScreen.resize(width,height);
+  nameScreen = loadImage("nameScreen.png");
+  nameScreen.resize(width,height);
+  saveScreen = loadImage("saveScreen.png");
+  saveScreen.resize(width,height);
+  
+  
   pixel = createFont("pixel.ttf",30);
   textFont(pixel);
   textAlign(CENTER);
-  imageMode(CENTER);
   cp5 = new ControlP5(this);
   textSize(25); 
   globalPhase = "mainMenu";
   //this list of buttons and later sliders and stuff is going to be SUPER long uhm ;-;
   //what i plan on doing is putting all of the buttons and sliders and wheels and widgets into a giant text file then just reading from it :p
-  buttons[0] = new Button(850, 150, 300, 100, "Generate New Song", "mainMenu", "qGenre", "newSong", false);
-  buttons[1] = new Button(850, 300, 300, 100, "Load Old Song", "mainMenu", "old", "oldSong", false);
-  buttons[2] = new Button(850, 450, 300, 100, "Settings", "mainMenu", "settings", "TEMP", false);
+  buttons[0] = new Button(715, 203, 276, 116, "Generate New ", "mainMenu", "qGenre", "newSong", false, true);
+  buttons[1] = new Button(677, 354, 276, 116, "Load Old Song", "mainMenu", "old", "oldSong", false, true);
+  buttons[2] = new Button(746, 50, 276, 116, "Settings", "mainMenu", "settings", "TEMP", false, true);
   
-  buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "qGenre", "qLength", "classical", false);
-  buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "qGenre", "qLength", "pop", false);
-  buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "qGenre", "qLength", "skyline", false);
+  buttons[3] = new Button(200, 350, 250, 70, "Classical Song", "qGenre", "qLength", "classical", false, true);
+  buttons[4] = new Button(500, 350, 250, 70, "Pop Song", "qGenre", "qLength", "pop", false, true);
+  buttons[5] = new Button(800, 350, 250, 70, "Mr. Skyline", "qGenre", "qLength", "skyline", false, true);
   
-  buttons[6] = new Button(200, 350, 250, 70, "4 measures", "qLength", "qTempo", "4", false);
-  buttons[7] = new Button(500, 350, 250, 70, "8 measures", "qLength", "qTempo", "8", false);
-  buttons[8] = new Button(800, 350, 250, 70, "16 measures", "qLength", "qTempo", "16", false);
+  buttons[6] = new Button(200, 350, 250, 70, "4 measures", "qLength", "qTempo", "4", false, true);
+  buttons[7] = new Button(500, 350, 250, 70, "8 measures", "qLength", "qTempo", "8", false, true);
+  buttons[8] = new Button(800, 350, 250, 70, "16 measures", "qLength", "qTempo", "16", false, true);
   
   myScrolls[0] = new Scrollbar(width/2-200, 350, 400, 30, "qTempo", "bpm", 60, 200);
-  buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt, false);
+  buttons[9] = new Button(500, 500, 250, 70, "Done", "qTempo", "qSign", myScrolls[0].txt, false, true);
   
-  buttons[10] = new Button(400, 250, 250, 70, "2/4", "qSign", "qKey", "2/4", false);
-  buttons[11] = new Button(800, 250, 250, 70, "3/4", "qSign", "qKey", "3/4", false);
-  buttons[12] = new Button(400, 400, 250, 70, "4/4", "qSign", "qKey", "4/4", false);
-  buttons[13] = new Button(800, 400, 250, 70, "6/8", "qSign", "qKey", "6/8", false);
+  buttons[10] = new Button(400, 250, 250, 70, "2/4", "qSign", "qKey", "2/4", false, true);
+  buttons[11] = new Button(800, 250, 250, 70, "3/4", "qSign", "qKey", "3/4", false, true);
+  buttons[12] = new Button(400, 400, 250, 70, "4/4", "qSign", "qKey", "4/4", false, true);
+  buttons[13] = new Button(800, 400, 250, 70, "6/8", "qSign", "qKey", "6/8", false, true);
   
-  buttons[14] = new Button(800, 550, 250, 70, "Next", "qKey", "qBassInstrument", "filler", false);
+  buttons[14] = new Button(800, 450, 250, 70, "Next", "qKey", "qBassInstrument", "filler", false, true);
   
-  buttons[15] = new Button(400, 250, 250, 70, "Piano", "qBassInstrument", "qMiddleInstrument", "Piano", true);  //big todo: make these toggles 
-  buttons[16] = new Button(800, 250, 250, 70, "Violin", "qBassInstrument", "qMiddleInstrument", "Violin", true);//so that you can have multiple
-  buttons[17] = new Button(400, 400, 250, 70, "Trumpet", "qBassInstrument", "qMiddleInstrument", "Trumpet", true);//instruments
-  buttons[18] = new Button(800, 400, 250, 70, "Flute", "qBassInstrument", "qMiddleInstrument", "Flute", true);
-  buttons[19] = new Button(800, 500, 250, 70, "Next", "qBassInstrument", "qMiddleInstrument", "filler", false);
+  buttons[15] = new Button(400, 250, 250, 70, "Piano", "qBassInstrument", "qMiddleInstrument", "Piano", true, true);  //big todo: make these toggles 
+  buttons[16] = new Button(800, 250, 250, 70, "Violin", "qBassInstrument", "qMiddleInstrument", "Violin", true, true);//so that you can have multiple
+  buttons[17] = new Button(400, 400, 250, 70, "Trumpet", "qBassInstrument", "qMiddleInstrument", "Trumpet", true, true);//instruments
+  buttons[18] = new Button(800, 400, 250, 70, "Flute", "qBassInstrument", "qMiddleInstrument", "Flute", true, true);
+  buttons[19] = new Button(800, 500, 250, 70, "Next", "qBassInstrument", "qMiddleInstrument", "filler", false, true);
   
-  buttons[20] = new Button(400, 250, 250, 70, "Piano", "qMiddleInstrument", "qMelInstrument", "Piano", true);  //big todo: make these toggles 
-  buttons[21] = new Button(800, 250, 250, 70, "Violin", "qMiddleInstrument", "qMelInstrument", "Violin", true);//so that you can have multiple
-  buttons[22] = new Button(400, 400, 250, 70, "Trumpet", "qMiddleInstrument", "qMelInstrument", "Trumpet", true);//instruments
-  buttons[23] = new Button(800, 400, 250, 70, "Flute", "qMiddleInstrument", "qMelInstrument", "Flute", true);
-  buttons[24] = new Button(800, 500, 250, 70, "Next", "qMiddleInstrument", "qMelInstrument", "filler", false);
+  buttons[20] = new Button(400, 250, 250, 70, "Piano", "qMiddleInstrument", "qMelInstrument", "Piano", true, true);  //big todo: make these toggles 
+  buttons[21] = new Button(800, 250, 250, 70, "Violin", "qMiddleInstrument", "qMelInstrument", "Violin", true, true);//so that you can have multiple
+  buttons[22] = new Button(400, 400, 250, 70, "Trumpet", "qMiddleInstrument", "qMelInstrument", "Trumpet", true, true);//instruments
+  buttons[23] = new Button(800, 400, 250, 70, "Flute", "qMiddleInstrument", "qMelInstrument", "Flute", true, true);
+  buttons[24] = new Button(800, 500, 250, 70, "Next", "qMiddleInstrument", "qMelInstrument", "filler", false, true);
   
-  buttons[25] = new Button(400, 250, 250, 70, "Piano", "qMelInstrument", "preview", "Piano", true);  //big todo: make these toggles 
-  buttons[26] = new Button(800, 250, 250, 70, "Violin", "qMelInstrument", "preview", "Violin", true);//so that you can have multiple
-  buttons[27] = new Button(400, 400, 250, 70, "Trumpet", "qMelInstrument", "preview", "Trumpet", true);//instruments
-  buttons[28] = new Button(800, 400, 250, 70, "Flute", "qMelInstrument", "preview", "Flute", true);
-  buttons[29] = new Button(800, 500, 250, 70, "Next", "qMelInstrument", "preview", "filler", false);
+  buttons[25] = new Button(400, 250, 250, 70, "Piano", "qMelInstrument", "preview", "Piano", true, true);  //big todo: make these toggles 
+  buttons[26] = new Button(800, 250, 250, 70, "Violin", "qMelInstrument", "preview", "Violin", true, true);//so that you can have multiple
+  buttons[27] = new Button(400, 400, 250, 70, "Trumpet", "qMelInstrument", "preview", "Trumpet", true, true);//instruments
+  buttons[28] = new Button(800, 400, 250, 70, "Flute", "qMelInstrument", "preview", "Flute", true, true);
+  buttons[29] = new Button(800, 500, 250, 70, "Next", "qMelInstrument", "preview", "filler", false, true);
   
-  buttons[30] = new Button(800, 550, 250, 70, "Next", "preview", "play", "execute", false);
+  buttons[30] = new Button(800, 450, 250, 70, "Next", "preview", "play", "execute", false, true);
   
-  buttons[31] = new Button(800, 550, 250, 70, "Finish", "play", "qName", "stop", false);
+  buttons[31] = new Button(800, 450, 250, 70, "Finish", "play", "qName", "stop", false, true);
   
-  buttons[32] = new Button(800, 550, 250, 70, "Next", "qName", "qSave", "filler", false);
+  buttons[32] = new Button(800, 450, 250, 70, "Next", "qName", "qSave", "filler", false, true);
                                                //filler here ^^^ will become what is in the textbox once next is clicked
-  buttons[33] = new Button(400, 550, 250, 70, "Yes", "qSave", "mainMenu", "yesSave", false);
-  buttons[34] = new Button(800, 550, 250, 70, "No", "qSave", "mainMenu", "noSave", false);
+  buttons[33] = new Button(400, 450, 250, 70, "Yes", "qSave", "mainMenu", "yesSave", false, true);
+  buttons[34] = new Button(800, 450, 250, 70, "No", "qSave", "mainMenu", "noSave", false, true);
   
   //  InfoBubble(float, float, float, String) will take in xposition, yposition, radius, and text in that order. 
   //  Change these as needed!
@@ -157,7 +185,6 @@ void setup() {
 void draw() {
   //gradients are complicated, apparently T-T
   background(10);
-  strokeWeight(4); //tinker w/this
   //smooth(); i think this does something ill test :P
   // new verdict: DEATH TO ALL GRADIENTS
   //for (int i = 0; i <= height; i++) {
@@ -168,29 +195,77 @@ void draw() {
   //    line(width-(2*inter2), height, width, (height-(2*i))); //swapping height for 0 is very funny (and interesting) line(inter2-i, 0, width, i);
   //  }  
     //UNIVERSAL BACKGROUND
-  noStroke();
-  fill(#f7b4e1); 
-  quad(800,0,width,0,width,height,600,height);
-  fill(#df5594);
-  quad(1050,0,width,0,width,height,850,height); //aaaaaa these pinks hurt my eyes,,,, so bright./ ;-;
-  fill(255);
-  quad(600,height,620,height,820,0,800,0);
   text(globalPhase, 75, height-50);   //FOR DEBUG PURPOSES
   //case switch statement would be ideal for "phases" or screens
-  text((str(mouseX) + " " + str(mouseY)), mouseX, mouseY);
   if (globalPhase == "mainMenu") {
     //MAIN MENU BACKGROUND
-  textSize(80);
-  fill(#df5594);
-  text("Welcome to", 300, 155);
+  image(mainMenu,0,0);
+  }
+
   fill(255);
-  text("Welcome to", 300, 150); 
-  textSize(30);
-  image(logo, 300,400);
-  quad(580,height,587,height,787,0,780,0);
+  //1st question -z
+  //make this a case switch statement
+  
+  switch (globalPhase) {
+    case "qGenre":
+      image(genreScreen, 0, 0);
+      break;
+      
+    case "qLength": 
+      image(lengthScreen, 0, 0);
+      break;
+      
+    case "qTempo":
+      image(tempoScreen, 0, 0);
+      buttons[9].info = myScrolls[0].txt;
+      break;
+    case "qSign":
+      image(timeScreen, 0, 0);
+      break;
+    case "qKey": 
+      text("Select Key Signature:", width/2, 50);
+      textSize(20);
+      text("Combinations of sharps or flats indicating the key of a composition (WIP currently)", width/2, 80);
+      textSize(30);
+      break;
+    case "qBassInstrument": 
+      image(bassScreen, 0, 0);
+      break;
+    case "qMiddleInstrument": 
+      image(chordInstrumentScreen, 0, 0);
+      break;
+    case "qMelInstrument": 
+      image(melodyScreen, 0, 0);
+      break;
+    case "preview": 
+      image(previewScreen, 0, 0);
+      //instrumentsText = instruments[0] + " " + instruments[1] + " " + instruments[2];
+      fill(0);
+      textSize(25);
+      text("Genre: " + genre + "\n" + songLength + " measures\n" + tempo + " bpm\nTime Signature: " + timeSig + "\nKey Signature: " + keySig + "\nBass Instrument: " + instruments[0] + "\nMiddle Instrument: " + instruments[1] + "\nMelody Instrument: " + instruments[2], 852, 105);
+      break;
+    case "play": 
+      image(playScreen, 0, 0);
+    case "qName": 
+      image(nameScreen, 0, 0);
+      //buttons[i].info = whatevers in the text box; (i=31 currently)
+      break;
+    case "qSave": 
+      image(saveScreen, 0, 0);
+      break;
+    case "old":
+      textSize(50);
+      text("work in progress c:", width/2, height/2);
+      break;
+    case "settings":
+      textSize(50);
+      text("work in progress c:", width/2, height/2);
+      break;
+  //fill(100, 70);               tint over the whole screen lol
+  //rect(0,0,width,height);
   }
   
-  //rendering buttons -z
+    //rendering buttons -z
   for (int i=0; i<buttons.length; i++) {
     if (globalPhase == buttons[i].localPhase) {
       buttons[i].display();
@@ -205,72 +280,6 @@ void draw() {
        myScrolls[i].display();
      }
    }
-  fill(255);
-  //1st question -z
-  //make this a case switch statement
-  
-  switch (globalPhase) {
-    case "qGenre":
-      fill(255);
-      text("What genre of music would you like your song to be?", width/2, 80);
-      break;
-      
-    case "qLength": 
-      fill(255);
-      //textSize(30);
-      text("How long would you like your song to be?", width/2, 80);
-      break;
-      
-    case "qTempo":
-      textSize(30);
-      text("What tempo would you like your song to be?", width/2, 80);
-      buttons[9].info = myScrolls[0].txt;
-      break;
-    case "qSign":
-    textSize(75);
-      text("Time Signature", width/4, 50);
-      textSize(20);
-      text("Specifies how many note values of a particular type\nare contained in each measure (bar)", width/4, 80);
-      textSize(30);
-      break;
-    case "qKey": 
-      text("Select Key Signature:", width/2, 50);
-      textSize(20);
-      text("Combinations of sharps or flats indicating the key of a composition (WIP currently)", width/2, 80);
-      textSize(30);
-      break;
-    case "qBassInstrument": 
-    textSize(30);
-      text("Select which instrument you would like your song to be played by", width/2, 50);
-      break;
-    case "qMiddleInstrument": 
-    textSize(30);
-      text("Select which instrument you would like your song to be played by", width/2, 50);
-      break;
-    case "qMelInstrument": 
-    textSize(30);
-      text("Select which instrument you would like your song to be played by", width/2, 50);
-      break;
-    case "preview": 
-      textSize(75);
-      text("Overview", (width/2)-70, 70);
-      textSize(30);
-      //instrumentsText = instruments[0] + " " + instruments[1] + " " + instruments[2];
-      text("Genre: " + genre + "\n" + songLength + " measures\n" + tempo + " bpm\nTime Signature: " + timeSig + "\nKey Signature: " + keySig + "\nBass Instrument: " + instruments[0] + "\nMiddle Instrument: " + instruments[1] + "\nMelody Instrument: " + instruments[2], (width/2)-250, height/3);
-    case "qName": 
-      //buttons[i].info = whatevers in the text box; (i=21 currently)
-      break;
-    case "old":
-      textSize(50);
-      text("work in progress c:", width/2, height/2);
-      break;
-    case "settings":
-      textSize(50);
-      text("work in progress c:", width/2, height/2);
-      break;
-  //fill(100, 70);               tint over the whole screen lol
-  //rect(0,0,width,height);
-  }
   
   //actually playing songs (Micah)
   if (MIDINotes.size() > 0) {
@@ -293,6 +302,7 @@ void draw() {
     
     
   }
+    text((str(mouseX) + " " + str(mouseY)), mouseX, mouseY);
 }
 
 
@@ -423,7 +433,7 @@ void instantiateMidiBus() {
 //function made by Micah Tien
 void playSong(Song smong) {
   smong.generate();
-  MIDINotes = smong.midiNotes();
+  //MIDINotes = smong.midiNotes();
   startMillis = millis();
   lastBeat = 0;
 }

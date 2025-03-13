@@ -4,10 +4,10 @@ class Button {
   int x, y, w, h;
   String text, localPhase, nextPhase, info;
   color c1, c2;
-  boolean on, toggleable, toggled; // whether or not the mouse is over it
+  boolean on, toggleable, toggled, displayable; // whether or not the mouse is over it
 
   // Constructador
-  Button(int x, int y, int w, int h, String text,  String localPhase, String nextPhase, String info, boolean toggleable) {
+  Button(int x, int y, int w, int h, String text,  String localPhase, String nextPhase, String info, boolean toggleable, boolean displayable) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -21,9 +21,12 @@ class Button {
     on = false;
     this.toggleable = toggleable;
     toggled = false;
+    this.displayable = displayable;
   }         
 
   void display() {
+    if (displayable == true) {
+    noStroke();
     if (on) {
       fill(c2);
     } else {
@@ -34,11 +37,13 @@ class Button {
     rect(x+10, y+10, w-20, h-20, 8);
     fill(0);
     //textAlign(CENTER);
-    //textSize();
-    text(text, x+w/2, y+(h/2)+5);
+    textSize(40);
+    text(text, x+w/2, y+(h/2)+10);
     fill(255);
     if (toggled == true) {
       rect(x-50, y+(h/2), 5, 5); 
+    }
+    textSize(30);
     }
   }
 

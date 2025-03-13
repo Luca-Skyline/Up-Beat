@@ -195,8 +195,9 @@ void setup() {
   lastBeat = 0;
   tempo = 150;
   
-  String[] tinstruments = {"brass", "lead", "brass"};
+  String[] tinstruments = {"electricKeyboard", "electricKeyboard", "electricKeyboard"};
   instruments = tinstruments; //i hate processing
+  
   j = new Jingle(4, "G", true);
   //j.generate();
   Song pop = new PopSong(true, 32, 4, "G", true);
@@ -337,13 +338,13 @@ void draw() {
           int channel = i;
           
           if (lastBeat < start && start <= currentBeat) {
-            mBus.sendControllerChange(channel, 0, 90);
-            mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
+            //mBus.sendControllerChange(channel, 0, 90);
+            //mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
             mBus.sendNoteOn(channel, mn.getPitch(), mn.getVelocity());   //note began between this and last frame
           }
           if (lastBeat < end && end <= currentBeat) {
-            mBus.sendControllerChange(channel, 0, 90);
-            mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
+            //mBus.sendControllerChange(channel, 0, 90);
+            //mBus.sendMessage(0xC0 | channel, getProgramNumber(instruments[i]));
             mBus.sendNoteOff(channel, mn.getPitch(), mn.getVelocity());  //note ended between this and last frame
           }
         }
@@ -517,6 +518,10 @@ void playSong(Song smong) {
   MIDINotes = smong.midiNotes();
   startMillis = millis();
   lastBeat = 0;
+  for (int i=0; i<instruments.length; i++) {
+    mBus.sendControllerChange(i, 0, 90);
+    mBus.sendMessage(0xC0 | i, getProgramNumber(instruments[i]));
+  }
 }
 
 //function made by Micah Tien

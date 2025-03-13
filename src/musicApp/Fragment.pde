@@ -10,6 +10,7 @@ class Fragment{
   private float melodyComplexity = 1.5; //should between 1 and 2 for 2 chords per measure in 4/4 time
   private int chordsPerMeasure;
   private int beatsPerMeasure;
+  private boolean major;
   
   public Fragment(int measures, int chordsPerMeasure, int beatsPerMeasure, String[] scale, Table table){
     this.measures = measures;

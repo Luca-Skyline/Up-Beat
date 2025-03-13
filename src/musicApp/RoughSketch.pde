@@ -26,10 +26,10 @@ boolean firstMousePress = false;
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[40];
+Button[] buttons = new Button[52];
 Scrollbar[] myScrolls = new Scrollbar[2];
 InfoBubble[] infoBubbles = new InfoBubble[4];
-PImage logo, mainMenu, genreScreen, chordScreen, lengthScreen, tempoScreen, timeScreen, bassScreen, chordInstrumentScreen, melodyScreen, previewScreen, playScreen, nameScreen, saveScreen;
+PImage logo, mainMenu, genreScreen, chordScreen, lengthScreen, tempoScreen, timeScreen, keyScreen, bassScreen, chordInstrumentScreen, melodyScreen, previewScreen, playScreen, nameScreen, saveScreen;
 PFont pixel;
 MidiBus mBus;
 String[] textBoxes;
@@ -59,14 +59,16 @@ void setup() {
   mainMenu.resize(width,height);
   genreScreen = loadImage("genreScreen.png");
   genreScreen.resize(width,height);
-  chordScreen = loadImage("chordScreen.png");
+  chordScreen = loadImage("chordsScreen.png");
   chordScreen.resize(width,height);
   lengthScreen = loadImage("lengthScreen.png");
   lengthScreen.resize(width,height);
   tempoScreen = loadImage("tempoScreen.png");
   tempoScreen.resize(width,height);
-  timeScreen = loadImage("timeScreen.png");
+  timeScreen = loadImage("timeSigScreen.png");
   timeScreen.resize(width,height);
+  keyScreen = loadImage("keyScreen.png");
+  keyScreen.resize(width,height);
   bassScreen = loadImage("bassScreen.png");
   bassScreen.resize(width,height);
   chordInstrumentScreen = loadImage("chordsInstrumentScreen.png");
@@ -96,7 +98,7 @@ void setup() {
   buttons[1] = new Button(677, 354, 276, 116, "Load Old Song", "mainMenu", "old", "oldSong", false, true);
   buttons[2] = new Button(746, 50, 276, 116, "Settings", "mainMenu", "settings", "TEMP", false, true);
   
-  buttons[3] = new Button(154, 170, 266, 75, "Classical", "qGenre", "Chord", "classical", false, true);
+  buttons[3] = new Button(154, 170, 266, 75, "Classical", "qGenre", "qChord", "classical", false, true);
   buttons[4] = new Button(574, 170, 266, 75, "Pop", "qGenre", "qChord", "pop", false, true);
   buttons[5] = new Button(154, 270, 266, 75, "Mr. Skyline", "qGenre", "qChord", "skyline", false, true);
   buttons[6] = new Button(574, 270, 266, 75, "Jazz", "qGenre", "qChord", "jazz", false, true);
@@ -106,51 +108,63 @@ void setup() {
   buttons[9] = new Button(715, 250, 266, 75, "Minor", "qChord", "qLength", "minor", false, true);
   
   myScrolls[0] = new Scrollbar(width/2-200, 300, 400, 30, "qLength", "measures", 1, 16);
-  buttons[10] = new Button(500, 400, 266, 75, "Done", "qLength", "qTempo", myScrolls[0].txt, false, true);
+  buttons[10] = new Button(865, 395, 172, 80, "Next", "qLength", "qTempo", myScrolls[0].txt, false, true);
   //buttons[8] = new Button(200, 350, 266, 75, "4 measures", "qLength", "qTempo", "4", false, true);
   //buttons[9] = new Button(500, 350, 266, 75, "8 measures", "qLength", "qTempo", "8", false, true);
   //buttons[10] = new Button(800, 350, 266, 75, "16 measures", "qLength", "qTempo", "16", false, true);
   
   myScrolls[1] = new Scrollbar(width/2-200, 350, 400, 30, "qTempo", "bpm", 60, 200);
-  buttons[11] = new Button(500, 500, 266, 75, "Done", "qTempo", "qSign", myScrolls[1].txt, false, true);
+  buttons[11] = new Button(850, 395, 172, 78, "Next", "qTempo", "qSign", myScrolls[1].txt, false, true);
   
   buttons[12] = new Button(240, 245, 266, 75, "2/4", "qSign", "qKey", "2/4", false, true);
   buttons[13] = new Button(551, 245, 266, 75, "3/4", "qSign", "qKey", "3/4", false, true);
   buttons[14] = new Button(240, 342, 266, 75, "4/4", "qSign", "qKey", "4/4", false, true);
   buttons[15] = new Button(551, 342, 266, 75, "6/8", "qSign", "qKey", "6/8", false, true);
   
-  buttons[16] = new Button(800, 450, 266, 75, "Next", "qKey", "qBassInstrument", "filler", false, true);
+  buttons[16] = new Button(780, 22, 40, 30, "6/8", "qKey", "qBassInstrument", "C", true, false);
+  buttons[17] = new Button(680, 54, 40, 30, "6/8", "qKey", "qBassInstrument", "F", true, false);
+  buttons[18] = new Button(630, 102, 40, 30, "6/8", "qKey", "qBassInstrument", "A#", true, false);
+  buttons[19] = new Button(604, 191, 40, 30, "6/8", "qKey", "qBassInstrument", "D#", true, false);
+  buttons[20] = new Button(630, 273, 40, 30, "6/8", "qKey", "qBassInstrument", "G#", true, false);
+  buttons[21] = new Button(644, 334, 80, 30, "6/8", "qKey", "qBassInstrument", "C#", true, false);
+  buttons[22] = new Button(770, 367, 80, 30, "6/8", "qKey", "qBassInstrument", "F#", true, false);
+  buttons[23] = new Button(879, 341, 80, 30, "6/8", "qKey", "qBassInstrument", "B", true, false);
+  buttons[24] = new Button(937, 278, 40, 30, "6/8", "qKey", "qBassInstrument", "E", true, false);
+  buttons[25] = new Button(956, 198, 40, 30, "6/8", "qKey", "qBassInstrument", "A", true, false);
+  buttons[26] = new Button(938, 110, 40, 30, "6/8", "qKey", "qBassInstrument", "D", true, false);
+  buttons[27] = new Button(883, 58, 40, 30, "6/8", "qKey", "qBassInstrument", "G", true, false);
+  buttons[28] = new Button(850, 393, 266, 75, "Next", "qKey", "qBassInstrument", "filler", false, true);
   
-  buttons[17] = new Button(63, 198, 266, 80, "Piano", "qBassInstrument", "qMiddleInstrument", "piano", true, true);  
-  buttons[18] = new Button(394, 198, 266, 80, "Strings", "qBassInstrument", "qMiddleInstrument", "strings", true, true);
-  buttons[19] = new Button(724, 198, 266, 80, "Brass", "qBassInstrument", "qMiddleInstrument", "brass", true, true);
-  buttons[20] = new Button(115, 306, 381, 80, "Electric Keyboard", "qBassInstrument", "qMiddleInstrument", "electricKeyboard", true, true);
-  buttons[21] = new Button(561, 306, 381, 80, "Electric Bass", "qBassInstrument", "qMiddleInstrument", "electricBass", true, true);
-  buttons[22] = new Button(874, 410, 266, 80, "Next", "qBassInstrument", "qMiddleInstrument", "filler", false, true);
+  buttons[29] = new Button(63, 198, 266, 80, "Piano", "qBassInstrument", "qMiddleInstrument", "piano", true, true);  
+  buttons[30] = new Button(394, 198, 266, 80, "Strings", "qBassInstrument", "qMiddleInstrument", "strings", true, true);
+  buttons[31] = new Button(724, 198, 266, 80, "Brass", "qBassInstrument", "qMiddleInstrument", "brass", true, true);
+  buttons[32] = new Button(115, 306, 381, 80, "Electric Keyboard", "qBassInstrument", "qMiddleInstrument", "electricKeyboard", true, true);
+  buttons[33] = new Button(561, 306, 381, 80, "Electric Bass", "qBassInstrument", "qMiddleInstrument", "electricBass", true, true);
+  buttons[34] = new Button(874, 410, 266, 80, "Next", "qBassInstrument", "qMiddleInstrument", "filler", false, true);
   
-  buttons[23] = new Button(119, 193, 381, 80, "Piano", "qMiddleInstrument", "qMelInstrument", "piano", true, true);
-  buttons[24] = new Button(553, 193, 381, 80, "Strings", "qMiddleInstrument", "qMelInstrument", "strings", true, true);
-  buttons[25] = new Button(553, 298, 381, 80, "Brass", "qMiddleInstrument", "qMelInstrument", "brass", true, true);
-  buttons[26] = new Button(119, 298, 381, 80, "Electric Keyboard", "qMiddleInstrument", "qMelInstrument", "electricKeyboard", true, true);
-  buttons[27] = new Button(857, 396, 266, 80, "Next", "qMiddleInstrument", "qMelInstrument", "filler", false, true);
+  buttons[35] = new Button(119, 193, 381, 80, "Piano", "qMiddleInstrument", "qMelInstrument", "piano", true, true);
+  buttons[36] = new Button(553, 193, 381, 80, "Strings", "qMiddleInstrument", "qMelInstrument", "strings", true, true);
+  buttons[37] = new Button(553, 298, 381, 80, "Brass", "qMiddleInstrument", "qMelInstrument", "brass", true, true);
+  buttons[38] = new Button(119, 298, 381, 80, "Electric Keyboard", "qMiddleInstrument", "qMelInstrument", "electricKeyboard", true, true);
+  buttons[39] = new Button(857, 396, 266, 80, "Next", "qMiddleInstrument", "qMelInstrument", "filler", false, true);
  
-  buttons[28] = new Button(63, 190, 266, 80, "Piano", "qMelInstrument", "preview", "piano", true, true);  
-  buttons[29] = new Button(392, 190, 266, 80, "Strings", "qMelInstrument", "preview", "strings", true, true);
-  buttons[30] = new Button(724, 190, 266, 80, "Brass", "qMelInstrument", "preview", "brass", true, true);
-  buttons[31] = new Button(114, 295, 381, 80, "Electric Keyboard", "qMelInstrument", "preview", "electricKeyboard", true, true);
-  buttons[32] = new Button(560, 295, 381, 80, "Lead", "qMelInstrument", "preview", "lead", true, true);
-  buttons[33] = new Button(874, 410, 266, 80, "Next", "qMelInstrument", "preview", "next", false, true);
+  buttons[40] = new Button(63, 190, 266, 80, "Piano", "qMelInstrument", "preview", "piano", true, true);  
+  buttons[41] = new Button(392, 190, 266, 80, "Strings", "qMelInstrument", "preview", "strings", true, true);
+  buttons[42] = new Button(724, 190, 266, 80, "Brass", "qMelInstrument", "preview", "brass", true, true);
+  buttons[43] = new Button(114, 295, 381, 80, "Electric Keyboard", "qMelInstrument", "preview", "electricKeyboard", true, true);
+  buttons[44] = new Button(560, 295, 381, 80, "Lead", "qMelInstrument", "preview", "lead", true, true);
+  buttons[45] = new Button(874, 410, 266, 80, "Next", "qMelInstrument", "preview", "next", false, true);
   
-  buttons[34] = new Button(295, 395, 175, 80, "Next", "preview", "play", "execute", false, true);
+  buttons[46] = new Button(295, 395, 175, 80, "Next", "preview", "play", "execute", false, true);
   
-  buttons[35] = new Button(120, 380, 266, 75, "Finish", "play", "qName", "stop", false, true);
+  buttons[47] = new Button(120, 380, 266, 75, "Finish", "play", "qName", "stop", false, true);
   
-  buttons[36] = new Button(856, 400, 176, 76, "Next", "qName", "qSave", "filler", false, true);
+  buttons[48] = new Button(856, 400, 176, 76, "Next", "qName", "qSave", "filler", false, true);
                                                //filler here ^^^ will become what is in the textbox once next is clicked
-  buttons[37] = new Button(203, 298, 239, 101, "YES", "qSave", "mainMenu", "yesSave", false, true);
-  buttons[38] = new Button(650, 298, 239, 101, "NO", "qSave", "mainMenu", "noSave", false, true);
+  buttons[49] = new Button(203, 298, 239, 101, "YES", "qSave", "mainMenu", "yesSave", false, true);
+  buttons[50] = new Button(650, 298, 239, 101, "NO", "qSave", "mainMenu", "noSave", false, true);
   
-  buttons[39] = new Button(23, 391, 180, 80, "Back", "qGenre", "filler", "back", false, true);
+  buttons[51] = new Button(23, 391, 180, 80, "Back", "qGenre", "filler", "back", false, true);
   
   //  InfoBubble(float, float, float, String) will take in xposition, yposition, radius, and text in that order. 
   //  Change these as needed!
@@ -237,10 +251,7 @@ void draw() {
       image(timeScreen, 0, 0);
       break;
     case "qKey": 
-      text("Select Key Signature:", width/2, 50);
-      textSize(20);
-      text("Combinations of sharps or flats indicating the key of a composition (WIP currently)", width/2, 80);
-      textSize(30);
+      image(keyScreen, 0, 0);
       break;
     case "qBassInstrument": 
       image(bassScreen, 0, 0);
@@ -372,7 +383,21 @@ void mousePressed() { //if you click
           timeSig = buttons[i].info;
           break;
         case "qKey": 
-          keySig = buttons[i].info;
+          if (buttons[i].toggleable == true) {
+            if (buttons[i].toggled == false) {
+              keySig = buttons[i].info;
+              for (int m = 0; m<buttons.length; m++) {
+                 buttons[m].toggled = false; //resets each button to not be toggled
+              }
+              buttons[i].toggled = true; //sets only the clicked button to be toggled
+              break;
+            }
+            if (buttons[i].toggled == true) { //if u click a toggled toggleable button
+              keySig = "";
+              buttons[i].toggled = false;
+              break;
+            }
+          }
           break;
         case "qBassInstrument": 
           if (buttons[i].toggleable == true) {
@@ -444,7 +469,7 @@ void mousePressed() { //if you click
            } else {
              lastPhase.add(globalPhase);
              globalPhase = buttons[i].inside();
-             buttons[39].localPhase = globalPhase; //back button appears on every screen
+             buttons[51].localPhase = globalPhase; //back button appears on every screen
              break;
            }
          }

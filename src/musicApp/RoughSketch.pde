@@ -629,7 +629,7 @@ void saveSong(String songName) {
     songName += ".mid";
     File midiFile = new File(songName);
     MidiSystem.write(sequence, 1, midiFile);
-    println("MIDI file saved: " + songName);
+    println(songName + " saved to absolute path: " + midiFile.getAbsolutePath());
 
   } catch (Exception e) {
     e.printStackTrace();

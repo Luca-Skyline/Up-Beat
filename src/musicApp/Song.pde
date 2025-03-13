@@ -22,6 +22,7 @@ abstract class Song {
     this.timeSignature = timeSignature;
     this.measures = measures;
     myThreeInstruments = instruments;
+    percussionDirectory = "";
     
     String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#", "E#"};
     String[] orderOfNotes = {"A", "B", "C", "D", "E", "F", "G"};

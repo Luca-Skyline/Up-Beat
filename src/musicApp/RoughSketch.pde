@@ -19,14 +19,14 @@
 import controlP5.*;
 import themidibus.*;
 ControlP5 cp5;
-
-String globalPhase;
+String globalPhase, info;
+ArrayList<String> lastPhase = new ArrayList<String>();
 boolean firstMousePress = false;
 //could be much more options - options would be 
 //the genre(?) or type of song (symphony etc.)
 boolean pop; // pop
 boolean classical; // classical
-Button[] buttons = new Button[39];
+Button[] buttons = new Button[40];
 Scrollbar[] myScrolls = new Scrollbar[2];
 InfoBubble[] infoBubbles = new InfoBubble[4];
 PImage logo, mainMenu, genreScreen, chordScreen, lengthScreen, tempoScreen, timeScreen, bassScreen, chordInstrumentScreen, melodyScreen, previewScreen, playScreen, nameScreen, saveScreen;
@@ -89,6 +89,7 @@ void setup() {
   cp5 = new ControlP5(this);
   textSize(25); 
   globalPhase = "mainMenu";
+  info = "";
   //this list of buttons and later sliders and stuff is going to be SUPER long uhm ;-;
   //what i plan on doing is putting all of the buttons and sliders and wheels and widgets into a giant text file then just reading from it :p
   buttons[0] = new Button(715, 203, 276, 116, "Generate New ", "mainMenu", "qGenre", "newSong", false, true);
@@ -120,22 +121,22 @@ void setup() {
   
   buttons[16] = new Button(800, 450, 266, 75, "Next", "qKey", "qBassInstrument", "filler", false, true);
   
-  buttons[17] = new Button(63, 198, 266, 80, "Piano", "qBassInstrument", "qMiddleInstrument", "piano", true, true);  //big todo: make these toggles 
-  buttons[18] = new Button(394, 198, 266, 80, "Strings", "qBassInstrument", "qMiddleInstrument", "strings", true, true);//so that you can have multiple
-  buttons[19] = new Button(724, 198, 266, 80, "Brass", "qBassInstrument", "qMiddleInstrument", "brass", true, true);//instruments
+  buttons[17] = new Button(63, 198, 266, 80, "Piano", "qBassInstrument", "qMiddleInstrument", "piano", true, true);  
+  buttons[18] = new Button(394, 198, 266, 80, "Strings", "qBassInstrument", "qMiddleInstrument", "strings", true, true);
+  buttons[19] = new Button(724, 198, 266, 80, "Brass", "qBassInstrument", "qMiddleInstrument", "brass", true, true);
   buttons[20] = new Button(115, 306, 381, 80, "Electric Keyboard", "qBassInstrument", "qMiddleInstrument", "electricKeyboard", true, true);
   buttons[21] = new Button(561, 306, 381, 80, "Electric Bass", "qBassInstrument", "qMiddleInstrument", "electricBass", true, true);
   buttons[22] = new Button(874, 410, 266, 80, "Next", "qBassInstrument", "qMiddleInstrument", "filler", false, true);
   
-  buttons[23] = new Button(119, 193, 381, 80, "Piano", "qMiddleInstrument", "qMelInstrument", "piano", true, true);  //big todo: make these toggles 
-  buttons[24] = new Button(553, 193, 381, 80, "Strings", "qMiddleInstrument", "qMelInstrument", "strings", true, true);//so that you can have multiple
-  buttons[25] = new Button(553, 298, 381, 80, "Brass", "qMiddleInstrument", "qMelInstrument", "brass", true, true);//instruments
+  buttons[23] = new Button(119, 193, 381, 80, "Piano", "qMiddleInstrument", "qMelInstrument", "piano", true, true);
+  buttons[24] = new Button(553, 193, 381, 80, "Strings", "qMiddleInstrument", "qMelInstrument", "strings", true, true);
+  buttons[25] = new Button(553, 298, 381, 80, "Brass", "qMiddleInstrument", "qMelInstrument", "brass", true, true);
   buttons[26] = new Button(119, 298, 381, 80, "Electric Keyboard", "qMiddleInstrument", "qMelInstrument", "electricKeyboard", true, true);
   buttons[27] = new Button(857, 396, 266, 80, "Next", "qMiddleInstrument", "qMelInstrument", "filler", false, true);
  
-  buttons[28] = new Button(63, 190, 266, 80, "Piano", "qMelInstrument", "preview", "piano", true, true);  //big todo: make these toggles 
-  buttons[29] = new Button(392, 190, 266, 80, "Strings", "qMelInstrument", "preview", "strings", true, true);//so that you can have multiple
-  buttons[30] = new Button(724, 190, 266, 80, "Brass", "qMelInstrument", "preview", "brass", true, true);//instruments
+  buttons[28] = new Button(63, 190, 266, 80, "Piano", "qMelInstrument", "preview", "piano", true, true);  
+  buttons[29] = new Button(392, 190, 266, 80, "Strings", "qMelInstrument", "preview", "strings", true, true);
+  buttons[30] = new Button(724, 190, 266, 80, "Brass", "qMelInstrument", "preview", "brass", true, true);
   buttons[31] = new Button(114, 295, 381, 80, "Electric Keyboard", "qMelInstrument", "preview", "electricKeyboard", true, true);
   buttons[32] = new Button(560, 295, 381, 80, "Lead", "qMelInstrument", "preview", "lead", true, true);
   buttons[33] = new Button(874, 410, 266, 80, "Next", "qMelInstrument", "preview", "next", false, true);
@@ -148,6 +149,8 @@ void setup() {
                                                //filler here ^^^ will become what is in the textbox once next is clicked
   buttons[37] = new Button(203, 298, 239, 101, "YES", "qSave", "mainMenu", "yesSave", false, true);
   buttons[38] = new Button(650, 298, 239, 101, "NO", "qSave", "mainMenu", "noSave", false, true);
+  
+  buttons[39] = new Button(23, 391, 180, 80, "Back", "qGenre", "filler", "back", false, true);
   
   //  InfoBubble(float, float, float, String) will take in xposition, yposition, radius, and text in that order. 
   //  Change these as needed!
@@ -279,8 +282,16 @@ void draw() {
     //rendering buttons -z
   for (int i=0; i<buttons.length; i++) {
     if (globalPhase == buttons[i].localPhase) {
+      if(buttons[i].info == "back") {
+          if (globalPhase!="play" && globalPhase!="qName" && globalPhase != "qSave" && globalPhase !="mainMenu") {
+          buttons[i].display();
+          buttons[i].hover(mouseX, mouseY);
+        }
+      }
+      else {
       buttons[i].display();
       buttons[i].hover(mouseX, mouseY);
+      }  
     }
   }
   
@@ -328,11 +339,11 @@ void draw() {
 //maybe make a whole case switch statement in here? I can't think of an easier way to do this
 //because each individual variable will need to be defined and that depends on which screen we're on
 //makes it so clicking buttons does stuff!! :) -z
-void mousePressed() {
+void mousePressed() { //if you click
  for (int i=0; i<buttons.length; i++) {
-     if (globalPhase == buttons[i].localPhase) {
-       if (buttons[i].on == true) {
-        // if (buttons[i].info != "filler") {
+     if (globalPhase == buttons[i].localPhase) { // and if a button is being displayed
+       if (buttons[i].on == true) { // and if you clicked inside the button's box
+        // if (buttons[i].text != "filler") {
       switch (globalPhase) { 
         case "qGenre": 
           System.out.println(cp5.get(Textfield.class,"").getText());
@@ -360,7 +371,7 @@ void mousePressed() {
               buttons[i].toggled = true; //sets only the clicked button to be toggled
               break;
             }
-            if (buttons[i].toggled == true) { 
+            if (buttons[i].toggled == true) { //if u click a toggled toggleable button
               instruments[0] = "";
               buttons[i].toggled = false;
               break;
@@ -400,21 +411,36 @@ void mousePressed() {
               break;
             }
           }
-  
-          
-          //for instruments you're gonna have to make smth to make it do multiple
-          //maybe add a toggleable boolean to button, all instrument buttons are
-          //toggleable, so here instruments += all the toggled buttons (use for loop ig) //further add-on: make an arraylist for this
-          //or maybe have instrument1, instrument2, etc
+        case "preview": 
+          break;
         case "qName": 
           songName = cp5.get(Textfield.class,"").getText();
           break;
+        case "qSave": 
+          //lastPhase.clear();
+          
+          break;
         }
-    //    }
-       if (buttons[i].toggleable == false) {
-       globalPhase = buttons[i].inside();
-       break;
-       }
+         if (buttons[i].toggleable == false) {
+           if (buttons[i].info == "back") {
+             globalPhase = lastPhase.get(lastPhase.size()-1);
+             if (lastPhase.size() != 1) {
+               buttons[i].localPhase = globalPhase;
+             }
+             lastPhase.remove(lastPhase.size()-1);
+           } else {
+             lastPhase.add(globalPhase);
+             globalPhase = buttons[i].inside();
+             buttons[39].localPhase = globalPhase; //back button appears on every screen
+             break;
+           }
+         }
+         //if (lastPhase.size() == 13) {
+           //lastPhase.clear();
+           //for (int n=lastPhase.size(); n>0; n--) {
+             //lastPhase.remove(n-1);
+          //}
+         //}
        }
      }
    }

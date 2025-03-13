@@ -18,11 +18,11 @@ class InfoBubble {
     strokeWeight(2);
     stroke(0);
     ellipseMode(RADIUS);
-    circle(this.xpos, this.ypos, this.radius);
+    //circle(this.xpos, this.ypos, this.radius);
     fill(0);
     textSize(18);
     textAlign(CENTER);
-    text("i", this.xpos, this.ypos+8);
+    //text("i", this.xpos, this.ypos+8);
     pop();
     
     //display text box

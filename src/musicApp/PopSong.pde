@@ -1,5 +1,4 @@
 class PopSong extends Song {
-  PercussionTrack percussion;
   
   PopSong(boolean jazzMode, int measures, int timeSignature, String keySignature, String[] instruments){
     super(measures, keySignature, timeSignature, instruments);
@@ -7,6 +6,7 @@ class PopSong extends Song {
     //set up probability table
     
     if(jazzMode){
+      percussionDirectory = "drums/jazz" + timeSignature+ ".mid";
       try{
         probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsJazz.csv");
       }
@@ -15,6 +15,7 @@ class PopSong extends Song {
       }
     }
     else{
+      percussionDirectory = "drums/pop" + timeSignature+ ".mid";
       try{
         probabilitySettings = loadTable("ProbabilityFiles/MusicProductionStatsPop.csv");
       }

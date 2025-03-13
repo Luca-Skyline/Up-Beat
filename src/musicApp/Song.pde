@@ -15,6 +15,7 @@ abstract class Song {
   protected Fragment[] myFragments;
   protected int timeSignature;
   private String[] myThreeInstruments; //[bass, chords, melody]
+  protected String percussionDirectory;
   
   //constructor by Luca DalCanto (this is where the magic happens)
   protected Song(int measures, String keySignature, int timeSignature, String[] instruments){
@@ -85,6 +86,10 @@ abstract class Song {
   
   public String[] getInstruments(){
     return myThreeInstruments;
+  }
+  
+  public String getPercussion(){
+    return percussionDirectory;
   }
   
   public MIDINote[][] midiNotes(){    

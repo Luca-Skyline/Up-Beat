@@ -136,6 +136,8 @@ abstract class Song {
     
     //this is temp code! right now it will just return one instrument. this will need to be changed later for sure
     MIDINote[][] bigArray = {bassArray, chordsArray, melodyArray};
+    System.out.println(bigArray[0].length);
+    System.out.println(bigArray[0][0].getBeat());
     
     return bigArray;
   }

@@ -1,8 +1,8 @@
 class PopSong extends Song {
   PercussionTrack percussion;
   
-  PopSong(boolean jazzMode, int measures, int timeSignature, String keySignature, String instrument){
-    super(measures, keySignature, timeSignature, instrument);
+  PopSong(boolean jazzMode, int measures, int timeSignature, String keySignature, String[] instruments){
+    super(measures, keySignature, timeSignature, instruments);
     
     //set up probability table
     
@@ -78,7 +78,7 @@ class PopSong extends Song {
       myFragments[i].addStartBeat(16*i);
       
     }
-    //myFragments[myFragments.length-1].makeResolve();
+    myFragments[myFragments.length-1].makeResolve();
     
   }
   

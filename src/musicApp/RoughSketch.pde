@@ -162,6 +162,7 @@ void setup() {
   buttons[46] = new Button(295, 395, 175, 80, "Next", "preview", "play", "execute", false, true);
   
   buttons[47] = new Button(120, 380, 266, 75, "Finish", "play", "qName", "stop", false, true);
+  buttons[47].displayable = true;
   
   buttons[48] = new Button(856, 400, 176, 76, "Next", "qName", "qSave", "filler", false, true);
                                                //filler here ^^^ will become what is in the textbox once next is clicked
